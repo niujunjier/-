@@ -7,7 +7,7 @@
   </view>
   <view class='default-bar'>
     <text>昵称</text>
-    <text>小六 ></text>
+    <text>张赟 ></text>
   </view>
 </view>
 <view class='user-block margin-top'>
@@ -19,7 +19,7 @@
     <text>身份</text>
     <text class='colorGrey'>教师 ></text>
   </view>
-  <view class='default-bar border-bottom'>
+  <view class='default-bar'>
     <text>手机号</text>
     <text>151*******76 ></text>
   </view>
