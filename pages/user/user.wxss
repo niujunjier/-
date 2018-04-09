@@ -1,0 +1,41 @@
+view{
+  box-sizing: border-box;
+}
+.user-block{
+  width: 100%;
+  padding-left: 20rpx;
+  padding-right: 20rpx;
+  background-color: #fff;
+}
+.user-bar{
+  width: 100%;
+  height: 144rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 28rpx;
+}
+.default-bar{
+  width: 100%;
+  height: 89rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 28rpx;
+}
+.border-bottom{
+  border-bottom: 1rpx solid #ccc;
+}
+.avatar{
+  width: 93rpx;
+  height: 93rpx;
+  margin-top: 10rpx;
+}
+ .avatar image{
+  width: 93rpx;
+  height: 93rpx;
+} 
+
+.margin-top{
+  margin-top: 21rpx;
+}

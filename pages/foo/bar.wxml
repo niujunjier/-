@@ -1,0 +1,3 @@
+<!--pages/foo/bar.wxml-->
+<text>i am {{name}}</text>
+<button bindtap="changeName">click me</button>

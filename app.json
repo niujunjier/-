@@ -1,0 +1,14 @@
+{
+  "pages":[
+    "pages/user/user",
+    "pages/index/index",
+    "pages/foo/bar",
+    "pages/logs/logs"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#ed6d00",
+    "navigationBarTitleText": "个人中心",
+    "navigationBarTextStyle":"white"
+  }
+}

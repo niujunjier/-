@@ -1,0 +1,45 @@
+<view class='user-block'>
+  <view class='user-bar border-bottom'>
+    <view class="avatar">
+        <image style="background-color: #eeeeee;" mode="{{item.mode}}" src="{{src}}"></image>
+    </view>
+    <text>头像 ></text>
+  </view>
+  <view class='default-bar'>
+    <text>昵称</text>
+    <text>小六 ></text>
+  </view>
+</view>
+<view class='user-block margin-top'>
+  <view class='default-bar border-bottom'>
+    <text>姓名</text>
+    <text class='colorGrey'>小六 ></text>
+  </view>
+  <view class='default-bar border-bottom'>
+    <text>身份</text>
+    <text class='colorGrey'>教师 ></text>
+  </view>
+  <view class='default-bar border-bottom'>
+    <text>手机号</text>
+    <text>151*******76 ></text>
+  </view>
+</view>
+<view class='user-block margin-top'>
+  <view class='default-bar border-bottom'>
+    <text>生日</text>
+    <text class='colorGrey'>2000年1月1号 ></text>
+  </view>
+  <view class='default-bar border-bottom'>
+    <text>性别</text>
+    <text class='colorGrey'>男 ></text>
+  </view>
+  <view class='default-bar border-bottom'>
+    <text>邮箱</text>
+    <text>156****301@qq.com></text>
+  </view>
+   <view class='default-bar'>
+    <text>安全</text>
+    <text>修改密码></text>
+  </view>
+</view>
+<view class='btn btn-default margin-top'>退出登录</view>

@@ -1,0 +1,18 @@
+/**app.wxss**/
+page{
+  height: 100%;
+  background-color: #e5e5e5;
+}
+.colorGrey{
+  color: #cdcdcd;
+}
+.btn{
+  width: 100%;
+  height: 91rpx;
+  line-height: 91rpx;
+  text-align: center;
+  font-size: 28rpx;
+}
+.btn-default{
+  background-color: #ffffff;
+}
