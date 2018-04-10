@@ -39,3 +39,17 @@ view{
 .margin-top{
   margin-top: 21rpx;
 }
+.modal{
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.2);
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.modal-content{
+  width: 562rpx;
+  height: 598rpx;
+  background: #fff;
+  margin: 160rpx auto 0;
+}
