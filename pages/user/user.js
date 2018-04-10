@@ -3,7 +3,7 @@ const years = []
 const months = []
 const days = []
 
-for (let i = 1990; i <= date.getFullYear(); i++) {
+for (let i = 1900; i <= date.getFullYear(); i++) {
   years.push(i)
 }
 
@@ -49,22 +49,21 @@ Page({
       'passworld': {
         name: '修改密码',
         describe: ''
-      },
-      bindChange: function (e) {
-        const val = e.detail.value
-        this.setData({
-          year: this.data.years[val[0]],
-          month: this.data.months[val[1]],
-          day: this.data.days[val[2]]
-        })
       }
     }
   },
   showMaskTrue: function(e){
-    console.log(e)
     this.setData({ currChoose: e.currentTarget.dataset.key, currMsg: this.data.titleMap[e.currentTarget.dataset.key] })
   },
   showMaskToggle: function(){
     this.setData({ currChoose: "" })
+  },
+  bindChange: function (e) {
+    const val = e.detail.value
+    this.setData({
+      year: this.data.years[val[0]],
+      month: this.data.months[val[1]],
+      day: this.data.days[val[2]]
+    })
   }
 })
