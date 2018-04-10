@@ -1,7 +1,7 @@
 <view class='user-block'>
   <view class='user-bar border-bottom'>
     <view class="avatar">
-        <image style="background-color: #eeeeee;" mode="{{item.mode}}" src="{{src}}"></image>
+      <image style="background-color: #eeeeee;" mode="{{item.mode}}" src="{{src}}"></image>
     </view>
     <text>头像 ></text>
   </view>
@@ -37,29 +37,27 @@
     <text>邮箱</text>
     <text>156****301@qq.com></text>
   </view>
-   <view class='default-bar'>
+  <view class='default-bar'>
     <text>安全</text>
     <text>修改密码></text>
   </view>
 </view>
 <view class='btn btn-default margin-top'>退出登录</view>
-<view class='modal'>
+<view class='modal' wx:if="{{showDateModal}}">
   <view class='modal-content'>
-  <view>
-  <!-- <view>{{year}}年{{month}}月{{day}}日</view> -->
-  <picker-view indicator-style="height: 50px;" style="width: 100%; height: 300px;" value="{{value}}" bindchange="bindChange">
-    <picker-view-column>
-      <view wx:for="{{years}}" style="line-height: 50px">{{item}}年</view>
-    </picker-view-column>
-    <picker-view-column>
-      <view wx:for="{{months}}" style="line-height: 50px">{{item}}月</view>
-    </picker-view-column>
-    <picker-view-column>
-      <view wx:for="{{days}}" style="line-height: 50px">{{item}}日</view>
-    </picker-view-column>
-  </picker-view>
-</view>
-    <button type="primary" size="{{primarySize}}" loading="{{loading}}" plain="{{plain}}"
-        disabled="{{disabled}}" bindtap="primary"> primary </button>
+    <picker-view indicator-style="height: 50px;" style="width: 100%; height: 300px;" value="{{value}}" bindchange="bindChange">
+      <picker-view-column>
+        <view wx:for="{{years}}" style="line-height: 50px">{{item}}年</view>
+      </picker-view-column>
+      <picker-view-column>
+        <view wx:for="{{months}}" style="line-height: 50px">{{item}}月</view>
+      </picker-view-column>
+      <picker-view-column>
+        <view wx:for="{{days}}" style="line-height: 50px">{{item}}日</view>
+      </picker-view-column>
+    </picker-view>
+    <view>
+    </view>
+    <button class='btn' type="primary" size="{{primarySize}}" loading="{{loading}}" plain="{{plain}}" disabled="{{disabled}}" bindtap="primary"> primary </button>
   </view>
 </view>

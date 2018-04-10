@@ -24,6 +24,10 @@ Page({
     days: days,
     day: 2,
     value: [9999, 1, 1],
+    showDateModal: false
+  },
+  changeDate: function (e) {
+    this.setData({showDateModal: true})
   },
   bindChange: function (e) {
     const val = e.detail.value
