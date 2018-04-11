@@ -5,7 +5,9 @@
     "pages/index/index",
     "pages/foo/bar",
     "pages/logs/logs",
-    "pages/adentrance/adentrance"
+    "pages/adentrance/adentrance",
+    "pages/teentrance/teentrance",
+    "pages/stentrance/stentrance"
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -33,3 +33,13 @@ image{
   align-items: center;
   font-size: 28rpx;
 }
+.text-container{
+  width: 691rpx;
+  text-align: right;
+  margin: 0 auto;
+  font-size: 24rpx;
+}
+.bottom-warning{
+  font-size: 28rpx;
+  margin-top: 121rpx;
+}

@@ -53,6 +53,9 @@ page{
 view{
   box-sizing: border-box;
 }
+.left{
+  float: left;
+}
 
 /*图标字体  */
 .iconfont {
