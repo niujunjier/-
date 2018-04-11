@@ -6,6 +6,13 @@
     font-style: normal;
 }
 
+.orange{
+  color: #ed6d00;
+}
+.blue{
+  color: #56d4f6;
+}
+
 page{
   height: 100%;
   background-color: #e5e5e5;
@@ -56,6 +63,28 @@ view{
 .left{
   float: left;
 }
+
+.home-item-box{
+  width: 611rpx;
+  margin: 0 auto;
+}
+.home-item-title{
+  font-size: 28rpx;
+}
+.home-item-content{
+  width: 611rpx;
+  height: 201rpx;
+  margin-top: 10rpx;
+}
+.or-shadow{
+  box-shadow: 0 10rpx 15px #ed6d00;
+}
+.bl-shadow{
+  box-shadow: 0 10rpx 15px #56d4f6;
+}
+
+
+
 
 /*图标字体  */
 .iconfont {

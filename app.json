@@ -1,11 +1,11 @@
 {
   "pages": [
+    "pages/adentrance/adentrance",
     "pages/login/login",
     "pages/user/user",
     "pages/index/index",
     "pages/foo/bar",
     "pages/logs/logs",
-    "pages/adentrance/adentrance",
     "pages/teentrance/teentrance",
     "pages/stentrance/stentrance"
   ],
