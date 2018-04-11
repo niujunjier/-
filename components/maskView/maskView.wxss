@@ -1,4 +1,4 @@
-@import '../../../app.wxss';
+@import '../../app.wxss';
 
 .mask-body{
   width: 100%;
