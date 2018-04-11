@@ -1,14 +1,16 @@
 {
-  "pages":[
+  "pages": [
+    "pages/login/login",
     "pages/user/user",
     "pages/index/index",
     "pages/foo/bar",
-    "pages/logs/logs"
+    "pages/logs/logs",
+    "pages/adentrance/adentrance"
   ],
-  "window":{
-    "backgroundTextStyle":"light",
+  "window": {
+    "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#ed6d00",
     "navigationBarTitleText": "个人中心",
-    "navigationBarTextStyle":"white"
+    "navigationBarTextStyle": "white"
   }
 }

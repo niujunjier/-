@@ -39,10 +39,20 @@ page{
   color: #fff;
   border-radius: 10rpx;
 } 
+.btn-lg{
+  font-size: 28rpx;
+  width: 691rpx;
+  height: 89rpx;
+  margin: 40rpx auto;
+  color: #fff;
+  border-radius: 10rpx;
+} 
 .btn-success{
   background-color: #ed6d00;
 }
-
+view{
+  box-sizing: border-box;
+}
 
 /*图标字体  */
 .iconfont {

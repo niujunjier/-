@@ -1,0 +1,35 @@
+.login-box{
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  text-align: center;
+}
+image{
+  width: 535rpx;
+  height: 253rpx;
+  background-color: #ccc;
+  margin-top: 50rpx;
+}
+.basic-input{
+  width: 691rpx;
+  height: 89rpx;
+  line-height: 89rpx;
+  border: 4rpx solid #ccc;
+  border-radius: 10rpx;
+  display: inline-block;
+  text-align: left;
+  margin-top: 63rpx;
+}
+.basic-input input{
+  width: 691rpx;
+  height: 89rpx;
+  line-height: 89rpx;
+}
+.radio-group{
+  margin: 40rpx auto;
+  width: 691rpx;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 28rpx;
+}
