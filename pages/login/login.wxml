@@ -1,0 +1,19 @@
+<view class='login-box'>
+  <image src='../../assets/logo.png'></image>
+  <view class="basic-input">
+    <input placeholder="请输入用户名/邮箱/手机号"/>
+  </view>
+  <view class="basic-input">
+    <input placeholder='请输入密码' password type="text" />
+  </view>
+  <radio-group class='radio-group' bindchange="radioChange">
+    <label wx:for="{{items}}">
+      <radio value="{{item.name}}" checked="{{item.checked}}" color='#ed6d00'/>{{item.value}}
+    </label>
+  </radio-group>
+  <view class='btn btn-lg btn-success' bindtap='toNext'>登录</view>
+  <view class='text-container'>
+    <text>忘记密码？</text>
+  </view>
+  <text class='bottom-warning'>登录即代表阅读并同意服务条款</text>
+</view>

@@ -1,15 +1,19 @@
 {
-  "pages":[
-    "pages/home/home",
-    "pages/index/index",
+  "pages": [
+    "pages/login/login",
     "pages/user/user",
+    "pages/home/home",    
+    "pages/index/index",
     "pages/foo/bar",
-    "pages/logs/logs"
+    "pages/logs/logs",
+    "pages/adentrance/adentrance",
+    "pages/teentrance/teentrance",
+    "pages/stentrance/stentrance"
   ],
-  "window":{
-    "backgroundTextStyle":"light",
+  "window": {
+    "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#ed6d00",
     "navigationBarTitleText": "个人中心",
-    "navigationBarTextStyle":"white"
+    "navigationBarTextStyle": "white"
   }
 }

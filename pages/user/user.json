@@ -1,1 +1,6 @@
-{}
+{
+  "navigationBarTitleText": "个人中心",
+  "usingComponents": {
+    "component-mask-view": "../../components/maskView/maskView"
+  }
+}
