@@ -33,3 +33,10 @@ const checkLength = (start,end,value) => {
     return false;
   }
 }
+
+module.exports = {
+  checkFalseExceptZero: checkFalseExceptZero,
+  checkNum: checkNum,
+  checkPhone: checkPhone,
+  checkLength: checkLength
+}
