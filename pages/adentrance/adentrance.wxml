@@ -1,2 +1,11 @@
 <!--pages/adentrance/adentrance.wxml-->
-<text>管理员</text>
+<view class='home-main'>
+  <view class='home-item-box'>
+    <text class='home-item-title orange'>View the data</text>
+    <view class='home-item-content or-shadow'></view>
+  </view>
+  <view class='home-item-box' style='margin-top: 65rpx;'>
+    <text class='home-item-title blue'>Enter the classroom</text>
+    <view class='home-item-content bl-shadow'></view>
+  </view>
+</view>
