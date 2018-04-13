@@ -1,11 +1,29 @@
 <!--pages/adentrance/adentrance.wxml-->
-<view class='home-main'>
-  <view class='home-item-box'>
-    <text class='home-item-title orange'>View the data</text>
-    <view class='home-item-content or-shadow'></view>
-  </view>
-  <view class='home-item-box' style='margin-top: 65rpx;'>
-    <text class='home-item-title blue'>Enter the classroom</text>
-    <view class='home-item-content bl-shadow'></view>
+<view class="container">
+  <view class='tab-box'>
+    <view class='tab-pane Personalcenter'>
+      <view class='tab-pane-title font14 orange'>View the data</view>
+      <view class='tab-pane-content'>
+        <view style='height:95rpx;display:flex;justify-content: space-between;'>
+          <view style='display: inline-block;width:110rpx;height:95rpx;margin:0 20rpx'>
+            <image style='height:100%;width:100%;' src="../../assets/image/personalCenter.png"></image>
+          </view>
+          <text class='font14 orange' style='display: inline-block;line-height:95rpx;'>班级数据</text>
+        </view>
+        <view class='font12 gray'>查看数据</view>
+      </view>
+    </view>
+    <view class='tab-pane Entertheclassroom'>
+      <view class='tab-pane-title font14 blue'>Enter the classroom</view>
+      <view class='tab-pane-content'>
+        <view style='height:95rpx;display:flex;justify-content: space-between;'>
+          <view style='display: inline-block;width:110rpx;height:95rpx;margin:0 20rpx'>
+            <image style='height:100%;width:100%;' src="../../assets/image/Entertheclassroom.png"></image>
+          </view>
+          <text class='font14 blue' style='display: inline-block;line-height:95rpx;'>进入教室</text>
+        </view>
+        <view class='font12 gray'>开始上课</view>
+      </view>
+    </view>
   </view>
 </view>

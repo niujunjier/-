@@ -1,7 +1,7 @@
 <!--logs.wxml-->
 <view class="container">
   <view class='tab-box'>
-    <view class='tab-pane Personalcenter'>
+    <view class='tab-pane Personalcenter' bindtap='toUserCenter'>
       <view class='tab-pane-title font14 orange'>Personal center</view>
       <view class='tab-pane-content'>
         <view style='height:95rpx;display:flex;justify-content: space-between;'>
