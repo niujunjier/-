@@ -26,11 +26,9 @@ page{
 .colorGrey{
   color: #cdcdcd;
 }
-.btn{
+.btn-full{
   width: 100%;
   height: 91rpx;
-  line-height: 91rpx;
-  text-align: center;
   font-size: 28rpx;
 }
 .btn-default{
@@ -89,7 +87,15 @@ view{
   box-shadow: 0 10rpx 15px #56d4f6;
 }
 
-
+.font12{
+  font-size: 12rpx;
+}
+.font14{
+  font-size: 14rpx;
+}
+.font28{
+  font-size: 28rpx;
+}
 
 
 /*图标字体  */

@@ -7,7 +7,9 @@
     "pages/foo/bar",
     "pages/logs/logs",
     "pages/teentrance/teentrance",
-    "pages/stentrance/stentrance"
+    "pages/stentrance/stentrance",
+    "pages/qrcode/qrcode",
+    "pages/classForTe/classForTe"
   ],
   "window": {
     "backgroundTextStyle": "light",

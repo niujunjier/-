@@ -1,0 +1,15 @@
+/* pages/classForTe/classForTe.wxss */
+.cft-main{
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  padding-top: 1rpx;
+}
+.cft-item{
+  width: 561rpx;
+  height: 201rpx;
+  background-color: #ccc;
+  border-radius: 10rpx;
+  margin: 0 auto;
+  margin-top: 70rpx;
+}

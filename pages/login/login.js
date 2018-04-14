@@ -16,6 +16,6 @@ Page({
     this.setData({ currId: e.detail.value})
   },
   toNext(){
-    wx.navigateTo({ url: this.data.idMap[this.data.currId]})
+    wx.redirectTo({ url: this.data.idMap[this.data.currId]})
   }
 })

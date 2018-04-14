@@ -10,7 +10,7 @@
 }
 .mask-main{
   width: 562rpx;
-  min-height: 400rpx;
+  min-height: 200rpx;
   margin: 200rpx auto;
   background-color: #fff;
   border-radius: 10rpx;

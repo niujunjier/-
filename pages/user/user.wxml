@@ -42,7 +42,7 @@
     <text>修改密码<text class='iconfont icon-jiantouyou'></text></text>
   </view>
 </view>
-<view class='btn btn-default margin-top'>退出登录</view>
+<view class='btn btn-full btn-default margin-top'>退出登录</view>
  <component-mask-view show-mask='{{currChoose != ""}}' show-title='{{currMsg}}'  bind:myevent='showMaskToggle'>
     <view wx:if='{{currChoose == "phone"}}'>
       <view class='msg-view'>当前绑定的手机号为156****3015</view>

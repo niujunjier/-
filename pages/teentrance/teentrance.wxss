@@ -33,3 +33,24 @@ view{
 .tab-pane-content text{
   line-height: 95rpx;
 }
+.pretonext{
+  width: 100%;
+  height: 218rpx;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.pretonext input{
+  width: 161rpx;
+  height: 71rpx;
+  border: 1rpx solid #cdcdcd;
+  text-align: center;
+}
+.pretonext .toclass{
+  width: 161rpx;
+  height: 71rpx;
+  line-height: 71rpx;
+  background-color: #ed6d00;
+  color: #fff;
+  text-align: center;
+}
