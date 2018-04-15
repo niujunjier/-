@@ -1,6 +1,6 @@
 <!--pages/classForTe/classForTe.wxml-->
 <view class='cft-main'>
-  <view class='cft-item'>查看人数</view>
+  <view class='cft-item' bindtap='readCount'>查看人数</view>
   <view class='cft-item'>派发红包</view>
   <view class='cft-item'>开始上课</view>
   <view class='btn btn-md btn-success' bindtap='endClass'>结束课程</view>

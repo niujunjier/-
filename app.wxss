@@ -264,4 +264,13 @@ view{
 }
 .yellow{
   color: rgb(242,193,130)
-} 
+}
+.font-orange{
+  color: #ed6d00;
+}
+.font-blue{
+  color: #00cbcb;
+}
+.font-grey{
+  color: #eaeaea;
+}

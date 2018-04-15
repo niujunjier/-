@@ -1,1 +1,56 @@
-/* pages/stentrance/stentrance.wxss */
+view{
+  box-sizing: border-box;
+}
+.tab-box{
+  width: 100%;
+  padding: 40rpx 70rpx;
+}
+.tab-pane{
+  width: 100%;
+  margin:60rpx auto;
+  height: 244rpx;
+}
+.tab-pane-title{
+  margin-bottom: 22rpx;
+}
+.Personalcenter .tab-pane-content{
+  box-shadow: 4rpx 8rpx 30rpx rgba(237,109,0,0.2);
+}
+.Entertheclassroom .tab-pane-content{
+  box-shadow: 4rpx 8rpx 30rpx rgba(86,212,246,0.2);
+}
+.ViewMessage .tab-pane-content{
+  box-shadow: 4rpx 8rpx 30rpx rgba(242,193,130,0.2);
+}
+.tab-pane-content{
+  width: 100%;
+  height: 200rpx;
+  padding: 0 40rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.tab-pane-content text{
+  line-height: 95rpx;
+}
+.pretonext{
+  width: 100%;
+  height: 218rpx;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.pretonext input{
+  width: 161rpx;
+  height: 71rpx;
+  border: 1rpx solid #cdcdcd;
+  text-align: center;
+}
+.pretonext .toclass{
+  width: 161rpx;
+  height: 71rpx;
+  line-height: 71rpx;
+  background-color: #ed6d00;
+  color: #fff;
+  text-align: center;
+}

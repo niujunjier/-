@@ -1,0 +1,17 @@
+<!--pages/stCount/stCount.wxml-->
+<view class='sc-view'>
+  <view class='stu-container'>
+    <component-colorful-ball color='{{item.color}}' wx:for="{{stuList}}" wx:for-index="index" wx:for-item="item" detail='{{item.detail}}' bind:myevent='getStuData'></component-colorful-ball>
+  </view>
+  <view class='count-view'>
+    <view class='count-item font-orange'>
+      <text class='iconfont icon-wodedamaijihuo font-orange'></text>12
+    </view>
+    <view class='count-item font-blue'>
+      <text class='iconfont icon-wodedamaijihuo font-blue'></text>12
+    </view>
+    <view class='count-item font-grey'>
+      <text class='iconfont icon-wodedamaijihuo font-grey'></text>12
+    </view>
+  </view>
+</view>

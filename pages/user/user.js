@@ -61,7 +61,6 @@ Page({
     }
   },
   showMaskTrue: function (e) {
-    console.log(e)
     this.setData({ currChoose: e.currentTarget.dataset.key, currMsg: this.data.titleMap[e.currentTarget.dataset.key] })
   },
   showMaskToggle: function () {

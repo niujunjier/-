@@ -9,7 +9,9 @@
     "pages/teentrance/teentrance",
     "pages/stentrance/stentrance",
     "pages/qrcode/qrcode",
-    "pages/classForTe/classForTe"
+    "pages/classForTe/classForTe",
+    "pages/stCount/stCount",
+    "pages/scanCode/scanCode"
   ],
   "window": {
     "backgroundTextStyle": "light",

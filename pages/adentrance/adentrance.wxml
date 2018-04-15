@@ -25,5 +25,17 @@
         <view class='font12 gray'>开始上课</view>
       </view>
     </view>
+    <view class='tab-pane ViewMessage'>
+      <view class='tab-pane-title font14 yellow'>View Message</view>
+      <view class='tab-pane-content'>
+        <view style='height:95rpx;display:flex;justify-content: space-between;'>
+          <view style='display: inline-block;width:110rpx;height:95rpx;margin:0 20rpx'>
+            <image style='height:100%;width:100%;' src="../../assets/image/ViewMessage.png"></image>
+          </view>
+          <text class='font14 yellow' style='display: inline-block;line-height:95rpx;'>查看留言</text>
+        </view>
+        <view class='font12 gray'>课堂反馈</view>
+      </view>
+    </view>
   </view>
 </view>
