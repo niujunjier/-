@@ -10,8 +10,10 @@
     "pages/stentrance/stentrance",
     "pages/qrcode/qrcode",
     "pages/classForTe/classForTe",
+    "pages/classForTe/classForSt",
     "pages/stCount/stCount",
-    "pages/scanCode/scanCode"
+    "pages/scanCode/scanCode",
+    "pages/leaveMsg/leaveMsg"
   ],
   "window": {
     "backgroundTextStyle": "light",

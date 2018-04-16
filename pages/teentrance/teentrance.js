@@ -29,5 +29,10 @@ Page({
   },
   hideMode(){
     this.setData({ showMode: false, focus: false});
+  },
+  readMsg(){
+    wx.navigateTo({
+      url: '/pages/leaveMsg/leaveMsg',
+    })
   }
 })

@@ -1,0 +1,13 @@
+<!--pages/leaveMsg/leaveMsg.wxml-->
+<view class='msg-main'>
+  <view>
+    <view class='date-title'>一月一日</view>
+    <view class='msg-bar'>
+      <view class='msg-pic'></view>
+      <view class='msg-textbox'>
+        <view class='font28'>小五</view>
+        <view class='font24'>下课吃饭下课吃饭下课吃饭下课吃饭下课吃饭下课吃饭下课吃饭下课吃饭下课吃饭下课吃饭下课吃饭下课吃饭下课吃饭下课吃饭</view>
+      </view>
+    </view>
+  </view>
+</view>

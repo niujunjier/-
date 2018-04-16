@@ -17,5 +17,10 @@ Page({
     wx.navigateTo({
       url: '/pages/scanCode/scanCode'
     })
+  },
+  readMsg() {
+    wx.navigateTo({
+      url: '/pages/leaveMsg/leaveMsg',
+    })
   }
 })

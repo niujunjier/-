@@ -13,7 +13,7 @@
         <view class='font12 gray'>查看数据</view>
       </view>
     </view>
-    <view class='tab-pane Entertheclassroom'>
+    <view class='tab-pane Entertheclassroom' bindtap='enterClassroom'>
       <view class='tab-pane-title font14 blue'>Enter the classroom</view>
       <view class='tab-pane-content'>
         <view style='height:95rpx;display:flex;justify-content: space-between;'>
@@ -25,7 +25,7 @@
         <view class='font12 gray'>开始上课</view>
       </view>
     </view>
-    <view class='tab-pane ViewMessage'>
+    <view class='tab-pane ViewMessage' bindtap='viewMessage'>
       <view class='tab-pane-title font14 yellow'>View Message</view>
       <view class='tab-pane-content'>
         <view style='height:95rpx;display:flex;justify-content: space-between;'>
@@ -39,3 +39,9 @@
     </view>
   </view>
 </view>
+<component-mask-view show-mask='{{showMode}}' show-title='{{maskTitle}}'  bind:myevent='hideMode'>
+  <view class='pretonext font12'>
+    <input type='text' placeholder='输入班级号' bindinput='setClassValue' focus='{{focus}}'/>
+    <view class='toclass' bindtap='readMsg'>进入班级</view>
+  </view>
+</component-mask-view>

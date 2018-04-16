@@ -250,6 +250,9 @@ view{
 .font12{
   font-size: 12px;
 }
+.font24{
+  font-size: 24rpx;
+}
 /* @字体颜色 */
 /* @zhangyun */
 /* @2018-04-11 */
@@ -273,4 +276,26 @@ view{
 }
 .font-grey{
   color: #eaeaea;
+}
+/*单输入框弹出组件样式  */
+.pretonext{
+  width: 100%;
+  height: 218rpx;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.pretonext input{
+  width: 161rpx;
+  height: 71rpx;
+  border: 1rpx solid #cdcdcd;
+  text-align: center;
+}
+.pretonext .toclass{
+  width: 161rpx;
+  height: 71rpx;
+  line-height: 71rpx;
+  background-color: #ed6d00;
+  color: #fff;
+  text-align: center;
 }
