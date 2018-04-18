@@ -2,7 +2,7 @@
   <view class='mask-main'>
     <view class='title border-bottom'>
        <text class='iconfont icon-guanbi close' bindtap='hideMaskAction'></text>
-       <text>{{showTitle.name}}</text> 
+       <text>{{showTitle.name}}</text>
     </view>
     <slot></slot>
   </view>

@@ -1,2 +1,5 @@
 <!--pages/scanCode/scanCode.wxml-->
-<text>扫码页面</text>
+<view class='scan-main'>
+  <image src='../../assets/image/scanCode.png' bindtap='scanCode'></image>
+  <navigator url='/pages/signed/signed'>测试去教室</navigator>
+</view>

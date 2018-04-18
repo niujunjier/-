@@ -1,4 +1,4 @@
-// pages/classForTe/classForSt.js
+// pages/classForSt/classForSt.js
 Page({
 
   /**
