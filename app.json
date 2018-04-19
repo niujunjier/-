@@ -9,10 +9,11 @@
     "pages/stentrance/stentrance",
     "pages/qrcode/qrcode",
     "pages/classForTe/classForTe",
-    "pages/classForTe/classForSt",
+    "pages/classForSt/classForSt",
     "pages/stCount/stCount",
     "pages/scanCode/scanCode",
-    "pages/leaveMsg/leaveMsg"
+    "pages/leaveMsg/leaveMsg",
+    "pages/signed/signed"
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -65,5 +65,10 @@ Page({
   },
   showMaskToggle: function () {
     this.setData({ currChoose: "" })
+  },
+  signUp(){
+    wx.redirectTo({
+      url: '/pages/login/login',
+    })
   }
 })

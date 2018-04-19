@@ -7,7 +7,7 @@ Page({
     showMode: false,
     maskTitle: {
       name: '进入教室',
-      describe: ''
+      describe: '上次创建班级为701'
     },
     classValue: '',
     focus: false

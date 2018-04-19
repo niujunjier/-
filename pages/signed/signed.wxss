@@ -1,0 +1,15 @@
+/* pages/signed/signed.wxss */
+.sc-view{
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  padding-top: 71rpx;
+}
+.stu-container{
+  width: 600rpx;
+  margin: 0 auto; 
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+}

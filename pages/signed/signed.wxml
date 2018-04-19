@@ -1,0 +1,6 @@
+<view class='sc-view'>
+  <view class='stu-container'>
+    <component-colorful-ball color='{{item.color}}' wx:for="{{stuList}}" wx:for-index="index" wx:for-item="item" detail='{{item.detail}}' bind:myevent='getStuData'></component-colorful-ball>
+  </view>
+  <view class='btn btn-md btn-success' bindtap='toClassForSt'>签到</view>
+</view>
