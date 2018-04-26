@@ -3,14 +3,14 @@
   <view class='cft-item item-num' bindtap='readCount'>
     <view class='font30'>查看人数</view>
     <view class='font24'>Look at the number</view>
-    <image src='../../assets/image/多人.png'></image>
+    <image src='../../assets/image/duoren.png'></image>
   </view>
   <view class='cft-item item-reward'>
     <view class='font30'>派发红包</view>
     <view class='font24'>Send red envelope</view>
     <image src='../../assets/image/paifahongbao.png'></image>
   </view>
-  <view class='cft-item item-class'>
+  <view class='cft-item item-class' bindtap='beginClass'>
     <view class='font30'>开始上课</view>
     <view class='font24'>Class begins</view>
     <image src='../../assets/image/kaishi.png'></image>

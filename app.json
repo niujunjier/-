@@ -13,7 +13,10 @@
     "pages/stCount/stCount",
     "pages/scanCode/scanCode",
     "pages/leaveMsg/leaveMsg",
-    "pages/signed/signed"
+    "pages/signed/signed",
+    "pages/tset/test",
+    "pages/viewData/viewData",
+    "pages/liveHome/liveHome"
   ],
   "window": {
     "backgroundTextStyle": "light",

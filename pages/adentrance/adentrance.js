@@ -24,7 +24,7 @@ Page({
     if (this.data.maskTitle.name == '查看留言') {
       url = '/pages/leaveMsg/leaveMsg'
     } else {
-      url = '/pages/classForTe/classForSt'
+      url = '/pages/classForSt/classForSt'
     }
     wx.navigateTo({
       url: url
