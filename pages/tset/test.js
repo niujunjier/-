@@ -1,4 +1,5 @@
-// pages/scanCode/scanCode.js
+const app = getApp()
+// pages/tset/test.js
 Page({
 
   /**
@@ -7,15 +8,16 @@ Page({
   data: {
   
   },
-  scanCode(){
-    wx.scanCode()
-  },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    app.api.request('/cc/json/mobile_tel_segment.htm?tel=17356781611',{}).then(data => {
+      console.log(data)
+    }).catch(err => {
+      console.log(err)
+    })
   },
 
   /**

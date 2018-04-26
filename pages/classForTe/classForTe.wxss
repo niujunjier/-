@@ -8,8 +8,35 @@
 .cft-item{
   width: 561rpx;
   height: 201rpx;
-  background-color: #ccc;
   border-radius: 10rpx;
   margin: 0 auto;
   margin-top: 70rpx;
+  overflow: hidden;
+  position: relative;
+}
+.item-num{
+  background: linear-gradient(to right, #ff875e , #fe68a9);
+}
+.item-reward{
+  background: linear-gradient(to right, #e96fe9 , #8463f9);
+}
+.item-class{
+  background: linear-gradient(to right, #32cfbc , #0097d3);
+}
+.cft-item view{
+  color: #fff;
+  margin-left: 48rpx;
+}
+.cft-item view:nth-of-type(1){
+  margin-top: 87rpx;
+}
+.cft-item view:nth-of-type(2){
+  margin-top: 8rpx;
+}
+.cft-item image{
+  height: 150rpx; 
+  width: 180rpx;
+  position: absolute;
+  bottom: 0;
+  right: 0;
 }

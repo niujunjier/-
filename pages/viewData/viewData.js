@@ -1,4 +1,4 @@
-// pages/classForTe/classForSt.js
+// pages/viewData/viewData.js
 Page({
 
   /**

@@ -1,0 +1,14 @@
+<view class='classView'>
+  <live-pusher url="https://domain/push_stream" mode="RTC" autopush bindstatechange="statechange">
+  <cover-view class='cover-view'>
+    <cover-view class='live-btn'>
+      <cover-image src='../../assets/image/xianhua.png' />
+      <cover-view class='font14'>录像</cover-view>
+    </cover-view>
+    <cover-view class='live-btn'>
+      <cover-image src='../../assets/image/zhadan.png' />
+      <cover-view class='font14'>保存</cover-view>
+    </cover-view>
+  </cover-view>
+  </live-pusher>
+</view>

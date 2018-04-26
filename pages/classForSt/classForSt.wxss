@@ -1,0 +1,32 @@
+/* pages/classForSt/classForSt.wxss */
+.classView{
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+live-player{
+  width: 100%;
+  height: 100%;
+}
+.cover-view{
+  width: 100%;
+  height: 130rpx;
+  /* background-color: red;  */
+   background-color: rgba(0, 0, 0, 0.5);  
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+.live-btn{
+  width: 50%;
+  height: 100%;
+  text-align: center;
+  color: #fff;
+  display: inline-block;
+}
+.live-btn cover-image{
+  margin-top: 20rpx;
+  display: inline-block;
+  width: 50rpx;
+  height: 50rpx;
+}
