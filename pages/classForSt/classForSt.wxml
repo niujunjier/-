@@ -1,13 +1,12 @@
 <view class='classView'>
   <live-player src="https://domain/pull_stream" mode="RTC" autoplay bindstatechange="statechange" binderror="error" />
   <cover-view class='cover-view'>
-    <cover-view class='live-btn'>
-      <cover-image src='../../assets/image/xianhua.png' />
-      <cover-view class='font14'>鲜花</cover-view>
+    <cover-image class='emoji'></cover-image>
+    <cover-view class='cover-input' bindtap='awakenKey'>
+      <input focus="{{focus}}" bindinput='getMsg' bindblur='checkMagNull'/>
     </cover-view>
-    <cover-view class='live-btn'>
-      <cover-image src='../../assets/image/zhadan.png' />
-      <cover-view class='font14'>炸弹</cover-view>
-    </cover-view>
+    <cover-image class='cover-icon1' wx:if='{{!hasMsg}}' src='../../assets/image/zhadanbai.png'></cover-image>
+    <cover-image class='cover-icon1' wx:if='{{!hasMsg}}' src='../../assets/image/xianhuabai.png'></cover-image>
+    <cover-view class='cover-btn font30' wx:if='{{hasMsg}}'>发送</cover-view>
   </cover-view>
 </view>

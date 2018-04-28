@@ -1,18 +1,25 @@
-// pages/leaveMsg/leaveMsg.js
+const app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-  
+    msgList:[]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    app.api.request('/index/Comments/getComments/CassId/1', {}).then(data => {
+      console.log(data)
+      if(data.data.Status == 'success'){
+        this.setData({ msgList: data.data.Result})
+      }
+    }).catch(err => {
+      console.log(err)
+    })
   },
 
   /**

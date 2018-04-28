@@ -1,3 +1,4 @@
+const app = getApp()
 const date = new Date()
 const years = []
 const months = []
@@ -17,6 +18,7 @@ for (let i = 1; i <= 31; i++) {
 
 Page({
   data: {
+    msg: {},
     years: years,
     year: date.getFullYear(),
     months: months,
@@ -59,6 +61,16 @@ Page({
         })
       }
     }
+  },
+  onLoad(options){
+    app.api.request('/index/user/getUserInfo/Id/'+'917', {}).then(data => {
+      console.log(data)
+      if(data.data.Status = 'ok'){
+        this.setData({ msg: data.data.Result})
+      }
+    }).catch(err => {
+      console.log(err)
+    })
   },
   showMaskTrue: function (e) {
     this.setData({ currChoose: e.currentTarget.dataset.key, currMsg: this.data.titleMap[e.currentTarget.dataset.key] })

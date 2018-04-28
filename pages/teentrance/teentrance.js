@@ -1,9 +1,11 @@
+const app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    classNo: '',
     showMode: false,
     maskTitle: {
       name: '进入教室',
@@ -11,6 +13,16 @@ Page({
     },
     classValue: '',
     focus: false
+  },
+  onLoad(op){
+    app.api.request('/index/user/searchLastClass/Id/' + '1', {}).then(data => {
+      console.log(data)
+      if (data.data.Status = 'success') {
+        this.setData({ classNo: data.data.Result.classNo })
+      }
+    }).catch(err => {
+      console.log(err)
+    })
   },
   toUserCenter(){
     wx.navigateTo({ url: "/pages/user/user"})

@@ -39,7 +39,7 @@
   </view>
 </view>
 <component-mask-view show-mask='{{showMode}}' show-title='{{maskTitle}}' bind:myevent='hideMode'>
-  <view class='msg-view'>上次创建班级为701</view>
+  <view class='msg-view'>上次创建班级为{{classNo}}</view>
   <view class="primary-input border-bottom">
     <input type='text' placeholder='输入班级号' bindinput='setClassValue' focus='{{focus}}' />
   </view>
