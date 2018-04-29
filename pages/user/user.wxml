@@ -1,4 +1,4 @@
-<view class='user-block'>
+ <view class='user-block'>
   <view class='user-bar border-bottom'>
     <view class="avatar">
         <image style="background-color: #eeeeee;" mode="{{item.mode}}" src="{{src}}"></image>
@@ -7,35 +7,35 @@
   </view>
   <view class='default-bar' bindtap='showMaskTrue' data-key='nick'>
     <text>昵称</text>
-    <text>小六 <text class='iconfont icon-jiantouyou'></text></text>
+    <text>{{msg.NickName}} <text class='iconfont icon-jiantouyou'></text></text>
   </view>
 </view>
 <view class='user-block margin-top'>
   <view class='default-bar border-bottom'>
     <text>姓名</text>
-    <text class='colorGrey'>小六<text class='iconfont icon-jiantouyou'></text></text>
+    <text class='colorGrey'>{{msg.UserName}}<text class='iconfont icon-jiantouyou'></text></text>
   </view>
   <view class='default-bar border-bottom'>
     <text>身份</text>
-    <text class='colorGrey'>教师<text class='iconfont icon-jiantouyou'></text></text>
+     <text class='colorGrey'>{{msg.Identify}}<text class='iconfont icon-jiantouyou'></text></text> 
   </view>
   <view class='default-bar' bindtap='showMaskTrue' data-key='phone'>
     <text>手机号</text>
-    <text>151*******76 <text class='iconfont icon-jiantouyou'></text></text>
+    <text>{{msg.Phone}} <text class='iconfont icon-jiantouyou'></text></text>
   </view>
 </view>
 <view class='user-block margin-top'>
   <view class='default-bar border-bottom' bindtap='showMaskTrue' data-key='birthday'>
     <text>生日</text>
-    <text>2000年1月1号 <text class='iconfont icon-jiantouyou'></text></text>
+    <text>{{msg.Birthday}}<text class='iconfont icon-jiantouyou'></text></text>
   </view>
   <view class='default-bar border-bottom'>
     <text>性别</text>
-    <text class='colorGrey'>男 <text class='iconfont icon-jiantouyou'></text></text>
+    <text class='colorGrey'>{{msg.Gender}}<text class='iconfont icon-jiantouyou'></text></text>
   </view>
   <view class='default-bar border-bottom' bindtap='showMaskTrue' data-key='email'>
     <text>邮箱</text>
-    <text>156****301@qq.com<text class='iconfont icon-jiantouyou'></text></text>
+    <text>{{msg.Email}}<text class='iconfont icon-jiantouyou'></text></text>
   </view>
    <view class='default-bar' bindtap='showMaskTrue' data-key='passworld'>
     <text>安全</text>
@@ -45,7 +45,7 @@
 <view class='btn btn-full btn-default margin-top' bindtap='signUp'>退出登录</view>
  <component-mask-view show-mask='{{currChoose != ""}}' show-title='{{currMsg}}'  bind:myevent='showMaskToggle'>
     <view wx:if='{{currChoose == "phone"}}'>
-      <view class='msg-view'>当前绑定的手机号为156****3015</view>
+      <view class='msg-view'>当前绑定的手机号为{{msg.Phone}}</view>
       <view class="button-input">
          <input class='border-bottom' placeholder="输入手机号"/>
          <view class='btn btn-inline'>获取验证码</view>
@@ -56,7 +56,7 @@
       <view class='btn btn-md btn-success' bindtap='showMaskToggle'>确定</view>
     </view>
     <view wx:if='{{currChoose == "email"}}'>
-      <view class='msg-view'>当前绑定邮箱为123456789@qq.com</view>
+      <view class='msg-view'>当前绑定邮箱为{{msg.Eamil}}</view>
       <view class="button-input">
          <input class='border-bottom' placeholder="输入手机号"/>
          <view class='btn btn-inline'>获取验证码</view>
@@ -99,4 +99,4 @@
       </picker-view>
        <view class='btn btn-md btn-success' bindtap='showMaskToggle'>确定</view>
     </view>
-</component-mask-view> 
+</component-mask-view>  

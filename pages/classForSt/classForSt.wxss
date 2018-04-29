@@ -10,23 +10,42 @@ live-player{
 }
 .cover-view{
   width: 100%;
-  height: 130rpx;
-  /* background-color: red;  */
-   background-color: rgba(0, 0, 0, 0.5);  
+  height: 110rpx;
+  /* background-color: red; */
+  background-color: rgba(0, 0, 0, 0.5);   
   position: absolute;
   bottom: 0;
   left: 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
-.live-btn{
-  width: 50%;
+.emoji{
+  background-color: #ccc;
+  width: 58rpx;
+  height: 58rpx;
+  border-radius: 50%;
+}
+.cover-input{
+  z-index: 1000;
+  width: 402rpx;
+  height: 90rpx;
+  border-bottom: 5rpx solid #ffffff;
+  color: red;
+}
+.cover-input input{
+  width: 100%;
   height: 100%;
-  text-align: center;
-  color: #fff;
-  display: inline-block;
 }
-.live-btn cover-image{
-  margin-top: 20rpx;
-  display: inline-block;
-  width: 50rpx;
-  height: 50rpx;
+.cover-icon1{
+  width: 60rpx;
+  height: 58rpx;
+}
+.cover-btn{
+  width: 123rpx;
+  height: 61rpx;
+  line-height: 61rpx;
+  text-align: center;
+  background-color: #fff;
+  border-radius: 10rpx;
 }

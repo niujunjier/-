@@ -1,7 +1,7 @@
 <view class='login-box'>
   <image src='../../assets/logo.png'></image>
   <view class="basic-input">
-    <input placeholder="请输入用户名/邮箱/手机号"/>
+    <input placeholder="请输入用户名/邮箱/手机号" bindinput='changeName'/>
   </view>
   <view class="basic-input">
     <input placeholder='请输入密码' password type="text" />
