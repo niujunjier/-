@@ -34,7 +34,7 @@ Page({
         wx.redirectTo({ url: this.data.idMap[this.data.currId]})
       }else{
         wx.showToast({
-          title: res.data.Message +'|'+ res.data.Status,
+          title: res.data.Message,
           icon: 'loading',
           duration: 2000
         })
