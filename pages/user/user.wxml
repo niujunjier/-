@@ -1,7 +1,7 @@
  <view class='user-block'>
   <view class='user-bar border-bottom'>
     <view class="avatar">
-        <image style="background-color: #eeeeee;" mode="{{item.mode}}" src="{{src}}"></image>
+        <image style="background-color: #eeeeee;" mode="{{item.mode}}" src="{{msg.Pic}}"></image>
     </view>
     <text>头像<text class='iconfont icon-jiantouyou'></text></text>
   </view>
@@ -56,7 +56,7 @@
       <view class='btn btn-md btn-success' bindtap='showMaskToggle'>确定</view>
     </view>
     <view wx:if='{{currChoose == "email"}}'>
-      <view class='msg-view'>当前绑定邮箱为{{msg.Eamil}}</view>
+      <view class='msg-view'>当前绑定邮箱为{{msg.Email}}</view>
       <view class="button-input">
          <input class='border-bottom' placeholder="输入手机号"/>
          <view class='btn btn-inline'>获取验证码</view>
@@ -81,15 +81,12 @@
     <view wx:if='{{currChoose == "nick"}}'>
       <view class='msg-view'>好的昵称可以让朋友更容易记住你</view>
       <view class="primary-input border-bottom">
-         <input placeholder="天虎教育"/>
+         <input placeholder="{{msg.NickName}}"/>
       </view>
        <view class='btn btn-md btn-success' bindtap='showMaskToggle'>确定</view>
     </view>
     <view wx:if='{{currChoose == "birthday"}}'>
       <picker-view indicator-style="height: 50rpx;" style="width: 100%; height: 300rpx;" value="{{value}}" bindchange="bindChange">
-        <picker-view-column>
-          <view wx:for="{{years}}" style="line-height: 50px;text-align: center;">{{item}}</view>
-        </picker-view-column>
         <picker-view-column>
           <view wx:for="{{months}}" style="line-height: 50px;text-align: center;">{{item}}</view>
         </picker-view-column>

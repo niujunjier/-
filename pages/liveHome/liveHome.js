@@ -3,12 +3,14 @@ Page({
   data: {
     recording: false,
     pushUrl: '',
-    working: false
+    working: false,
+    classId: ''
   },
   onLoad(op) {
-    app.api.request('/index/live/cancelLive?ClassId=1&Identity=teacher', {}).then(res => {
+    this.setData({ classId: op.classId })
+    app.api.request('/index/live/cancelLive?ClassId='+ this.data.classId +'&Identity=teacher', {}).then(res => {
       console.log(res)
-      app.api.useCookie('/index/live/getLive?ClassId=1&Identity=teacher', {}).then(data => {
+      app.api.useCookie('/index/live/getLive?ClassId=' + this.data.classId +'&Identity=teacher', {}).then(data => {
         console.log(data.data.Result.pushUrl)
         this.setData({ pushUrl: data.data.Result.pushUrl, working: true })
         var pusher = wx.createLivePusherContext('pusher');

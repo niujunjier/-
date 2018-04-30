@@ -7,7 +7,8 @@ Page({
     liveUrl: '',
   },
   onLoad(op) {
-    app.api.useCookie('/index/live/getLive?ClassId=1&Identity=student', {}).then(data => {
+    var id = op.classId;
+    app.api.useCookie('/index/live/getLive?ClassId='+id+'&Identity=student', {}).then(data => {
       console.log(data.data.Result)
       this.setData({ liveUrl: data.data.Result.rtmp })
       var player = wx.createLivePlayerContext('player');

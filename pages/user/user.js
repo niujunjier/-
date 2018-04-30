@@ -63,7 +63,7 @@ Page({
     }
   },
   onLoad(options){
-    app.api.request('/index/user/getUserInfo/Id/'+'917', {}).then(data => {
+    app.api.request('/index/user/getUserInfo/Id/' + app.globalData.code, {}).then(data => {
       console.log(data)
       if(data.data.Status = 'ok'){
         this.setData({ msg: data.data.Result})

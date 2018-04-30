@@ -29,7 +29,8 @@ Page({
     app.api.request('/index/user/login', pData).then(res => {
       console.log(res)
       if (res.data.Status == 'success'){
-        console.log(res.header["Set-Cookie"].split(';')[0])
+        app.globalData.code = res.data.Result.Id;
+        console.log(app.globalData.code)
         wx.setStorageSync("userId", res.header["Set-Cookie"])
         wx.redirectTo({ url: this.data.idMap[this.data.currId]})
       }else{

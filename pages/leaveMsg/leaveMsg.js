@@ -12,7 +12,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    app.api.request('/index/Comments/getComments/CassId/1', {}).then(data => {
+    var id = options.classId;
+    app.api.request('/index/Comments/getComments/CassId/'+id, {}).then(data => {
       console.log(data)
       if(data.data.Status == 'success'){
         this.setData({ msgList: data.data.Result})
