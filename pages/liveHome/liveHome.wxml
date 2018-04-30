@@ -1,5 +1,5 @@
 <view class='classView'>
-  <live-pusher url="https://domain/push_stream" mode="RTC" autopush bindstatechange="statechange">
+  <live-pusher url="{{pushUrl}}" mode="RTC" autopush bindstatechange="statechange">
   <cover-view class='cover-view'>
     <cover-view class='live-btn' bindtap='recordToggle'>
       <cover-image wx:if='{{recording}}' class='live-image' src='../../assets/image/luxiang.png' />

@@ -4,7 +4,7 @@
     <input placeholder="请输入用户名/邮箱/手机号" bindinput='changeName'/>
   </view>
   <view class="basic-input">
-    <input placeholder='请输入密码' password type="text" />
+    <input placeholder='请输入密码' password type="text" bindinput='changePass'/>
   </view>
   <radio-group class='radio-group' bindchange="radioChange">
     <label wx:for="{{items}}">
