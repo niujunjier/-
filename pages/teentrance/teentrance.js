@@ -38,12 +38,15 @@ Page({
   inputClassNum(){
     this.setData({ showMode: true, focus: true});
   },
-  hideMode(){
+  hideMode() {
+    console.log(this.data.classValue)
     this.setData({ showMode: false, focus: false});
+    console.log(this.data.classValue)
   },
   readMsg(){
+    console.log(this.data.classValue)
     wx.navigateTo({
-      url: '/pages/leaveMsg/leaveMsg',
+      url: '/pages/leaveMsg/leaveMsg?classId=' + this.data.classValue
     })
   }
 })
