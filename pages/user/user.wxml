@@ -6,7 +6,7 @@
     <text>头像<text class='iconfont icon-jiantouyou'></text></text>
   </view>
   <view class='default-bar' bindtap='showMaskTrue' data-key='nick'>
-    <text>昵称</text>
+    <text>昵称</text> 
     <text>{{msg.NickName}} <text class='iconfont icon-jiantouyou'></text></text>
   </view>
 </view>
@@ -47,7 +47,7 @@
     <view wx:if='{{currChoose == "phone"}}'>
       <view class='msg-view'>当前绑定的手机号为{{msg.Phone}}</view>
       <view class="button-input">
-         <input class='border-bottom' placeholder="输入手机号"/>
+         <input class='border-bottom' placeholder="输入手机号" data-key="Phone" bindinput="setInput"/>
          <view class='btn btn-inline'>获取验证码</view>
       </view>
       <view class="primary-input border-bottom">
@@ -58,7 +58,7 @@
     <view wx:if='{{currChoose == "email"}}'>
       <view class='msg-view'>当前绑定邮箱为{{msg.Email}}</view>
       <view class="button-input">
-         <input class='border-bottom' placeholder="输入手机号"/>
+         <input class='border-bottom' placeholder="输入手机号" data-key="Email" bindinput="setInput"/>
          <view class='btn btn-inline'>获取验证码</view>
       </view>
       <view class="primary-input border-bottom">
@@ -71,17 +71,17 @@
          <input placeholder="输入原始密码"/>
       </view>
       <view class="primary-input border-bottom">
-         <input placeholder="输入新密码"/>
+         <input placeholder="输入新密码" data-key="Passworld" bindinput="setInput"/>
       </view>
       <view class="primary-input border-bottom">
-         <input placeholder="再次确认密码"/>
+         <input placeholder="再次确认密码" data-key="rePassworld" bindinput="setInput"/>
       </view>
       <view class='btn btn-md btn-success' bindtap='showMaskToggle'>确定</view>
     </view>
     <view wx:if='{{currChoose == "nick"}}'>
       <view class='msg-view'>好的昵称可以让朋友更容易记住你</view>
       <view class="primary-input border-bottom">
-         <input placeholder="{{msg.NickName}}"/>
+         <input placeholder="{{msg.NickName}}" data-key="NickName" bindinput="setInput"/>
       </view>
        <view class='btn btn-md btn-success' bindtap='showMaskToggle'>确定</view>
     </view>

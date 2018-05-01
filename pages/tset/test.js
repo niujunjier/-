@@ -24,7 +24,7 @@ Page({
           "Content-Type": "application/x-www-form-urlencoded"
         },
         method: 'POST',
-        success: function (res) {
+    success: function (res) {                   
           console.log(res)
         },
         fail: function (err) {

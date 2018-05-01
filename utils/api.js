@@ -6,7 +6,8 @@ const request = (url, postData) => {
       url: ipConfig + url,
       data: postData,
       header: {
-        "Content-Type": "application/x-www-form-urlencoded"
+        "Content-Type": "application/x-www-form-urlencoded",
+        'cookie': wx.getStorageSync("userId")
       },
       method: 'POST',
       success: function (res) {
