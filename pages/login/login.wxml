@@ -1,14 +1,16 @@
 <view class='login-box'>
   <image src='../../assets/logo.png'></image>
   <view class="basic-input">
-    <input placeholder="请输入用户名/邮箱/手机号"/>
+    <input placeholder="请输入用户名/邮箱/手机号" type='text' bindinput='changeName' bindblur='changeName'/>
+    <!-- <text>{{userName}}</text> -->
   </view>
   <view class="basic-input">
-    <input placeholder='请输入密码' password type="text" />
+    <input placeholder='请输入密码' password type="text" bindinput='changePass'  bindblur='changePass'/>
+    <!-- <text>{{passWord}}</text> -->
   </view>
   <radio-group class='radio-group' bindchange="radioChange">
     <label wx:for="{{items}}">
-      <radio value="{{item.name}}" checked="{{item.checked}}" color='#ed6d00'/>{{item.value}}
+      <radio value="{{item.name}}" checked="{{item.checked}}" color='#ed6d00' />{{item.value}}
     </label>
   </radio-group>
   <view class='btn btn-lg btn-success' bindtap='toNext'>登录</view>

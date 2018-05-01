@@ -1,13 +1,16 @@
-const ipConfig = 'https://tcc.taobao.com';
+const ipConfig = 'https://www.juplus.cn/live';
 
 const request = (url, postData) => {
   return new Promise((resolve, reject) => {
     wx.request({
       url: ipConfig + url,
       data: postData,
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
       method: 'POST',
-      success: function (data) {
-        resolve(data)
+      success: function (res) {
+        resolve(res)
       },
       fail: function (err) {
         reject(err)
@@ -15,7 +18,25 @@ const request = (url, postData) => {
     })
   })
 }
-
+const useCookie = (url, postData) => {
+  return new Promise((resolve, reject) => {
+    wx.request({
+      url: ipConfig + url,
+      data: postData,
+      header: {
+        'cookie': wx.getStorageSync("userId")
+      },
+      method: 'GET',
+      success: function (res) {
+        resolve(res)
+      },
+      fail: function (err) {
+        reject(err)
+      }
+    })
+  })
+}
 module.exports = {
-  request: request
+  request: request,
+  useCookie: useCookie
 };

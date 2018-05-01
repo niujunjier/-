@@ -1,11 +1,15 @@
 // pages/qrcode/qrcode.js
 Page({
   data: {
-  
+    classId: ''
   },
-  begin(){
+  onLoad(op) {
+    console.log(op.classId)
+    this.setData({ classId: op.classId })
+  },
+  begin() {
     wx.navigateTo({
-      url: '/pages/classForTe/classForTe',
+      url: '/pages/classForTe/classForTe?classId='+this.data.classId
     })
   }
 })
