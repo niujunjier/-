@@ -18,7 +18,8 @@ App({
   },
   globalData: {
     userInfo: null,
-    code: ''
+    code: '',
+    name: ''
   },
   api: api
 })
