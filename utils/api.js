@@ -6,7 +6,8 @@ const request = (url, postData) => {
       url: ipConfig + url,
       data: postData,
       header: {
-        'content-type': 'application/json' // 默认值
+        "Content-Type": "application/x-www-form-urlencoded",
+        'cookie': wx.getStorageSync("userId")
       },
       method: 'POST',
       success: function (res) {
@@ -18,7 +19,25 @@ const request = (url, postData) => {
     })
   })
 }
-
+const useCookie = (url, postData) => {
+  return new Promise((resolve, reject) => {
+    wx.request({
+      url: ipConfig + url,
+      data: postData,
+      header: {
+        'cookie': wx.getStorageSync("userId")
+      },
+      method: 'GET',
+      success: function (res) {
+        resolve(res)
+      },
+      fail: function (err) {
+        reject(err)
+      }
+    })
+  })
+}
 module.exports = {
-  request: request
+  request: request,
+  useCookie: useCookie
 };

@@ -5,7 +5,6 @@ Page({
    * 页面的初始数据
    */
   data: {
-    classNo: '',
     showMode: false,
     maskTitle: {
       name: '进入教室',
@@ -15,10 +14,10 @@ Page({
     focus: false
   },
   onLoad(op){
-    app.api.request('/index/user/searchLastClass/Id/' + '1', {}).then(data => {
+    app.api.request('/index/user/searchLastClass/Id/' + app.globalData.code, {}).then(data => {
       console.log(data)
       if (data.data.Status = 'success') {
-        this.setData({ classNo: data.data.Result.classNo })
+        this.setData({ classValue: data.data.Result.classNo })
       }
     }).catch(err => {
       console.log(err)
@@ -30,7 +29,7 @@ Page({
   toClassCenter(){
     this.setData({ showMode: false, focus: false});
     wx.navigateTo({
-      url: '/pages/qrcode/qrcode'
+      url: '/pages/qrcode/qrcode?classId=' + this.data.classValue
     })
   },
   setClassValue(e){
@@ -39,12 +38,15 @@ Page({
   inputClassNum(){
     this.setData({ showMode: true, focus: true});
   },
-  hideMode(){
+  hideMode() {
+    console.log(this.data.classValue)
     this.setData({ showMode: false, focus: false});
+    console.log(this.data.classValue)
   },
   readMsg(){
+    console.log(this.data.classValue)
     wx.navigateTo({
-      url: '/pages/leaveMsg/leaveMsg',
+      url: '/pages/leaveMsg/leaveMsg?classId=' + this.data.classValue
     })
   }
 })

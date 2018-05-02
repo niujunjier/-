@@ -13,8 +13,8 @@
     "pages/signed/signed",
     "pages/tset/test",
     "pages/viewData/viewData",
-    "pages/liveHome/liveHome",
-    "pages/classForSt/classForSt"
+    "pages/classForSt/classForSt",
+    "pages/liveHome/liveHome"
   ],
   "window": {
     "backgroundTextStyle": "light",

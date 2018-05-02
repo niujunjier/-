@@ -4,16 +4,16 @@ Page({
     userName: '',
     passWord: '',
     items: [
-      { name: 'students', value: '学生' },
-      { name: 'teachers', value: '老师' },
-      { name: 'admin', value: '管理员', checked: 'true' }
+      { name: 'student', value: '学生', checked: 'true'},
+      { name: 'teacher', value: '老师' },
+      { name: 'manger', value: '管理员' }
     ],
     idMap: {
-      'students': "/pages/stentrance/stentrance",
-      'teachers': "/pages/teentrance/teentrance",
-      'admin': "/pages/adentrance/adentrance"
+      'student': "/pages/stentrance/stentrance",
+      'teacher': "/pages/teentrance/teentrance",
+      'manger': "/pages/adentrance/adentrance"
     },
-    currId: 'admin'
+    currId: 'student'
   },
   radioChange: function (e) {
     this.setData({ currId: e.detail.value })
@@ -25,23 +25,21 @@ Page({
     this.setData({ passWord: e.detail.value })
   },
   toNext() {
-    var pData = {
-      UserName: 'student001',
-      PassWorld: '123456',
-      Identity: 'student'
-    }
+    var pData = { "PassWorld": this.data.passWord, "UserName": this.data.userName, "Identity": this.data.currId }
     app.api.request('/index/user/login', pData).then(res => {
       console.log(res)
-      // if (res.data.Status == 'success'){
-      //   wx.redirectTo({ url: this.data.idMap[this.data.currId]})
-      // }else{
-      //   wx.showToast({
-      //     title: '账号或密码错误',
-      //     icon: 'loading',
-      //     duration: 2000
-      //   })
-      // }
-      wx.redirectTo({ url: this.data.idMap[this.data.currId] })
+      if (res.data.Status == 'success'){
+        app.globalData.code = res.data.Result.Id;
+        console.log(app.globalData.code)
+        wx.setStorageSync("userId", res.header["Set-Cookie"])
+        wx.redirectTo({ url: this.data.idMap[this.data.currId]})
+      }else{
+        wx.showToast({
+          title: res.data.Message,
+          icon: 'loading',
+          duration: 2000
+        })
+      }
     }).catch(err => {
       console.log(err)
     })

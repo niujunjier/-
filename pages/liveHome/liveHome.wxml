@@ -1,14 +1,13 @@
 <view class='classView'>
-  <live-pusher url="https://domain/push_stream" mode="RTC" autopush bindstatechange="statechange">
-  <cover-view class='cover-view'>
-    <cover-view class='live-btn' bindtap='recordToggle'>
-      <cover-image wx:if='{{recording}}' class='live-image' src='../../assets/image/luxiang.png' />
-      <cover-image wx:if='{{!recording}}' class='live-image' src='../../assets/image/zanting.png' />
+  <live-pusher id='pusher' url="{{pushUrl}}" mode="RTC" autopush='false' bindstatechange="statechange">
+    <cover-view class='cover-view'>
+      <cover-view class='live-btn' bindtap='recordToggle'>
+        <cover-image wx:if='{{recording}}' class='live-image' src='../../assets/image/luxiang.png' />
+        <cover-image wx:if='{{!recording}}' class='live-image' src='../../assets/image/zanting.png' />
+      </cover-view>
+      <cover-view class='live-btn'>
+        <cover-image class='live-image' src='../../assets/image/baocun.png' />
+      </cover-view>
     </cover-view>
-    <cover-view class='live-btn'>
-      <cover-image class='live-image' src='../../assets/image/baocun.png' />
-      <!-- <cover-view class='font14'>保存</cover-view> -->
-    </cover-view>
-  </cover-view>
   </live-pusher>
 </view>

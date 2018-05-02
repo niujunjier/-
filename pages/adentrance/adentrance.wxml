@@ -41,7 +41,7 @@
 </view>
 <component-mask-view show-mask='{{showMode}}' show-title='{{maskTitle}}'  bind:myevent='hideMode'>
   <view class='pretonext font12'>
-    <input type='text' placeholder='输入班级号' bindinput='setClassValue' focus='{{focus}}'/>
+    <input type='text' placeholder='输入班级号' bindinput='setClassValue' bindblur='setClassValue' focus='{{focus}}'/>
     <view class='toclass' bindtap='readMsg'>进入班级</view>
   </view>
 </component-mask-view>
