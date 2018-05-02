@@ -16,7 +16,7 @@ Page({
 
   readCount() {
     wx.navigateTo({
-      url: '/pages/stCount/stCount',
+      url: '/pages/stCount/stCount?classId=' + this.data.classId,
     })
   },
   beginClass() {
