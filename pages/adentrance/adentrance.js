@@ -22,9 +22,9 @@ Page({
   readMsg() {
     let url = '';
     if (this.data.maskTitle.name == '查看留言') {
-      url = '/pages/leaveMsg/leaveMsg'
+      url = '/pages/leaveMsg/leaveMsg?classId=' + this.data.classValue
     } else {
-      url = '/pages/classForSt/classForSt'
+      url = '/pages/classForSt/classForSt?classId=' + this.data.classValue
     }
     wx.navigateTo({
       url: url

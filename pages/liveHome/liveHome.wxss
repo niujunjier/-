@@ -28,5 +28,5 @@ live-pusher{
   margin-top: 20rpx;
   display: inline-block;
   width: 50rpx;
-  height: 50rpx;
+  height: 90rpx;
 }

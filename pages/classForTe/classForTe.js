@@ -5,29 +5,29 @@ Page({
    * 页面的初始数据
    */
   data: {
-  
+    classId: ''
   },
-  
-  endClass(){
+
+  endClass() {
     wx.redirectTo({
       url: '/pages/teentrance/teentrance',
     })
   },
 
-  readCount(){
+  readCount() {
     wx.navigateTo({
       url: '/pages/stCount/stCount',
     })
   },
-  beginClass(){
+  beginClass() {
     wx.navigateTo({
-      url: '/pages/liveHome/liveHome',
+      url: '/pages/liveHome/liveHome?classId=' + this.data.classId,
     })
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    this.setData({ classId: options.classId })
   }
 })
