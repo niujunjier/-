@@ -5,6 +5,20 @@ Page({
     hasMsg: false,
     value: '',
     liveUrl: '',
+    srcMap:{
+      boom:{
+        'no': '../../assets/image/zhadanbai.png',
+        'yes': '../../assets/image/zhadan.png'
+      },
+      flower: {
+        'no': '../../assets/image/xianhuabai.png',
+        'yes': '../../assets/image/xianhua.png'
+      }
+    },
+    sendStatu:{
+      boom: 'no',
+      flower: 'no'
+    }
   },
   onLoad(op) {
     var id = op.classId;
@@ -44,5 +58,23 @@ Page({
     } else {
       this.setData({ hasMsg: false })
     }
+  },
+  sendBoom(){
+    let sendStatu = JSON.parse(JSON.stringify(this.data.sendStatu))
+    if (sendStatu.boom == 'no'){
+      sendStatu.boom = 'yes'
+      this.setData({ sendStatu: sendStatu})
+    }
+  },
+  sendFlower(){
+    let sendStatu = JSON.parse(JSON.stringify(this.data.sendStatu))
+    if (sendStatu.flower == 'no') {
+      sendStatu.flower = 'yes'
+      this.setData({ sendStatu: sendStatu })
+    }
+  },
+  sendMsg(){
+    this.setData({value:''})
+    this.setData({ hasMsg: false })
   }
 })

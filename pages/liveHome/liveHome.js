@@ -45,6 +45,7 @@ Page({
 
   },
   onHide(op) {
+    console.log(123)
     app.api.request('/index/live/finishLive?ClassId=1&Identity=teacher', {}).then(res => {
       console.log(res)
     })

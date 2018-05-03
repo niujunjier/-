@@ -23,6 +23,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (op) {
+    let id = op.classId || 2;
     let stulist = [];
     let self = this;
     wx.connectSocket({
@@ -31,7 +32,7 @@ Page({
     wx.onSocketOpen(function (res) {
       console.log('WebSocket连接已打开！')
       wx.sendSocketMessage({
-        data: '{ "Action": "login", "RomeId": "' + op.classId + '", "User": { "id": "' + app.globalData.code + '","name": "' + app.globalData.name + '","signed": "teacher"} }'
+        data: '{ "Action": "login", "RomeId": "' + id + '", "User": { "id": "' + app.globalData.code + '","name": "' + app.globalData.name + '","signed": "teacher"} }'
       })
     })
     wx.onSocketError(function (res) {

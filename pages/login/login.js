@@ -4,7 +4,7 @@ Page({
     userName: 'teacher001',
     passWord: '123456',
     items: [
-      { name: 'student', value: '学生', checked: 'true'},
+      { name: 'student', value: '学生', checked: 'true' },
       { name: 'teacher', value: '老师' },
       { name: 'manger', value: '管理员' }
     ],
@@ -28,12 +28,12 @@ Page({
     var pData = { "PassWorld": this.data.passWord, "UserName": this.data.userName, "Identity": this.data.currId }
     app.api.request('/index/user/login', pData).then(res => {
       console.log(res)
-      if (res.data.Status == 'success'){
+      if (res.data.Status == 'success') {
         app.globalData.code = res.data.Result.Id;
         console.log(app.globalData.code)
         wx.setStorageSync("userId", res.header["Set-Cookie"])
-        wx.redirectTo({ url: this.data.idMap[this.data.currId]})
-      }else{
+        wx.redirectTo({ url: this.data.idMap[this.data.currId] })
+      } else {
         wx.showToast({
           title: res.data.Message,
           icon: 'loading',

@@ -3,10 +3,10 @@
   <cover-view class='cover-view'>
     <!-- <cover-image class='emoji'></cover-image> -->
     <cover-view class='cover-input' bindtap='awakenKey'>
-      <input focus="{{focus}}" bindinput='getMsg' bindblur='checkMagNull'/>
+      <input focus="{{focus}}" bindinput='getMsg' bindblur='checkMagNull' value='{{value}}'/>
     </cover-view>
-    <cover-image class='cover-icon1' wx:if='{{!hasMsg}}' src='../../assets/image/zhadanbai.png'></cover-image>
-    <cover-image class='cover-icon1' wx:if='{{!hasMsg}}' src='../../assets/image/xianhuabai.png'></cover-image>
-    <cover-view class='cover-btn font30' wx:if='{{hasMsg}}'>发送</cover-view>
+    <cover-image class='cover-icon1' wx:if='{{!hasMsg}}' src='{{srcMap.boom[sendStatu.boom]}}' bindtap='sendBoom'></cover-image>
+    <cover-image class='cover-icon1' wx:if='{{!hasMsg}}' src='{{srcMap.flower[sendStatu.flower]}}' bindtap='sendFlower'></cover-image>
+    <cover-view class='cover-btn font30' wx:if='{{hasMsg}}' bindtap='sendMsg'>发送</cover-view>
   </cover-view>
 </view>
