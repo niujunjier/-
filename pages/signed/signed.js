@@ -50,7 +50,9 @@ Page({
       let list = self.deduplication(res.data);
       for (let i = 0; i < 36; i++) {
         if (list[i]) {
-          stData.push(list[i].User)
+          if (list[i].User.signed != 'teacher'){
+            stData.push(list[i].User)
+          }
         } else {
           stData.push({
             "signed": "unde"
