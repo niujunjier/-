@@ -28,7 +28,7 @@ live-player{
 }
 .cover-input{
   z-index: 1000;
-  width: 402rpx;
+  width: 450rpx;
   height: 90rpx;
   border-bottom: 5rpx solid #ffffff;
   color: red;

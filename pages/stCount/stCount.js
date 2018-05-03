@@ -41,18 +41,19 @@ Page({
     wx.onSocketMessage(function (res) {
       console.log('收到服务器内容：')
       let stData = [];
-      let list = JSON.parse(res.data) || [];
+      let list = self.deduplication(res.data);
       var y=0,u=0,n=0;
       for (let i = 0; i < 36; i++) {
         if (list[i]) {
-          console.log(JSON.parse(list[i]).User.signed)
-          if (JSON.parse(list[i]).User.signed != 'teacher'){
-            if (JSON.parse(list[i]).User == 'no'){
+          if (list[i].User.signed != 'teacher'){
+            if (list[i].User.signed == 'no'){
               n++;
-            } else if (JSON.parse(list[i]).User == 'yes'){
+            } else if (list[i].User.signed == 'yes'){
               y++;
             }
-            stData.push(JSON.parse(list[i]).User)
+            stData.push(list[i].User)
+          }else{
+            u++;
           }
         } else {
           u++;
@@ -64,5 +65,20 @@ Page({
       self.setData({ stuList: stData });
       self.setData({no: n,yes: y,unde: u})
     })
+  },
+  onHide(){
+    wx.closeSocket()
+  },
+  deduplication(jArr) {
+    let arr = JSON.parse(jArr);
+    let map = {}, list = [];
+    arr.forEach(function (li, i) {
+      let item = JSON.parse(li)
+      map[item.User.id] = item;
+    })
+    Object.keys(map).forEach(function (k) {
+      list.push(map[k])
+    })
+    return list;
   }
 })

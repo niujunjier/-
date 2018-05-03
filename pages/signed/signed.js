@@ -16,8 +16,8 @@ Page({
   getStuData: function (e) {
     console.log(e.detail.detail)
   },
-  onLoad: function (options) {
-    this.setData({ classId: "2" })
+  onLoad: function (op) {
+    this.setData({ classId: op.classId })
     this.connect()
   },
   toClassForSt() {
@@ -25,9 +25,9 @@ Page({
     wx.sendSocketMessage({
       data: '{ "Action": "login", "RomeId": "' + self.data.classId + '", "User": { "id": "' + app.globalData.code + '","name": "' + app.globalData.name + '","signed": "yes"} }'
     })
-    // wx.navigateTo({
-    //   url: '/pages/classForSt/classForSt'
-    // })
+    wx.navigateTo({
+      url: '/pages/classForSt/classForSt?classId='+this.data.classId
+    })
   },
   connect() {
     let self = this;
@@ -47,12 +47,10 @@ Page({
     wx.onSocketMessage(function (res) {
       console.log('收到服务器内容：')
       let stData = [];
-      let list = JSON.parse(res.data) || [];
+      let list = self.deduplication(res.data);
       for (let i = 0; i < 36; i++) {
-        console.log(list[i])
         if (list[i]) {
-          stData.push(JSON.parse(list[i]).User)
-          console.log(JSON.parse(list[i]))
+          stData.push(list[i].User)
         } else {
           stData.push({
             "signed": "unde"
@@ -61,5 +59,20 @@ Page({
       }
       self.setData({ stuList: stData })
     })
+  },
+  onHide() {
+    wx.closeSocket()
+  },
+  deduplication(jArr) {
+    let arr = JSON.parse(jArr);
+    let map = {},list =[];
+    arr.forEach(function(li,i){
+      let item = JSON.parse(li)
+      map[item.User.id] = item;
+    })
+    Object.keys(map).forEach(function(k){
+      list.push(map[k])
+    })
+    return list;
   }
 })
