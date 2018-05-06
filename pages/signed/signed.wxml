@@ -4,3 +4,9 @@
   </view>
   <view class='btn btn-md btn-success' bindtap='toClassForSt'>签到</view>
 </view>
+<component-mask-view show-mask='{{sendRedStatu}}' title-opcity='true' show-title='' bind:myevent='showMaskToggle'>
+  <image src='../../assets/image/hongbao.png' class='hongbao'></image>
+  <view class='red-container'>
+    <input class='red-main' value='{{rewardName}}'></input>
+  </view>
+</component-mask-view>

@@ -1,1 +1,15 @@
 /* pages/viewData/viewData.wxss */
+.data-main{
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  padding: 50rpx;
+}
+.data-title{
+  font-size: 32rpx;
+}
+.data-item{
+  font-size: 28rpx;
+  margin-top: 20rpx;
+  margin-bottom: 15rpx;
+}

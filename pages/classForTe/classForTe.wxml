@@ -5,7 +5,7 @@
     <view class='font24'>Look at the number</view>
     <image src='../../assets/image/duoren.png'></image>
   </view>
-  <view class='cft-item item-reward'>
+  <view class='cft-item item-reward' bindtap='showMaskToggle'>
     <view class='font30'>派发红包</view>
     <view class='font24'>Send red envelope</view>
     <image src='../../assets/image/paifahongbao.png'></image>
@@ -17,3 +17,11 @@
   </view>
   <view class='btn btn-md btn-success' bindtap='endClass'>结束课程</view>
 </view>
+<component-mask-view show-mask='{{sendRedStatu}}' title-opcity='true' show-title='' bind:myevent='showMaskToggle'>
+  <image src='../../assets/image/hongbao.png' class='hongbao'></image>
+  <view class='red-container'>
+    <input placeholder='请放入奖品' class='red-main' bindinput='setReward' bindblur='setReward'></input>
+    <input placeholder='奖品个数' class='red-main' bindinput='setCount' bindblur='setCount'></input>
+    <button type="default" class='red-main' bindtap='sendReward'>发送</button>
+  </view>
+</component-mask-view>

@@ -5,8 +5,8 @@
         <cover-image wx:if='{{recording}}' class='live-image' src='../../assets/image/luxiang.png' />
         <cover-image wx:if='{{!recording}}' class='live-image' src='../../assets/image/zanting.png' />
       </cover-view>
-      <cover-view class='live-btn'>
-        <cover-image class='live-image' src='../../assets/image/baocun.png' />
+      <cover-view class='live-btn' bindtap='save'>
+        <cover-image class='live-image' src='{{baocun}}' />
       </cover-view>
     </cover-view>
   </live-pusher>

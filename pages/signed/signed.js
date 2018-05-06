@@ -1,9 +1,5 @@
 const app = getApp()
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
     stuList: [],
     classId: '',
@@ -11,13 +7,16 @@ Page({
       "yes": "#ed6d00",
       "no": "#00cbcb",
       "unde": "#cccccc"
-    }
+    },
+    sendRedStatu: false,
+    rewardName: '抵用券',
+    first: true
   },
   getStuData: function (e) {
     console.log(e.detail.detail)
   },
   onLoad: function (op) {
-    this.setData({ classId: op.classId || 2 })
+    this.setData({ classId: op.classId || 26 })
     this.connect()
   },
   toClassForSt() {
@@ -26,7 +25,7 @@ Page({
       data: '{ "Action": "login", "RomeId": "' + self.data.classId + '", "User": { "id": "' + app.globalData.code + '","name": "' + app.globalData.name + '","signed": "yes"} }'
     })
     wx.navigateTo({
-      url: '/pages/classForSt/classForSt?classId='+this.data.classId
+      url: '/pages/classForSt/classForSt?classId=' + this.data.classId
     })
   },
   connect() {
@@ -46,12 +45,15 @@ Page({
     })
     wx.onSocketMessage(function (res) {
       console.log('收到服务器内容：')
+      console.log(res)
       let stData = [];
       let list = self.deduplication(res.data);
       for (let i = 0; i < 36; i++) {
         if (list[i]) {
-          if (list[i].User.signed != 'teacher'){
+          if (list[i].User.signed != 'teacher') {
             stData.push(list[i].User)
+          } else if (list[i].User.prizeList){
+            self.setData({ first: false, sendRedStatu: true, rewardName: list[i].User.rewardName})
           }
         } else {
           stData.push({
@@ -62,19 +64,22 @@ Page({
       self.setData({ stuList: stData })
     })
   },
-  onHide() {
+  onUnload() {
     wx.closeSocket()
   },
   deduplication(jArr) {
     let arr = JSON.parse(jArr);
-    let map = {},list =[];
-    arr.forEach(function(li,i){
+    let map = {}, list = [];
+    arr.forEach(function (li, i) {
       let item = JSON.parse(li)
       map[item.User.id] = item;
     })
-    Object.keys(map).forEach(function(k){
+    Object.keys(map).forEach(function (k) {
       list.push(map[k])
     })
     return list;
+  },
+  showMaskToggle() {
+    this.setData({ sendRedStatu: !this.data.sendRedStatu })
   }
 })

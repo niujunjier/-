@@ -5,8 +5,9 @@ Page({
     hasMsg: false,
     value: '',
     liveUrl: '',
-    srcMap:{
-      boom:{
+    canSend: true,
+    srcMap: {
+      boom: {
         'no': '../../assets/image/zhadanbai.png',
         'yes': '../../assets/image/zhadan.png'
       },
@@ -15,14 +16,15 @@ Page({
         'yes': '../../assets/image/xianhua.png'
       }
     },
-    sendStatu:{
+    sendStatu: {
       boom: 'no',
       flower: 'no'
     }
   },
   onLoad(op) {
     var id = op.classId;
-    app.api.useCookie('/index/live/getLive?ClassId='+id+'&Identity=student', {}).then(data => {
+    let self = this;
+    app.api.useCookie('/index/live/getLive?ClassId=' + id + '&Identity=student', {}).then(data => {
       console.log(data.data.Result)
       this.setData({ liveUrl: data.data.Result.rtmp })
       var player = wx.createLivePlayerContext('player');
@@ -59,22 +61,39 @@ Page({
       this.setData({ hasMsg: false })
     }
   },
-  sendBoom(){
+  sendBoom() {
+    var self = this;
     let sendStatu = JSON.parse(JSON.stringify(this.data.sendStatu))
-    if (sendStatu.boom == 'no'){
+    if (sendStatu.boom == 'no') {
       sendStatu.boom = 'yes'
-      this.setData({ sendStatu: sendStatu})
+      this.setData({ sendStatu: sendStatu })
+      setTimeout(function () {
+        console.log(111)
+        self.setData({ sendStatu: { boom: 'no', flower: 'no' } })
+      }, 5000)
     }
   },
-  sendFlower(){
+  sendFlower() {
+    var self = this;
     let sendStatu = JSON.parse(JSON.stringify(this.data.sendStatu))
     if (sendStatu.flower == 'no') {
       sendStatu.flower = 'yes'
       this.setData({ sendStatu: sendStatu })
+      setTimeout(function () {
+        console.log(111)
+        self.setData({ sendStatu: { boom: 'no', flower: 'no' } })
+      }, 5000)
     }
   },
-  sendMsg(){
-    this.setData({value:''})
-    this.setData({ hasMsg: false })
+  sendMsg() {
+    let self = this;
+    if (this.data.canSend) {
+      this.setData({ value: '' })
+      this.setData({ hasMsg: false })
+      this.setData({ canSend: false })
+      setTimeout(function () {
+        self.setData({ canSend: true })
+      }, 10000)
+    }
   }
 })

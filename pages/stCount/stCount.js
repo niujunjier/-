@@ -67,7 +67,7 @@ Page({
       self.setData({no: n,yes: y,unde: u})
     })
   },
-  onHide(){
+  onUnload(){
     wx.closeSocket()
   },
   deduplication(jArr) {

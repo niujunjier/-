@@ -1,9 +1,5 @@
 // pages/adentrance/adentrance.js
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
     showMode: false,
     maskTitle: {
@@ -23,8 +19,10 @@ Page({
     let url = '';
     if (this.data.maskTitle.name == '查看留言') {
       url = '/pages/leaveMsg/leaveMsg?classId=' + this.data.classValue
-    } else {
+    } else if (this.data.maskTitle.name == '进入教室') {
       url = '/pages/classForSt/classForSt?classId=' + this.data.classValue
+    } else {
+      url = '/pages/viewData/viewData?classId=' + this.data.classValue
     }
     wx.navigateTo({
       url: url
@@ -43,6 +41,15 @@ Page({
     this.setData({
       maskTitle: {
         name: '进入教室',
+        describe: ''
+      }
+    })
+    this.setData({ showMode: true })
+  },
+  enterViewData() {
+    this.setData({
+      maskTitle: {
+        name: '查看数据',
         describe: ''
       }
     })

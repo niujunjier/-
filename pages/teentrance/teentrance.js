@@ -11,13 +11,14 @@ Page({
       describe: '上次创建班级为701'
     },
     classValue: '',
+    lastClassValue: '',
     focus: false
   },
   onLoad(op){
     app.api.request('/index/user/searchLastClass/Id/' + app.globalData.code, {}).then(data => {
       console.log(data)
       if (data.data.Status = 'success') {
-        this.setData({ classValue: data.data.Result.classNo })
+        this.setData({ lastClassValue: data.data.Result.classNo })
       }
     }).catch(err => {
       console.log(err)
@@ -28,6 +29,7 @@ Page({
   },
   toClassCenter(){
     this.setData({ showMode: false, focus: false});
+    console.log(this.data.classValue)
     wx.navigateTo({
       url: '/pages/qrcode/qrcode?classId=' + this.data.classValue
     })
@@ -45,8 +47,16 @@ Page({
   },
   readMsg(){
     console.log(this.data.classValue)
-    wx.navigateTo({
-      url: '/pages/leaveMsg/leaveMsg?classId=' + this.data.classValue
-    })
+    if (this.data.lastClassValue){
+      wx.navigateTo({
+        url: '/pages/leaveMsg/leaveMsg?classId=' + this.data.lastClassValue
+      }) 
+    }else{
+      wx.showToast({
+        title: '你还没有班级',
+        icon: 'loading',
+        duration: 2000
+      })
+    }
   }
 })

@@ -10,6 +10,10 @@ Component({
         name: '',
         describe: ''
       }
+    },
+    titleOpcity: {
+      type: Boolean,
+      value: false
     }
   },
   data: {
