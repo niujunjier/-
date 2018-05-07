@@ -14,7 +14,7 @@ Page({
     lastClassValue: '',
     focus: false
   },
-  onLoad(op){
+  onLoad(op) {
     app.api.request('/index/user/searchLastClass/Id/' + app.globalData.code, {}).then(data => {
       console.log(data)
       if (data.data.Status = 'success') {
@@ -24,34 +24,43 @@ Page({
       console.log(err)
     })
   },
-  toUserCenter(){
-    wx.navigateTo({ url: "/pages/user/user"})
+  toUserCenter() {
+    wx.navigateTo({ url: "/pages/user/user" })
   },
-  toClassCenter(){
-    this.setData({ showMode: false, focus: false});
-    console.log(this.data.classValue)
-    wx.navigateTo({
-      url: '/pages/qrcode/qrcode?classId=' + this.data.classValue
-    })
+  toClassCenter() {
+    let self = this;
+    // this.setData({ showMode: false, focus: false });
+    setTimeout(function () {
+      if (self.data.classValue){
+        wx.navigateTo({
+          url: '/pages/qrcode/qrcode?classId=' + self.data.classValue
+        })
+      }else{
+        wx.showLoading({
+          title: '请输入班级号',
+          duration: 1000
+        })
+      }
+    },500)
   },
-  setClassValue(e){
-    this.setData({classValue: e.detail.value});
+  setClassValue(e) {
+    this.setData({ classValue: e.detail.value });
   },
-  inputClassNum(){
-    this.setData({ showMode: true, focus: true});
+  inputClassNum() {
+    this.setData({ showMode: true, focus: true });
   },
   hideMode() {
     console.log(this.data.classValue)
-    this.setData({ showMode: false, focus: false});
+    this.setData({ showMode: false, focus: false });
     console.log(this.data.classValue)
   },
-  readMsg(){
+  readMsg() {
     console.log(this.data.classValue)
-    if (this.data.lastClassValue){
+    if (this.data.lastClassValue) {
       wx.navigateTo({
         url: '/pages/leaveMsg/leaveMsg?classId=' + this.data.lastClassValue
-      }) 
-    }else{
+      })
+    } else {
       wx.showToast({
         title: '你还没有班级',
         icon: 'loading',

@@ -41,40 +41,54 @@ Page({
   },
   sendReward() {
     let self = this;
-    let stArr = [];
-    this.setData({ sendRedStatu: !this.data.sendRedStatu })
-    for (let i = 0; i < this.data.count; i++) {
-      getRdm()
-    }
-    function getRdm() {
-      let self = this;
-      if (stArr.indexOf(Math.ceil(Math.random() * 36)) != -1) {
-        getRdm();
-      } else {
-        stArr.push(Math.ceil(Math.random() * 36))
+    setTimeout(function(){
+      if (!self.data.reward){
+        wx.showToast({
+          title: '奖品不能为空'
+        });
+        return;
       }
-    }
-    wx.connectSocket({
-      url: 'ws://121.40.92.185:9502'
-    })
-    wx.onSocketOpen(function (res) {
-      console.log('WebSocket连接已打开！')
-      wx.sendSocketMessage({
-        data: '{ "Action": "login", "RomeId": "' + self.data.classId + '", "User": { "id": "' + app.globalData.code + '","name": "' + app.globalData.name + '","rewardName":"' + self.data.reward +'","signed": "teacher","prizeList":' + JSON.stringify(stArr) + '} }'
+      if (!self.data.count) {
+        wx.showToast({
+          title: '数量不能为空'
+        });
+        return;
+      }
+      if (!/^[0-9]*$/.test(self.data.count)){
+        wx.showToast({
+          title: '数量只能是数字'
+        });
+        return;
+      }
+      let stArr = [];
+      self.setData({ sendRedStatu: !self.data.sendRedStatu })
+      for (let i = 0; i < self.data.count; i++) {
+        getRdm()
+      }
+      function getRdm() {
+        let self = self;
+        if (stArr.indexOf(Math.ceil(Math.random() * 36)) != -1) {
+          getRdm();
+        } else {
+          stArr.push(Math.ceil(Math.random() * 36))
+        }
+      }
+      wx.connectSocket({
+        url: 'ws://121.40.92.185:9502'
       })
-    })
-    wx.onSocketError(function (res) {
-      console.log(res)
-      console.log('WebSocket连接打开失败，请检查！')
-    })
-    wx.onSocketMessage(function (res) {
-      console.log(res)
-      // if (self.data.isLog) {
-      //   wx.sendSocketMessage({
-      //     data: '{ "Action": "sendRed", "RomeId": "' + self.data.classId + '", "User": { "name": "' + self.data.reward + '","prize": "teacher","prizeList":' + JSON.stringify(stArr) + '} }'
-      //   })
-      //   self.setData({ isLog: false })
-      // }
-    })
+      wx.onSocketOpen(function (res) {
+        console.log('WebSocket连接已打开！')
+        wx.sendSocketMessage({
+          data: '{ "Action": "login", "RomeId": "' + self.data.classId + '", "User": { "id": "' + app.globalData.code + '","name": "' + app.globalData.name + '","rewardName":"' + self.data.reward + '","signed": "teacher","prizeList":' + JSON.stringify(stArr) + '} }'
+        })
+      })
+      wx.onSocketError(function (res) {
+        console.log(res)
+        console.log('WebSocket连接打开失败，请检查！')
+      })
+      wx.onSocketMessage(function (res) {
+        console.log(res)
+      })
+    },500)
   }
 })
