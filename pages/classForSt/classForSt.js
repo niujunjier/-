@@ -6,6 +6,7 @@ Page({
     value: '',
     liveUrl: '',
     canSend: true,
+    classId: '',
     srcMap: {
       boom: {
         'no': '../../assets/image/zhadanbai.png',
@@ -23,6 +24,7 @@ Page({
   },
   onLoad(op) {
     var id = op.classId;
+    this.setData({classId: id})
     let self = this;
     app.api.useCookie('/index/live/getLive?ClassId=' + id + '&Identity=student', {}).then(data => {
       console.log(data.data.Result)
@@ -94,6 +96,12 @@ Page({
       setTimeout(function () {
         self.setData({ canSend: true })
       }, 10000)
+      // let data = {
+
+      // }
+      // app.api.useCookie('/index/Comments/getComments',data).then(function(res){
+
+      // })
     }
   }
 })

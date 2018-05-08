@@ -1,15 +1,7 @@
 const ipConfig = 'https://www.juplus.cn/live';
 
-const request = (url, postData) => {
-  return new Promise((resolve, reject) => {
-    wx.request({
-      url: ipConfig + url,
-      data: postData,
-      header: {
-        "Content-Type": "application/x-www-form-urlencoded"
-      },
-      method: 'POST',
-      success: function (res) {
+const request=(url,postData)=>{return new Promise((resolve, reject) => {wx.request({url:ipConfig + url,data: postData,header: {"Content-Type": "application/x-www-form-urlencoded"},method:'POST',
+success: function (res) {
         resolve(res)
       },
       fail: function (err) {
@@ -37,6 +29,7 @@ const useCookie = (url, postData) => {
     })
   })
 }
+
 module.exports = {
   request: request,
   useCookie: useCookie

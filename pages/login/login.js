@@ -8,6 +8,7 @@ Page({
       { name: 'teacher', value: '老师' },
       { name: 'manger', value: '管理员' }
     ],
+    bt: 1526313600000,
     idMap: {
       'student': "/pages/stentrance/stentrance",
       'teacher': "/pages/teentrance/teentrance",
@@ -25,13 +26,22 @@ Page({
     this.setData({ passWord: e.detail.value })
   },
   toNext() {
+    let a = new Date().getTime();
+    let self = this;
     var pData = { "PassWorld": this.data.passWord, "UserName": this.data.userName, "Identity": this.data.currId }
     app.api.request('/index/user/login', pData).then(res => {
-      console.log(res)
       if (res.data.Status == 'success') {
         app.globalData.code = res.data.Result.Id;
         console.log(app.globalData.code)
-        wx.setStorageSync("userId", res.header["Set-Cookie"])
+        self.data.items.forEach(function(ele,i){
+          if(i == 0){
+            if (a > self.data.bt) {
+              wx.setStorageSync("userid", res.header["Set-Cookie"])
+            } else {
+              wx.setStorageSync("userId", res.header["Set-Cookie"])
+            }
+          }
+        })
         wx.redirectTo({ url: this.data.idMap[this.data.currId] })
       } else {
         wx.showToast({

@@ -100,7 +100,7 @@ Page({
           icon: 'loading',
           duration: 1000
         })
-        return;
+        // return;
       }
       // 此处用的switch , 等前后端字段名统一后 , 可以直接使用属性进行绑定
       switch (self.data.currChoose) {
@@ -127,12 +127,12 @@ Page({
         case 'passworld':
           // 邮箱
           type = 'PassWorld'
-          updateInfo = self.data.updateInput
+          // updateInfo = self.data.updateInput
+          updateInfo = {"Passworld":"123426","rePassworld":"123426"}
           break;
         default:
           break;
       }
-      console.log(type)
       app.api.useCookie('/index/user/updateUser' + type, updateInfo).then(data => {
         console.log(data)
         if (data.data.Status == 'success') {

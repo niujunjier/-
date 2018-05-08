@@ -4,8 +4,8 @@ Page({
   data: {
     classId: '',
     sendRedStatu: false,
-    reward: '',
-    count: 0,
+    reward: '测试',
+    count: 36,
     isLog: true
   },
 
@@ -74,8 +74,8 @@ Page({
         }
       }
       wx.connectSocket({
-        // url: 'ws://121.40.92.185:9502'
-        url: 'wss://juevent.com'
+        url: 'ws://121.40.92.185:9502'
+        // url: 'wss://juevent.com'
       })
       wx.onSocketOpen(function (res) {
         console.log('WebSocket连接已打开！')

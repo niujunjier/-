@@ -18,7 +18,7 @@ Page({
     console.log(e.detail.detail)
   },
   onLoad: function (op) {
-    this.setData({ classId: op.classId || 18 })
+    this.setData({ classId: op.classId || 15 })
     this.connect()
   },
   toClassForSt() {
@@ -33,8 +33,8 @@ Page({
   connect() {
     let self = this;
     wx.connectSocket({
-      // url: 'ws://121.40.92.185:9502'
-      url: 'wss://juevent.com'
+      url: 'ws://121.40.92.185:9502'
+      // url: 'wss://juevent.com'
     })
     self.setData({test: '连接'})
     wx.onSocketOpen(function (res) {
@@ -60,7 +60,7 @@ Page({
           if (list[i].User.signed != 'teacher') {
             stData.push(list[i].User)
           } else if (list[i].User.prizeList){
-            if(this.data.first == true){
+            if(self.data.first == true){
               self.setData({ first: false, sendRedStatu: true, rewardName: list[i].User.rewardName })
             }
           }
