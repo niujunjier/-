@@ -6,8 +6,7 @@ const request = (url, postData) => {
       url: ipConfig + url,
       data: postData,
       header: {
-        "Content-Type": "application/x-www-form-urlencoded",
-        'cookie': wx.getStorageSync("userId")
+        "Content-Type": "application/x-www-form-urlencoded"
       },
       method: 'POST',
       success: function (res) {
@@ -25,9 +24,10 @@ const useCookie = (url, postData) => {
       url: ipConfig + url,
       data: postData,
       header: {
+        "Content-Type": "application/x-www-form-urlencoded",
         'cookie': wx.getStorageSync("userId")
       },
-      method: 'GET',
+      method: 'POST',
       success: function (res) {
         resolve(res)
       },

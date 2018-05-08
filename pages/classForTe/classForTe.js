@@ -74,7 +74,8 @@ Page({
         }
       }
       wx.connectSocket({
-        url: 'ws://121.40.92.185:9502'
+        // url: 'ws://121.40.92.185:9502'
+        url: 'wss://juevent.com'
       })
       wx.onSocketOpen(function (res) {
         console.log('WebSocket连接已打开！')

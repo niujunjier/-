@@ -19,7 +19,18 @@ Page({
     let url = '';
     let self = this;
     setTimeout(function () {
-      
+      if (!self.data.classValue) {
+        wx.showToast({
+          title: '不能为空'
+        });
+        return;
+      }
+      if (!/^[0-9]*$/.test(self.data.classValue)) {
+        wx.showToast({
+          title: '输入正确的班级号'
+        });
+        return;
+      }
       if (self.data.maskTitle.name == '查看留言') {
         url = '/pages/leaveMsg/leaveMsg?classId=' + self.data.classValue
       } else if (self.data.maskTitle.name == '进入教室') {

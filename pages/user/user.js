@@ -28,6 +28,7 @@ Page({
     day: 2,
     value: [9999, 1, 1],
     currChoose: '',
+    showMask: false,
     currMsg: {
       name: '',
       describe: ''
@@ -52,16 +53,18 @@ Page({
       'passworld': {
         name: '修改密码',
         describe: ''
-      },
-      bindChange: function (e) {
-        const val = e.detail.value
-        this.setData({
-          year: this.data.years[val[0]],
-          month: this.data.months[val[1]],
-          day: this.data.days[val[2]]
-        })
       }
     }
+  },
+  datechange: function (e) {
+    const val = e.detail.value
+    console.log(e.detail.value)
+    this.setData({
+      year: this.data.years[val[0]],
+      month: this.data.months[val[1]],
+      day: this.data.days[val[2]]
+    })
+    console.log(this.data.year, this.data.month, this.data.day)
   },
   onLoad(options) {
     this.getUserInfo()
@@ -84,11 +87,21 @@ Page({
   // 修改个人信息  
   updateUserInfo: function () {
     let self = this;
-    setTimeout(() => {
+    setTimeout(function() {
       // 修改类型
       let type = ''
       // 传递参数
       let updateInfo = {}
+      console.log(self.data.updateInput)
+      console.log(Object.keys(self.data.updateInput))
+      if (!self.data.updateInput[Object.keys(self.data.updateInput)[0]] && self.data.currChoose !='birthday'){
+        wx.showToast({
+          title: '不能为空',
+          icon: 'loading',
+          duration: 1000
+        })
+        return;
+      }
       // 此处用的switch , 等前后端字段名统一后 , 可以直接使用属性进行绑定
       switch (self.data.currChoose) {
         case 'nick':
@@ -104,7 +117,7 @@ Page({
         case 'birthday':
           // 生日 
           type = 'Birthday'
-          updateInfo = { Birthday: (self.data.month + '-' + self.data.day) }
+          updateInfo = { Birthday: (self.data.year + '-' + self.data.month + '-' + self.data.day) }
           break;
         case 'email':
           // 邮箱
@@ -119,9 +132,11 @@ Page({
         default:
           break;
       }
-      app.api.request('/index/user/updateUser' + type + '/Id' + app.globalData.code, updateInfo).then(data => {
+      console.log(type)
+      app.api.useCookie('/index/user/updateUser' + type, updateInfo).then(data => {
         console.log(data)
         if (data.data.Status == 'success') {
+          self.showMaskToggle();
           // 显示提示信息
           wx.showToast({
             title: '保存成功',
@@ -140,16 +155,17 @@ Page({
       }).catch(err => {
         console.log(err)
       })
-    }, 500)
+    }.bind(this), 500)
   },
   showMaskTrue: function (e) {
-    this.setData({ currChoose: e.currentTarget.dataset.key, currMsg: this.data.titleMap[e.currentTarget.dataset.key] })
+    this.setData({ showMask: true, currChoose: e.currentTarget.dataset.key, currMsg: this.data.titleMap[e.currentTarget.dataset.key] })
   },
   showMaskToggle: function () {
+    this.setData({ showMask: !this.data.showMask})
+  },
+  sureChange(){
     // 点击确定修改个人信息
     this.updateUserInfo()
-    // 关闭弹框 , 清空填写的数据
-    this.setData({ currChoose: "", updateInput: {} })
   },
   signUp() {
     wx.redirectTo({

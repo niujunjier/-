@@ -43,50 +43,53 @@
   </view>
 </view>
 <view class='btn btn-full btn-default margin-top' bindtap='signUp'>退出登录</view>
- <component-mask-view show-mask='{{currChoose != ""}}' show-title='{{currMsg}}'  bind:myevent='showMaskToggle'>
+ <component-mask-view show-mask='{{showMask}}' show-title='{{currMsg}}'  bind:myevent='showMaskToggle'>
     <view wx:if='{{currChoose == "phone"}}'>
       <view class='msg-view'>当前绑定的手机号为{{msg.Phone}}</view>
       <view class="button-input">
-         <input class='border-bottom' placeholder="输入手机号" data-key="Phone" bindinput="setInput"/>
+         <input class='border-bottom' placeholder="输入手机号" data-key="Phone" bindinput="setInput"  bindblur="setInput"/>
          <view class='btn btn-inline'>获取验证码</view>
       </view>
       <view class="primary-input border-bottom">
          <input placeholder="输入验证码"/>
       </view>
-      <view class='btn btn-md btn-success' bindtap='showMaskToggle'>确定</view>
+      <view class='btn btn-md btn-success' bindtap='sureChange'>确定</view>
     </view>
     <view wx:if='{{currChoose == "email"}}'>
       <view class='msg-view'>当前绑定邮箱为{{msg.Email}}</view>
       <view class="button-input">
-         <input class='border-bottom' placeholder="输入手机号" data-key="Email" bindinput="setInput"/>
+         <input class='border-bottom' placeholder="输入手机号" data-key="Email" bindinput="setInput"  bindblur="setInput"/>
          <view class='btn btn-inline'>获取验证码</view>
       </view>
       <view class="primary-input border-bottom">
          <input placeholder="输入验证码"/>
       </view>
-      <view class='btn btn-md btn-success' bindtap='showMaskToggle'>确定</view>
+      <view class='btn btn-md btn-success' bindtap='sureChange'>确定</view>
     </view>
     <view wx:if='{{currChoose == "passworld"}}'>
-      <view class="primary-input border-bottom">
+      <!-- <view class="primary-input border-bottom">
          <input placeholder="输入原始密码"/>
+      </view> -->
+      <view class="primary-input border-bottom">
+         <input placeholder="输入新密码" data-key="Passworld" bindinput="setInput"  bindblur="setInput"/>
       </view>
       <view class="primary-input border-bottom">
-         <input placeholder="输入新密码" data-key="Passworld" bindinput="setInput"/>
+         <input placeholder="再次确认密码" data-key="rePassworld" bindinput="setInput"  bindblur="setInput"/>
       </view>
-      <view class="primary-input border-bottom">
-         <input placeholder="再次确认密码" data-key="rePassworld" bindinput="setInput"/>
-      </view>
-      <view class='btn btn-md btn-success' bindtap='showMaskToggle'>确定</view>
+      <view class='btn btn-md btn-success' bindtap='sureChange'>确定</view>
     </view>
     <view wx:if='{{currChoose == "nick"}}'>
       <view class='msg-view'>好的昵称可以让朋友更容易记住你</view>
       <view class="primary-input border-bottom">
-         <input placeholder="{{msg.NickName}}" auto-focus data-key="NickName" bindinput="setInput"/>
+         <input placeholder="{{msg.NickName}}" auto-focus data-key="NickName" bindinput="setInput"  bindblur="setInput"/>
       </view>
-       <view class='btn btn-md btn-success' bindtap='showMaskToggle'>确定</view>
+       <view class='btn btn-md btn-success' bindtap='sureChange'>确定</view>
     </view>
     <view wx:if='{{currChoose == "birthday"}}'>
-      <picker-view indicator-style="height: 50rpx;" style="width: 100%; height: 300rpx;" value="{{value}}" bindchange="bindChange">
+      <picker-view indicator-style="height: 50rpx;" style="width: 100%; height: 300rpx;" value="{{value}}" bindchange="datechange">
+      <picker-view-column>
+          <view wx:for="{{years}}" style="line-height: 50px;text-align: center;">{{item}}</view>
+        </picker-view-column>
         <picker-view-column>
           <view wx:for="{{months}}" style="line-height: 50px;text-align: center;">{{item}}</view>
         </picker-view-column>
@@ -94,6 +97,6 @@
           <view wx:for="{{days}}" style="line-height: 50px;text-align: center;">{{item}}</view>
         </picker-view-column>
       </picker-view>
-       <view class='btn btn-md btn-success' bindtap='showMaskToggle'>确定</view>
+       <view class='btn btn-md btn-success' bindtap='sureChange'>确定</view>
     </view>
 </component-mask-view>  

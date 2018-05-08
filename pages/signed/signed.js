@@ -33,7 +33,8 @@ Page({
   connect() {
     let self = this;
     wx.connectSocket({
-      url: 'ws://121.40.92.185:9502'
+      // url: 'ws://121.40.92.185:9502'
+      url: 'wss://juevent.com'
     })
     self.setData({test: '连接'})
     wx.onSocketOpen(function (res) {
