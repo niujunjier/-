@@ -13,7 +13,7 @@ Page({
    */
   onLoad: function (options) {
     var id = options.classId;
-    app.api.request('/index/Comments/getComments/CassId/'+id, {}).then(data => {
+    app.api.request('/index/Comments/getComments/', { classId: options.classId}).then(data => {
       console.log(data)
       if(data.data.Status == 'success'){
         this.setData({ msgList: data.data.Result})

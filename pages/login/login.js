@@ -1,7 +1,7 @@
 const app = getApp()
 Page({
   data: {
-    userName: 'teacher001',
+    userName: 'student001',
     passWord: '123456',
     items: [
       { name: 'student', value: '学生', checked: 'true' },
@@ -47,7 +47,7 @@ Page({
         wx.showToast({
           title: res.data.Message,
           icon: 'loading',
-          duration: 2000
+          duration: 1000
         })
       }
     }).catch(err => {

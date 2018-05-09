@@ -5,8 +5,11 @@ Page({
     hasMsg: false,
     value: '',
     liveUrl: '',
+    liveUrl1: '',
+    liveUrl2: '',
     canSend: true,
     classId: '',
+
     srcMap: {
       boom: {
         'no': '../../assets/image/zhadanbai.png',
@@ -24,14 +27,18 @@ Page({
   },
   onLoad(op) {
     var id = op.classId;
-    this.setData({ classId: id })
+    id = 15;
+    this.setData({ classId: id})
     let self = this;
     app.api.useCookie('/index/live/getLive?ClassId=' + id + '&Identity=student', {}).then(data => {
       console.log(data.data.Result)
-      this.setData({ liveUrl: data.data.Result.rtmp })
+      this.setData({ liveUrl: data.data.Result.hls })
+      this.setData({ liveUrl1: data.data.Result.http })
+      this.setData({ liveUrl2: data.data.Result.rtmp })
       var player = wx.createLivePlayerContext('player');
       player.play({
-        success: function () {
+        success: function (res) {
+          console.log(res)
           console.log('success!')
           wx.showToast({
             title: 'success!',
@@ -39,7 +46,8 @@ Page({
             duration: 2000
           })
         },
-        fail: function () {
+        fail: function (res) {
+          console.log(res)
           console.log('failed!')
           wx.showToast({
             title: 'failed!',
@@ -124,7 +132,7 @@ Page({
         }
         let data = {
           ClassId: self.data.classId,
-          Comments: self.data.value
+          Comment: self.data.value
         }
         app.api.useCookie('/index/Comments/setComments', data).then(function (res) {
           self.setData({ value: '' })

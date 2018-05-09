@@ -1,4 +1,5 @@
 // pages/viewData/viewData.js
+const app = getApp();
 Page({
 
   /**
@@ -21,8 +22,11 @@ Page({
     }
     let self = this;
     app.api.useCookie('/index/Redpack/getRedpack', data).then(function (res) {
-      if (res.Status == 'success') {
-        let dataList = res.result;
+      console.log(res.Status)
+      console.log(res)
+      if (res.data.Status == 'success') {
+        console.log(1)
+        let dataList = res.data.result;
         let boom = 0;
         let flower = 0;
         dataList.forEach(function (ele) {
@@ -35,8 +39,9 @@ Page({
         })
         var max = boom > flower ? boom : flower;
         max *= 1.5;
-        let fPercent = Math.floor(flower / max) * 100;
-        let bPercent = Math.floor(boom / max) * 100;
+        let fPercent = (flower / max).toFixed(2) * 100;
+        let bPercent = (boom / max).toFixed(2) * 100;
+        console.log(fPercent, bPercent)
         self.setData({ flower: flower, boom: boom, fPercent: fPercent, bPercent: bPercent });
       }
     })
