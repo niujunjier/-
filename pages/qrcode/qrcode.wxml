@@ -1,5 +1,5 @@
 <!--pages/qrcode/qrcode.wxml-->
 <view class='qr-view'>
-  <view class='qr-main-img'>此处应有二维码</view>
+  <view class='qr-main-img'><image src='https://img.mukewang.com/5ad40b8e0001983009360316.jpg'></image></view>
   <view class='btn btn-md btn-success' bindtap='begin'>开始上课</view>
 </view>

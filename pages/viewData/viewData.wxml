@@ -1,7 +1,7 @@
 <view class='data-main'>
   <view class='data-title'>班级号：{{classId}}</view>
   <view class='data-item' style='color: #ed6d00;'>鲜花:  {{flower}}</view>
-  <progress percent="20" stroke-width="13" backgroundColor="#fff" activeColor="#ed6d00" active />
+  <progress percent="{{fPercent}}" stroke-width="13" backgroundColor="#fff" activeColor="#ed6d00" active />
   <view class='data-item' style='color: #56d4f6;'>炸弹:  {{boom}}</view>
-  <progress percent="20" stroke-width="13" backgroundColor="#fff" activeColor="#56d4f6" active />
+  <progress percent="{{bPercent}}" stroke-width="13" backgroundColor="#fff" activeColor="#56d4f6" active />
 </view>

@@ -24,18 +24,28 @@ Page({
   },
   onLoad(op) {
     var id = op.classId;
-    this.setData({classId: id})
+    this.setData({ classId: id })
     let self = this;
     app.api.useCookie('/index/live/getLive?ClassId=' + id + '&Identity=student', {}).then(data => {
       console.log(data.data.Result)
       this.setData({ liveUrl: data.data.Result.rtmp })
       var player = wx.createLivePlayerContext('player');
-      player.requestFullScreen({
+      player.play({
         success: function () {
           console.log('success!')
+          wx.showToast({
+            title: 'success!',
+            icon: 'loading',
+            duration: 2000
+          })
         },
         fail: function () {
           console.log('failed!')
+          wx.showToast({
+            title: 'failed!',
+            icon: 'loading',
+            duration: 2000
+          })
         },
         complete: function () {
           console.log('complete!')
@@ -67,41 +77,64 @@ Page({
     var self = this;
     let sendStatu = JSON.parse(JSON.stringify(this.data.sendStatu))
     if (sendStatu.boom == 'no') {
-      sendStatu.boom = 'yes'
-      this.setData({ sendStatu: sendStatu })
-      setTimeout(function () {
-        console.log(111)
-        self.setData({ sendStatu: { boom: 'no', flower: 'no' } })
-      }, 5000)
+      let data = {
+        classId: self.data.classId,
+        boom: 1,
+        flower: 0
+      }
+      app.api.useCookie('/index/Redpack/setRedpack', data).then(function (res) {
+        sendStatu.boom = 'yes'
+        self.setData({ sendStatu: sendStatu })
+        setTimeout(function () {
+          self.setData({ sendStatu: { boom: 'no', flower: 'no' } })
+        }, 5000)
+      })
     }
   },
   sendFlower() {
     var self = this;
     let sendStatu = JSON.parse(JSON.stringify(this.data.sendStatu))
     if (sendStatu.flower == 'no') {
-      sendStatu.flower = 'yes'
-      this.setData({ sendStatu: sendStatu })
-      setTimeout(function () {
-        console.log(111)
-        self.setData({ sendStatu: { boom: 'no', flower: 'no' } })
-      }, 5000)
+      let data = {
+        classId: self.data.classId,
+        boom: 0,
+        flower: 1
+      }
+      app.api.useCookie('/index/Redpack/setRedpack', data).then(function (res) {
+        sendStatu.flower = 'yes'
+        self.setData({ sendStatu: sendStatu })
+        setTimeout(function () {
+          self.setData({ sendStatu: { boom: 'no', flower: 'no' } })
+        }, 5000)
+      })
     }
+
   },
   sendMsg() {
     let self = this;
-    if (this.data.canSend) {
-      this.setData({ value: '' })
-      this.setData({ hasMsg: false })
-      this.setData({ canSend: false })
-      setTimeout(function () {
-        self.setData({ canSend: true })
-      }, 10000)
-      // let data = {
-
-      // }
-      // app.api.useCookie('/index/Comments/getComments',data).then(function(res){
-
-      // })
-    }
+    setTimeout(function () {
+      if (self.data.canSend) {
+        if (!self.data.value){
+          wx.showToast({
+            title: '不能为空',
+            icon: 'loading',
+            duration: 1000
+          })
+          return;
+        }
+        let data = {
+          ClassId: self.data.classId,
+          Comments: self.data.value
+        }
+        app.api.useCookie('/index/Comments/setComments', data).then(function (res) {
+          self.setData({ value: '' })
+          self.setData({ hasMsg: false })
+          self.setData({ canSend: false })
+          setTimeout(function () {
+            self.setData({ canSend: true })
+          }, 10000)
+        })
+      }
+    }, 500)
   }
 })

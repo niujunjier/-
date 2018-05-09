@@ -17,7 +17,7 @@
   </view>
   <view class='default-bar border-bottom'>
     <text>身份</text>
-     <text class='colorGrey'>{{msg.Identify}}<text class='iconfont icon-jiantouyou'></text></text> 
+     <text class='colorGrey'>{{msg.Identify}}<text class='iconfont icon-jiantouyou'></text></text>
   </view>
   <view class='default-bar' bindtap='showMaskTrue' data-key='phone'>
     <text>手机号</text>

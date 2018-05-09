@@ -33,13 +33,13 @@ Page({
   connect() {
     let self = this;
     wx.connectSocket({
-      url: 'ws://121.40.92.185:9502'
-      // url: 'wss://juevent.com'
+      // url: 'ws://121.40.92.185:9502'
+      url: 'wss://juplus.cn/wss'
     })
-    self.setData({test: '连接'})
+    self.setData({ test: '连接' })
     wx.onSocketOpen(function (res) {
       console.log('WebSocket连接已打开！')
-      self.setData({ test: '{ "Action": "login", "RomeId": "' + self.data.classId + '", "User": { "id": "' + app.globalData.code + '","name": "' + app.globalData.name + '","signed": "no"} }'})
+      self.setData({ test: '{ "Action": "login", "RomeId": "' + self.data.classId + '", "User": { "id": "' + app.globalData.code + '","name": "' + app.globalData.name + '","signed": "no"} }' })
       wx.sendSocketMessage({
         data: '{ "Action": "login", "RomeId": "' + self.data.classId + '", "User": { "id": "' + app.globalData.code + '","name": "' + app.globalData.name + '","signed": "no"} }'
       })
@@ -59,8 +59,8 @@ Page({
         if (list[i]) {
           if (list[i].User.signed != 'teacher') {
             stData.push(list[i].User)
-          } else if (list[i].User.prizeList){
-            if(self.data.first == true){
+          } else if (list[i].User.prizeList) {
+            if (self.data.first == true) {
               self.setData({ first: false, sendRedStatu: true, rewardName: list[i].User.rewardName })
             }
           }

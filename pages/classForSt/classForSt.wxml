@@ -1,5 +1,5 @@
 <view class='classView'>
-  <live-player id='player' src="rtmp://v3c770c8c.live.126.net/live/834c4e6dd8144b98a15f72024691e55f" mode="live" autoplay bindstatechange="statechange" binderror="error" />
+  <live-player id='player' src="rtmp://v3c770c8c.live.126.net/live/834c4e6dd8144b98a15f72024691e55f" mode="live" autoplay='false' bindstatechange="statechange" binderror="error" />
   <cover-view class='cover-view'>
     <!-- <cover-image class='emoji'></cover-image> -->
     <cover-view class='cover-input' bindtap='awakenKey'>
