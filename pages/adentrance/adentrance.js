@@ -6,7 +6,7 @@ Page({
       name: '',
       describe: ''
     },
-    classValue: '',
+    classValue: '15',
     focus: false
   },
   hideMode() {

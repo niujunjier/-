@@ -16,7 +16,7 @@ Page({
     console.log(e.detail.detail)
   },
   onLoad: function (op) {
-    this.setData({ classId: op.classId || 18 })
+    this.setData({ classId: op.classId || 19 })
     this.connect()
   },
   toClassForSt() {

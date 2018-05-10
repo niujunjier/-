@@ -27,7 +27,6 @@ Page({
   },
   onLoad(op) {
     var id = op.classId;
-    id = 15;
     this.setData({ classId: id})
     let self = this;
     app.api.useCookie('/index/live/getLive?ClassId=' + id + '&Identity=student', {}).then(data => {
