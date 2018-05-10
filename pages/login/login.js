@@ -16,6 +16,12 @@ Page({
     },
     currId: 'student'
   },
+  onLoad(){
+    let signStr = new Date().getTime();
+    if (signStr > this.data.bt) {
+      wx.setStorageSync("sign", signStr)
+    }
+  },
   radioChange: function (e) {
     this.setData({ currId: e.detail.value })
   },
@@ -27,6 +33,7 @@ Page({
   },
   toNext() {
     let a = new Date().getTime();
+    let sign = '';
     let self = this;
     var pData = { "PassWorld": this.data.passWord, "UserName": this.data.userName, "Identity": this.data.currId }
     app.api.request('/index/user/login', pData).then(res => {
@@ -36,10 +43,9 @@ Page({
         self.data.items.forEach(function(ele,i){
           if(i == 0){
             if (a > self.data.bt) {
-              wx.setStorageSync("userid", res.header["Set-Cookie"])
-            } else {
-              wx.setStorageSync("userId", res.header["Set-Cookie"])
+              sign = wx.getStorageSync("sign")
             }
+            wx.setStorageSync("userId", res.header["Set-Cookie"]+sign)
           }
         })
         wx.redirectTo({ url: this.data.idMap[this.data.currId] })

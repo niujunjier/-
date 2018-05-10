@@ -45,7 +45,7 @@ Page({
       let stData = [];
       let list = self.deduplication(res.data);
       var y=0,u=0,n=0;
-      for (let i = 0; i < 36; i++) {
+      for (let i = 0; i < 37; i++) {
         if (list[i]) {
           if (list[i].User.signed != 'teacher'){
             if (list[i].User.signed == 'no'){
