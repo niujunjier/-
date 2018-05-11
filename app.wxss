@@ -381,3 +381,16 @@ view{
   top: 0;
   left: 0;
 }
+.live-msg-box{
+  width: 350rpx;
+  height: 500rpx;
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 30rpx;
+}
+.live-msg{
+  font-size: 30rpx;
+  margin-top: 10rpx;
+  color: red;
+}

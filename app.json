@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/classForSt/classForSt",
     "pages/login/login",
     "pages/adentrance/adentrance",
     "pages/user/user",
@@ -11,7 +12,6 @@
     "pages/leaveMsg/leaveMsg",
     "pages/signed/signed",
     "pages/tset/test",
-    "pages/classForSt/classForSt",
     "pages/viewData/viewData",
     "pages/classForTe/classForTe",
     "pages/liveHome/liveHome"

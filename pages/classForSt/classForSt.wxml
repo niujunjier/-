@@ -9,4 +9,16 @@
     <cover-image class='cover-icon1' wx:if='{{!hasMsg}}' src='{{srcMap.flower[sendStatu.flower]}}' bindtap='sendFlower'></cover-image>
     <cover-view class='cover-btn font30 {{canSend?"":"gray"}}' wx:if='{{hasMsg}}' bindtap='sendMsg'>发送</cover-view>
   </cover-view>
+  <cover-view class='live-msg-box'>
+    <cover-view class='live-msg'>留言</cover-view>
+    <cover-view class='live-msg'>留言</cover-view>
+    <cover-view class='live-msg'>留言</cover-view>
+    <cover-view class='live-msg'>留言</cover-view>
+    <cover-view class='live-msg'>留言</cover-view>
+    <cover-view class='live-msg'>留言</cover-view>
+    <cover-view class='live-msg'>留言</cover-view>
+    <cover-view class='live-msg'>留言</cover-view>
+    <cover-view class='live-msg'>留言</cover-view>
+    <cover-view class='live-msg'>留言</cover-view>
+  </cover-view>
 </view>
