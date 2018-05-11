@@ -1,11 +1,21 @@
 // pages/qrcode/qrcode.js
+const app = getApp()
 Page({
   data: {
-    classId: ''
+    classId: '',
+    qrCodeSrc: ''
   },
   onLoad(op) {
     console.log(op.classId)
-    this.setData({ classId: op.classId })
+    app.api.request('/index/wechat/getQrcode?classId=' + op.classId, {}).then(data => {
+      console.log(data)
+      if (data.data.Status = 'success') {
+        const qrcode = ' https://juplus.cn/live/' + data.data.qrcode
+        this.setData({ classId: op.classId, qrCodeSrc: qrcode})
+      }
+    }).catch(err => {
+      console.log(err)
+    })
   },
   begin() {
     wx.navigateTo({
