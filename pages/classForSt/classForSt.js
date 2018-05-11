@@ -9,6 +9,7 @@ Page({
     liveUrl2: '',
     canSend: true,
     classId: '',
+    msgArr: [],
     srcMap: {
       boom: {
         'no': '../../assets/image/zhadanbai.png',
@@ -24,41 +25,68 @@ Page({
       flower: 'no'
     }
   },
+  onUnload() {
+    wx.closeSocket()
+  },
   onLoad(op) {
-    let id = 15;
-    // var id = op.classId;
-    // this.setData({ classId: id})
-    // let self = this;
-    // app.api.useCookie('/index/live/getLive?ClassId=' + id + '&Identity=student', {}).then(data => {
-    //   console.log(data.data.Result)
-    //   this.setData({ liveUrl: data.data.Result.hls })
-    //   this.setData({ liveUrl1: data.data.Result.http })
-    //   this.setData({ liveUrl2: data.data.Result.rtmp })
-    //   var player = wx.createLivePlayerContext('player');
-    //   player.play({
-    //     success: function (res) {
-    //       console.log(res)
-    //       console.log('success!')
-    //       wx.showToast({
-    //         title: 'success!',
-    //         icon: 'loading',
-    //         duration: 2000
-    //       })
-    //     },
-    //     fail: function (res) {
-    //       console.log(res)
-    //       console.log('failed!')
-    //       wx.showToast({
-    //         title: 'failed!',
-    //         icon: 'loading',
-    //         duration: 2000
-    //       })
-    //     },
-    //     complete: function () {
-    //       console.log('complete!')
-    //     }
-    //   });
-    // })
+    let self = this;
+    var id = op.classId;
+    wx.connectSocket({
+      url: 'wss://juplus.cn:9502'
+    })
+    wx.onSocketOpen(function (res) {
+      console.log('WebSocket连接已打开！')
+      wx.sendSocketMessage({
+        data: '{ "Action": "login", "RoomId": "' + id + '", "User": { "id": "' + app.globalData.code + '","name": "' + app.globalData.name + '","signed": "yes"} }'
+      })
+    })
+    wx.onSocketError(function (res) {
+      console.log(res)
+      console.log('WebSocket连接打开失败，请检查！')
+    })
+    wx.onSocketMessage(function (res) {
+      console.log(res)
+      let msgOp = JSON.parse(res.data)
+      if (msgOp.Action == 'msg') {
+        let msgarr = JSON.parse(JSON.stringify(self.data.msgArr));
+        msgarr.push(msgOp.User.msg);
+        if (msgarr.length > 10) {
+          msgarr.splice(0, 1)
+        }
+        self.setData({ msgArr: msgarr })
+      }
+    })
+    this.setData({ classId: id })
+    app.api.useCookie('/index/live/getLive?ClassId=' + id + '&Identity=student', {}).then(data => {
+      console.log(data.data.Result)
+      this.setData({ liveUrl: data.data.Result.hls })
+      this.setData({ liveUrl1: data.data.Result.http })
+      this.setData({ liveUrl2: data.data.Result.rtmp })
+      var player = wx.createLivePlayerContext('player');
+      player.play({
+        success: function (res) {
+          console.log(res)
+          console.log('success!')
+          wx.showToast({
+            title: 'success!',
+            icon: 'loading',
+            duration: 2000
+          })
+        },
+        fail: function (res) {
+          console.log(res)
+          console.log('failed!')
+          wx.showToast({
+            title: 'failed!',
+            icon: 'loading',
+            duration: 2000
+          })
+        },
+        complete: function () {
+          console.log('complete!')
+        }
+      });
+    })
   },
   statechange(e) {
     console.log('live-player code:', e.detail.code)
@@ -96,6 +124,9 @@ Page({
           self.setData({ sendStatu: { boom: 'no', flower: 'no' } })
         }, 5000)
       })
+      wx.sendSocketMessage({
+        data: '{ "Action": "msg", "RoomId": "' + self.data.classId + '", "User": { "id": "' + app.globalData.code + '","name": "' + app.globalData.name + '","signed": "yes","msg": "' + app.globalData.name+'送了一个炸弹"} }'
+      })
     }
   },
   sendFlower() {
@@ -114,6 +145,9 @@ Page({
           self.setData({ sendStatu: { boom: 'no', flower: 'no' } })
         }, 5000)
       })
+      wx.sendSocketMessage({
+        data: '{ "Action": "msg", "RoomId": "' + self.data.classId + '", "User": { "id": "' + app.globalData.code + '","name": "' + app.globalData.name + '","signed": "yes","msg": "' + app.globalData.name +'送了一个鲜花"} }'
+      })
     }
 
   },
@@ -121,7 +155,7 @@ Page({
     let self = this;
     setTimeout(function () {
       if (self.data.canSend) {
-        if (!self.data.value){
+        if (!self.data.value) {
           wx.showToast({
             title: '不能为空',
             icon: 'loading',
@@ -140,6 +174,9 @@ Page({
           setTimeout(function () {
             self.setData({ canSend: true })
           }, 10000)
+        })
+        wx.sendSocketMessage({
+          data: '{ "Action": "msg", "RoomId": "' + self.data.classId + '", "User": { "id": "' + app.globalData.code + '","name": "' + app.globalData.name + '","signed": "yes","msg": "' + self.data.value + '"} }'
         })
       }
     }, 500)

@@ -9,5 +9,8 @@
         <cover-image class='live-image' src='{{baocun}}' />
       </cover-view>
     </cover-view>
+    <cover-view class='live-msg-box'>
+      <cover-view class='live-msg' wx:for='{{msgArr}}'>{{item}}</cover-view>
+    </cover-view>
   </live-pusher>
 </view>

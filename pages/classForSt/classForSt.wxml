@@ -10,15 +10,6 @@
     <cover-view class='cover-btn font30 {{canSend?"":"gray"}}' wx:if='{{hasMsg}}' bindtap='sendMsg'>发送</cover-view>
   </cover-view>
   <cover-view class='live-msg-box'>
-    <cover-view class='live-msg'>留言</cover-view>
-    <cover-view class='live-msg'>留言</cover-view>
-    <cover-view class='live-msg'>留言</cover-view>
-    <cover-view class='live-msg'>留言</cover-view>
-    <cover-view class='live-msg'>留言</cover-view>
-    <cover-view class='live-msg'>留言</cover-view>
-    <cover-view class='live-msg'>留言</cover-view>
-    <cover-view class='live-msg'>留言</cover-view>
-    <cover-view class='live-msg'>留言</cover-view>
-    <cover-view class='live-msg'>留言</cover-view>
+    <cover-view class='live-msg' wx:for='{{msgArr}}'>{{item}}</cover-view>
   </cover-view>
 </view>

@@ -6,11 +6,39 @@ Page({
     working: false,
     classId: '',
     showMode: false,
-    baocun: '../../assets/image/baocun2.png'
+    baocun: '../../assets/image/baocun2.png',
+    msgArr: []
   },
   onLoad(op) {
     this.setData({ classId: op.classId })
     console.log(op.classId)
+    let self = this;
+    wx.connectSocket({
+      url: 'wss://juplus.cn:9502'
+    })
+    wx.onSocketOpen(function (res) {
+      console.log('WebSocket连接已打开！')
+      wx.sendSocketMessage({
+        data: '{ "Action": "login", "RoomId": "' + op.classId + '", "User": { "id": "' + app.globalData.code + '","name": "' + app.globalData.name + '","signed": "yes"} }'
+      })
+    })
+    wx.onSocketError(function (res) {
+      console.log(res)
+      console.log('WebSocket连接打开失败，请检查！')
+    })
+    wx.onSocketMessage(function (res) {
+      console.log(res)
+      let msgOp = JSON.parse(res.data)
+      if (msgOp.Action == 'msg') {
+        let msgarr = JSON.parse(JSON.stringify(self.data.msgArr));
+        msgarr.push(msgOp.User.msg);
+        if (msgarr.length > 10) {
+          msgarr.splice(0, 1)
+        }
+        self.setData({ msgArr: msgarr })
+      }
+    })
+
     app.api.request('/index/live/cancelLive?ClassId='+ this.data.classId +'&Identity=teacher', {}).then(res => {
       console.log(res)
       app.api.useCookie('/index/live/getLive?ClassId=' + this.data.classId +'&Identity=teacher', {}).then(data => {

@@ -1,6 +1,5 @@
 {
   "pages": [
-    "pages/classForSt/classForSt",
     "pages/login/login",
     "pages/adentrance/adentrance",
     "pages/user/user",
@@ -14,7 +13,8 @@
     "pages/tset/test",
     "pages/viewData/viewData",
     "pages/classForTe/classForTe",
-    "pages/liveHome/liveHome"
+    "pages/liveHome/liveHome",
+    "pages/classForSt/classForSt"
   ],
   "window": {
     "backgroundTextStyle": "light",

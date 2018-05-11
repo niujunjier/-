@@ -16,7 +16,7 @@ Page({
     console.log(e.detail.detail)
   },
   onLoad: function (op) {
-    this.setData({ classId: op.classId || 19 })
+    this.setData({ classId: op.classId || 20 })
     this.connect()
   },
   toClassForSt() {
@@ -34,7 +34,6 @@ Page({
       // url: 'ws://121.40.92.185:9502'
       url: 'wss://juplus.cn:9502'
     })
-    self.setData({ test: '连接' })
     wx.onSocketOpen(function (res) {
       console.log('WebSocket连接已打开！')
       wx.sendSocketMessage({
