@@ -22,7 +22,7 @@ Page({
   toClassForSt() {
     let self = this;
     wx.sendSocketMessage({
-      data: '{ "Action": "login", "RomeId": "' + self.data.classId + '", "User": { "id": "' + app.globalData.code + '","name": "' + app.globalData.name + '","signed": "yes"} }'
+      data: '{ "Action": "login", "RoomId": "' + self.data.classId + '", "User": { "id": "' + app.globalData.code + '","name": "' + app.globalData.name + '","signed": "yes"} }'
     })
     wx.navigateTo({
       url: '/pages/classForSt/classForSt?classId=' + this.data.classId
@@ -32,13 +32,13 @@ Page({
     let self = this;
     wx.connectSocket({
       // url: 'ws://121.40.92.185:9502'
-      url: 'wss://juplus.cn/wss'
+      url: 'wss://juplus.cn:9502'
     })
     self.setData({ test: '连接' })
     wx.onSocketOpen(function (res) {
       console.log('WebSocket连接已打开！')
       wx.sendSocketMessage({
-        data: '{ "Action": "login", "RomeId": "' + self.data.classId + '", "User": { "id": "' + app.globalData.code + '","name": "' + app.globalData.name + '","signed": "no"} }'
+        data: '{ "Action": "login", "RoomId": "' + self.data.classId + '", "User": { "id": "' + app.globalData.code + '","name": "' + app.globalData.name + '","signed": "no"} }'
       })
     })
     wx.onSocketError(function (res) {
