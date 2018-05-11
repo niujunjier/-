@@ -1,6 +1,7 @@
 {
   "navigationBarTitleText": "签到",
   "usingComponents": {
-    "component-colorful-ball": "../../components/colorfulBall/colorfullBall"
+    "component-colorful-ball": "../../components/colorfulBall/colorfullBall",
+    "component-mask-view": "../../components/maskView/maskView"
   }
 }

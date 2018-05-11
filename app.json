@@ -6,15 +6,15 @@
     "pages/teentrance/teentrance",
     "pages/stentrance/stentrance",
     "pages/qrcode/qrcode",
-    "pages/classForTe/classForTe",
     "pages/stCount/stCount",
     "pages/scanCode/scanCode",
     "pages/leaveMsg/leaveMsg",
     "pages/signed/signed",
     "pages/tset/test",
     "pages/viewData/viewData",
-    "pages/classForSt/classForSt",
-    "pages/liveHome/liveHome"
+    "pages/classForTe/classForTe",
+    "pages/liveHome/liveHome",
+    "pages/classForSt/classForSt"
   ],
   "window": {
     "backgroundTextStyle": "light",

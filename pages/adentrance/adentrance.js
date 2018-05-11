@@ -1,16 +1,12 @@
 // pages/adentrance/adentrance.js
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
     showMode: false,
     maskTitle: {
       name: '',
       describe: ''
     },
-    classValue: '',
+    classValue: '15',
     focus: false
   },
   hideMode() {
@@ -21,14 +17,31 @@ Page({
   },
   readMsg() {
     let url = '';
-    if (this.data.maskTitle.name == '查看留言') {
-      url = '/pages/leaveMsg/leaveMsg?classId=' + this.data.classValue
-    } else {
-      url = '/pages/classForSt/classForSt?classId=' + this.data.classValue
-    }
-    wx.navigateTo({
-      url: url
-    })
+    let self = this;
+    setTimeout(function () {
+      if (!self.data.classValue) {
+        wx.showToast({
+          title: '不能为空'
+        });
+        return;
+      }
+      if (!/^[0-9]*$/.test(self.data.classValue)) {
+        wx.showToast({
+          title: '输入正确的班级号'
+        });
+        return;
+      }
+      if (self.data.maskTitle.name == '查看留言') {
+        url = '/pages/leaveMsg/leaveMsg?classId=' + self.data.classValue
+      } else if (self.data.maskTitle.name == '进入教室') {
+        url = '/pages/classForSt/classForSt?classId=' + self.data.classValue
+      } else {
+        url = '/pages/viewData/viewData?classId=' + self.data.classValue
+      }
+      wx.navigateTo({
+        url: url
+      })
+    }, 500)
   },
   viewMessage() {
     this.setData({
@@ -43,6 +56,15 @@ Page({
     this.setData({
       maskTitle: {
         name: '进入教室',
+        describe: ''
+      }
+    })
+    this.setData({ showMode: true })
+  },
+  enterViewData() {
+    this.setData({
+      maskTitle: {
+        name: '查看数据',
         describe: ''
       }
     })

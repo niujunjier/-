@@ -1,12 +1,15 @@
 <view class='classView'>
-  <live-player id='player' src="rtmp://v3c770c8c.live.126.net/live/834c4e6dd8144b98a15f72024691e55f" mode="live" autoplay bindstatechange="statechange" binderror="error" />
+  <live-player id='player' src="{{liveUrl}}" src="{{liveUrl2}}" src="{{liveUrl2}}" mode="live" autoplay='false' bindstatechange="statechange" binderror="error" />
   <cover-view class='cover-view'>
     <!-- <cover-image class='emoji'></cover-image> -->
     <cover-view class='cover-input' bindtap='awakenKey'>
-      <input focus="{{focus}}" bindinput='getMsg' bindblur='checkMagNull'/>
+      <input focus="{{focus}}" bindinput='getMsg' bindblur='checkMagNull' value='{{value}}'/>
     </cover-view>
-    <cover-image class='cover-icon1' wx:if='{{!hasMsg}}' src='../../assets/image/zhadanbai.png'></cover-image>
-    <cover-image class='cover-icon1' wx:if='{{!hasMsg}}' src='../../assets/image/xianhuabai.png'></cover-image>
-    <cover-view class='cover-btn font30' wx:if='{{hasMsg}}'>发送</cover-view>
+    <cover-image class='cover-icon1' wx:if='{{!hasMsg}}' src='{{srcMap.boom[sendStatu.boom]}}' bindtap='sendBoom'></cover-image>
+    <cover-image class='cover-icon1' wx:if='{{!hasMsg}}' src='{{srcMap.flower[sendStatu.flower]}}' bindtap='sendFlower'></cover-image>
+    <cover-view class='cover-btn font30 {{canSend?"":"gray"}}' wx:if='{{hasMsg}}' bindtap='sendMsg'>发送</cover-view>
+  </cover-view>
+  <cover-view class='live-msg-box'>
+    <cover-view class='live-msg' wx:for='{{msgArr}}'>{{item}}</cover-view>
   </cover-view>
 </view>

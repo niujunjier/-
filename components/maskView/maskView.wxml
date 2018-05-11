@@ -1,6 +1,6 @@
 <view class='mask-body' wx:if='{{showMask}}'>
-  <view class='mask-main'>
-    <view class='title border-bottom'>
+  <view class='mask-main {{titleOpcity?"bopcity":""}}'>
+    <view class='title border-bottom {{titleOpcity?"absolute":""}}'>
        <text class='iconfont icon-guanbi close' bindtap='hideMaskAction'></text>
        <text>{{showTitle.name}}</text>
     </view>

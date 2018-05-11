@@ -1,3 +1,6 @@
 {
-  "navigationBarTitleText": "教师"
+  "navigationBarTitleText": "教师",
+  "usingComponents": {
+    "component-mask-view": "../../components/maskView/maskView"
+  }
 }

@@ -1,7 +1,7 @@
 <!--pages/adentrance/adentrance.wxml-->
 <view class="container">
   <view class='tab-box'>
-    <view class='tab-pane Personalcenter'>
+     <view class='tab-pane Personalcenter' bindtap='enterViewData'>
       <view class='tab-pane-title font14 orange'>View the data</view>
       <view class='tab-pane-content'>
         <view style='height:95rpx;display:flex;justify-content: space-between;'>
@@ -12,7 +12,7 @@
         </view>
         <view class='font12 gray'>查看数据</view>
       </view>
-    </view>
+    </view> 
     <view class='tab-pane Entertheclassroom' bindtap='enterClassroom'>
       <view class='tab-pane-title font14 blue'>Enter the classroom</view>
       <view class='tab-pane-content'>

@@ -3,4 +3,12 @@
     <component-colorful-ball color='{{coMap[item.signed]}}' wx:for="{{stuList}}" detail='{{item}}' bind:myevent='getStuData'></component-colorful-ball>
   </view>
   <view class='btn btn-md btn-success' bindtap='toClassForSt'>签到</view>
+  <!-- <text>{{test}}</text>
+  <text>{{test2}}</text> -->
 </view>
+<component-mask-view show-mask='{{sendRedStatu}}' title-opcity='true' show-title='' bind:myevent='showMaskToggle'>
+  <image src='../../assets/image/hongbao.png' class='hongbao'></image>
+  <view class='red-container'>
+    <input class='red-main' value='{{rewardName}}'></input>
+  </view>
+</component-mask-view>

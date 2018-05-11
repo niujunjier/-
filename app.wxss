@@ -358,3 +358,39 @@ view{
   line-height: 63rpx; 
   text-align: center;
 }
+.red-container{
+  width: 361rpx;
+  margin: 0 auto;
+  padding-top: 260rpx;
+}
+.red-container .red-main{
+  width: 100%;
+  height: 71rpx;
+  border-radius: 10rpx;
+  text-align: center;
+  background-color: #ffffff;
+  margin-top: 23rpx;
+  color: #000;
+  font-size: 28rpx;
+  line-height: 71rpx;
+}
+.hongbao{
+  width: 560rpx;
+  height: 700rpx;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.live-msg-box{
+  width: 350rpx;
+  height: 500rpx;
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 30rpx;
+}
+.live-msg{
+  font-size: 30rpx;
+  margin-top: 10rpx;
+  color: red;
+}

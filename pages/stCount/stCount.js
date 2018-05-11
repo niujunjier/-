@@ -23,15 +23,17 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (op) {
+    let id = op.classId;
     let stulist = [];
     let self = this;
     wx.connectSocket({
-      url: 'ws://121.40.92.185:9502'
+      // url: 'ws://121.40.92.185:9502'
+      url: 'wss://juplus.cn:9502'
     })
     wx.onSocketOpen(function (res) {
       console.log('WebSocket连接已打开！')
       wx.sendSocketMessage({
-        data: '{ "Action": "login", "RomeId": "' + op.classId + '", "User": { "id": "' + app.globalData.code + '","name": "' + app.globalData.name + '","signed": "teacher"} }'
+        data: '{ "Action": "login", "RoomId": "' + id + '", "User": { "id": "' + app.globalData.code + '","name": "' + app.globalData.name + '","signed": "teacher"} }'
       })
     })
     wx.onSocketError(function (res) {
@@ -43,7 +45,7 @@ Page({
       let stData = [];
       let list = self.deduplication(res.data);
       var y=0,u=0,n=0;
-      for (let i = 0; i < 36; i++) {
+      for (let i = 0; i < 37; i++) {
         if (list[i]) {
           if (list[i].User.signed != 'teacher'){
             if (list[i].User.signed == 'no'){
@@ -66,7 +68,7 @@ Page({
       self.setData({no: n,yes: y,unde: u})
     })
   },
-  onHide(){
+  onUnload(){
     wx.closeSocket()
   },
   deduplication(jArr) {
