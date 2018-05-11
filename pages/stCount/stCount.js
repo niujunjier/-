@@ -23,17 +23,17 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (op) {
-    let id = op.classId || 2;
+    let id = op.classId;
     let stulist = [];
     let self = this;
     wx.connectSocket({
       // url: 'ws://121.40.92.185:9502'
-      url: 'wss://juplus.cn/wss'
+      url: 'wss://juplus.cn:9502'
     })
     wx.onSocketOpen(function (res) {
       console.log('WebSocket连接已打开！')
       wx.sendSocketMessage({
-        data: '{ "Action": "login", "RomeId": "' + id + '", "User": { "id": "' + app.globalData.code + '","name": "' + app.globalData.name + '","signed": "teacher"} }'
+        data: '{ "Action": "login", "RoomId": "' + id + '", "User": { "id": "' + app.globalData.code + '","name": "' + app.globalData.name + '","signed": "teacher"} }'
       })
     })
     wx.onSocketError(function (res) {

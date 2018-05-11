@@ -17,28 +17,32 @@ Page({
   },
 
   readCount() {
+    wx.closeSocket()
     wx.navigateTo({
       url: '/pages/stCount/stCount?classId=' + this.data.classId,
     })
   },
   beginClass() {
     console.log(this.data.classId)
+    wx.closeSocket()
     wx.navigateTo({
       url: '/pages/liveHome/liveHome?classId=' + this.data.classId,
     })
   },
-  onLoad: function (options) {
-    console.log(options.classId)
+  onLoad(options){
     this.setData({ classId: options.classId })
+  },
+  onShow: function (options) {
+    console.log(this.data.classId)
     let self = this;
     wx.connectSocket({
       // url: 'ws://121.40.92.185:9502'
-      url: 'wss://juplus.cn/wss'
+      url: 'wss://juplus.cn:9502'
     })
     wx.onSocketOpen(function (res) {
       console.log('WebSocket连接已打开！')
       wx.sendSocketMessage({
-        data: '{ "Action": "login", "RomeId": "' + self.data.classId + '", "User": { "id": "' + app.globalData.code + '","name": "' + app.globalData.name + '","signed": "teacher"} }'
+        data: '{ "Action": "login", "RoomId": "' + self.data.classId + '", "User": { "id": "' + app.globalData.code + '","name": "' + app.globalData.name + '","signed": "teacher"} }'
       })
     })
     wx.onSocketMessage(function (res) {
@@ -99,9 +103,9 @@ Page({
       reWardArr = self.getArrayItems(UserList, self.data.count);
 
       console.log(reWardArr)
-      console.log('{ "Action": "login", "RomeId": "' + self.data.classId + '", "User": { "id": "' + app.globalData.code + '","name": "' + app.globalData.name + '","rewardName":"' + self.data.reward + '","pList":"' + JSON.stringify(reWardArr) + '",signed": "teacher"} }')
+      console.log('{ "Action": "login", "RoomId": "' + self.data.classId + '", "User": { "id": "' + app.globalData.code + '","name": "' + app.globalData.name + '","rewardName":"' + self.data.reward + '","pList":"' + JSON.stringify(reWardArr) + '",signed": "teacher"} }')
       wx.sendSocketMessage({
-        data: '{ "Action": "login", "RomeId": "' + self.data.classId + '", "User": { "id": "' + app.globalData.code + '","name": "' + app.globalData.name + '","rewardName":"' + self.data.reward + '","pList":"' + JSON.stringify(reWardArr) + '","signed": "teacher"} }'
+        data: '{ "Action": "login", "RoomId": "' + self.data.classId + '", "User": { "id": "' + app.globalData.code + '","name": "' + app.globalData.name + '","rewardName":"' + self.data.reward + '","pList":"' + JSON.stringify(reWardArr) + '","signed": "teacher"} }'
       })
       self.showMaskToggle();
     }, 500)

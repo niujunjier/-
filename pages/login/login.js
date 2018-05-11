@@ -1,7 +1,7 @@
 const app = getApp()
 Page({
   data: {
-    userName: 'teacher001',
+    userName: 'student001',
     passWord: '123456',
     items: [
       { name: 'student', value: '学生', checked: 'true' },
@@ -36,7 +36,9 @@ Page({
     let sign = '';
     let self = this;
     var pData = { "PassWorld": this.data.passWord, "UserName": this.data.userName, "Identity": this.data.currId }
+    console.log(1)
     app.api.request('/index/user/login', pData).then(res => {
+      console.log(res)
       if (res.data.Status == 'success') {
         app.globalData.code = res.data.Result.Id;
         console.log(app.globalData.code)
