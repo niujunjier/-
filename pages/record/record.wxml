@@ -1,0 +1,18 @@
+<!--pages/record/record.wxml-->
+<view class='record-view'>
+  <text class='record-ctrl iconfont {{!isRecording?"icon-bofang":"icon-zanting"}}' bindtap='recordToggle'></text>
+  <view class='asw-count'>
+    <view class='asw-count-item'>A</view>
+    <view class='asw-count-item'>B</view>
+    <view class='asw-count-item'>C</view>
+    <view class='asw-count-item'>D</view>
+    <view class='asw-count-item'>4</view>
+    <view class='asw-count-item'>3</view>
+    <view class='asw-count-item'>2</view>
+    <view class='asw-count-item'>1</view>
+  </view>
+  <view class='record-btn-group'>
+    <view class='record-btn font28' bindtap='sendQuestion'>发送</view>
+    <view class='record-btn font28' bindtap='clearQuestion'>清空</view>
+  </view>
+</view>

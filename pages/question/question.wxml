@@ -1,0 +1,28 @@
+<view class="container">
+  <view class='tab-box'>
+    <view class='tab-pane Entertheclassroom' bindtap='goLive'>
+      <view class='tab-pane-title font14 blue'>Watch the live broadcast</view>
+      <view class='tab-pane-content'>
+        <view style='height:95rpx;display:flex;justify-content: space-between;'>
+          <view style='display: inline-block;width:110rpx;height:95rpx;margin:0 20rpx'>
+            <image style='height:100%;width:100%;' src="../../assets/image/Entertheclassroom.png"></image>
+          </view>
+          <text class='font14 blue' style='display: inline-block;line-height:95rpx;'>开始直播</text>
+        </view>
+        <view class='font12 gray'>进入直播间</view>
+      </view>
+    </view>
+    <view class='tab-pane ViewMessage' bindtap='goRecord'>
+      <view class='tab-pane-title font14 yellow'>Classroom questioning</view>
+      <view class='tab-pane-content'>
+        <view style='height:95rpx;display:flex;justify-content: space-between;'>
+          <view style='display: inline-block;width:110rpx;height:95rpx;margin:0 20rpx'>
+            <image style='height:100%;width:100%;' src="../../assets/image/ViewMessage.png"></image>
+          </view>
+          <text class='font14 yellow' style='display: inline-block;line-height:95rpx;'>课堂提问</text>
+        </view>
+        <view class='font12 gray'>课堂问题</view>
+      </view>
+    </view>
+  </view>
+</view>

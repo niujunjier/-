@@ -1,7 +1,7 @@
 <!--pages/adentrance/adentrance.wxml-->
 <view class="container">
   <view class='tab-box'>
-     <view class='tab-pane Personalcenter' bindtap='enterViewData'>
+     <view class='tab-pane Personalcenter' bindtap='chooseDataType'>
       <view class='tab-pane-title font14 orange'>View the data</view>
       <view class='tab-pane-content'>
         <view style='height:95rpx;display:flex;justify-content: space-between;'>
@@ -43,5 +43,11 @@
   <view class='pretonext font12'>
     <input type='text' placeholder='输入班级号' bindinput='setClassValue' bindblur='setClassValue' focus='{{focus}}'/>
     <view class='toclass' bindtap='readMsg'>进入班级</view>
+  </view>
+</component-mask-view>
+<component-mask-view show-mask='{{showMode1}}' show-title='{{maskTitle1}}'  bind:myevent='hideMode1'>
+  <view class='pretonext font12'>
+    <view class='toclass' bindtap='readAll'>全体数据</view>
+    <view class='toclass' bindtap='enterViewData'>班级数据</view>
   </view>
 </component-mask-view>

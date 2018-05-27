@@ -16,7 +16,7 @@ Page({
     console.log(e.detail.detail)
   },
   onLoad: function (op) {
-    this.setData({ classId: op.classId || 20 })
+    this.setData({ classId: op.classId })
     this.connect()
   },
   toClassForSt() {
@@ -25,13 +25,12 @@ Page({
       data: '{ "Action": "login", "RoomId": "' + self.data.classId + '", "User": { "id": "' + app.globalData.code + '","name": "' + app.globalData.name + '","signed": "yes"} }'
     })
     wx.navigateTo({
-      url: '/pages/classForSt/classForSt?classId=' + this.data.classId
+      url: '/pages/answer/answer?classId=' + this.data.classId
     })
   },
   connect() {
     let self = this;
     wx.connectSocket({
-      // url: 'ws://121.40.92.185:9502'
       url: 'wss://juplus.cn:9502'
     })
     wx.onSocketOpen(function (res) {

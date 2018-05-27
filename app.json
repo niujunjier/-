@@ -14,7 +14,10 @@
     "pages/viewData/viewData",
     "pages/classForTe/classForTe",
     "pages/liveHome/liveHome",
-    "pages/classForSt/classForSt"
+    "pages/classForSt/classForSt",
+    "pages/question/question",
+    "pages/answer/answer",
+    "pages/record/record"
   ],
   "window": {
     "backgroundTextStyle": "light",

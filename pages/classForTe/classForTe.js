@@ -26,7 +26,7 @@ Page({
     console.log(this.data.classId)
     wx.closeSocket()
     wx.navigateTo({
-      url: '/pages/liveHome/liveHome?classId=' + this.data.classId,
+      url: '/pages/question/question?classId=' + this.data.classId,
     })
   },
   onLoad(options){

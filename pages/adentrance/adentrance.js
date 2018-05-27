@@ -1,9 +1,15 @@
 // pages/adentrance/adentrance.js
+const app = getApp();
 Page({
   data: {
     showMode: false,
+    showMode1: false,
     maskTitle: {
       name: '',
+      describe: ''
+    },
+    maskTitle1: {
+      name: '查看数据',
       describe: ''
     },
     classValue: '15',
@@ -12,8 +18,14 @@ Page({
   hideMode() {
     this.setData({ showMode: false, focus: false });
   },
+  hideMode1(){
+    this.setData({ showMode1: false });
+  },
   setClassValue(e) {
     this.setData({ classValue: e.detail.value });
+  },
+  chooseDataType(){
+    this.setData({ showMode1: true });
   },
   readMsg() {
     let url = '';
@@ -38,8 +50,25 @@ Page({
       } else {
         url = '/pages/viewData/viewData?classId=' + self.data.classValue
       }
-      wx.navigateTo({
-        url: url
+      app.api.useCookie('/index/user/getClassAll', { UserId: app.globalData.code }).then(res => {
+        let li = res.data.Result;
+        let hasId = false;
+        li.forEach(function (ele) {
+          if (ele.Class == self.data.classValue) {
+            hasId = true;
+          }
+        })
+        if (hasId) {
+          wx.navigateTo({
+            url: url
+          })
+        } else {
+          wx.showToast({
+            title: '不存在此教室',
+            icon: 'loading',
+            duration: 1000
+          })
+        }
       })
     }, 500)
   },
@@ -62,67 +91,18 @@ Page({
     this.setData({ showMode: true })
   },
   enterViewData() {
+    this.setData({ showMode1: false })
     this.setData({
       maskTitle: {
         name: '查看数据',
         describe: ''
       }
     })
-    this.setData({ showMode: true })
+    this.setData({ showMode: true, focus: true })
   },
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  readAll(){
+    wx.navigateTo({
+      url: '/pages/viewData/viewData?classId=all'
+    })
   }
 })

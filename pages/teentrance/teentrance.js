@@ -15,9 +15,9 @@ Page({
     focus: false
   },
   onLoad(op) {
-    app.api.request('/index/user/searchLastClass/Id/' + app.globalData.code, {}).then(data => {
+    app.api.useCookie('/index/user/searchLastClass/Id/' + app.globalData.code, { UserId: app.globalData.code }).then(data => {
       console.log(data)
-      if (data.data.Status = 'success') {
+      if (data.data.Status == 'success') {
         this.setData({ lastClassValue: data.data.Result.classNo })
       }
     }).catch(err => {
@@ -29,19 +29,16 @@ Page({
   },
   toClassCenter() {
     let self = this;
-    // this.setData({ showMode: false, focus: false });
-    setTimeout(function () {
-      if (self.data.classValue){
-        wx.navigateTo({
-          url: '/pages/qrcode/qrcode?classId=' + self.data.classValue
-        })
-      }else{
-        wx.showLoading({
-          title: '请输入班级号',
-          duration: 1000
-        })
-      }
-    },500)
+    if (self.data.lastClassValue) {
+      wx.navigateTo({
+        url: '/pages/classForTe/classForTe?classId=' + self.data.lastClassValue
+      })
+    } else {
+      wx.showLoading({
+        title: '您还没有班级',
+        duration: 1000
+      })
+    }
   },
   setClassValue(e) {
     this.setData({ classValue: e.detail.value });
