@@ -17,11 +17,16 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let data = {
-      classId: options.classId
+    let data = {}
+    let url = '/index/Redpack/getRedpackAll'
+    if (options.classId != 'all') {
+      data = {
+        classId: options.classId
+      }
+      url = '/index/Redpack/getRedpack'
     }
     let self = this;
-    app.api.useCookie('/index/Redpack/getRedpack', data).then(function (res) {
+    app.api.useCookie(url, data).then(function (res) {
       console.log(res.Status)
       console.log(res)
       if (res.data.Status == 'success') {

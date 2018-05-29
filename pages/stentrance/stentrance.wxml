@@ -24,7 +24,7 @@
         <view class='font12 gray'>开始上课</view>
       </view>
     </view>
-    <view class='tab-pane ViewMessage' bindtap='showMaskToggle'>
+    <view class='tab-pane ViewMessage' bindtap='readMsg'>
       <view class='tab-pane-title font14 yellow'>View Message</view>
       <view class='tab-pane-content'>
         <view style='height:95rpx;display:flex;justify-content: space-between;'>

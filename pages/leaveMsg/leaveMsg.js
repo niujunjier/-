@@ -13,7 +13,6 @@ Page({
    */
   onLoad: function (options) {
     let id = options.classId;
-    id = 19;
     app.api.request('/index/Comments/getComments/', { classId: id}).then(data => {
       console.log(data)
       if(data.data.Status == 'success'){

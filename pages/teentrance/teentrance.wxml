@@ -12,7 +12,7 @@
         <view class='font12 gray'>修改资料</view>
       </view>
     </view>
-    <view class='tab-pane Entertheclassroom' bindtap='inputClassNum'>
+    <view class='tab-pane Entertheclassroom' bindtap='toClassCenter'>
       <view class='tab-pane-title font14 blue'>Enter the classroom</view>
       <view class='tab-pane-content'>
         <view style='height:95rpx;display:flex;justify-content: space-between;'>
