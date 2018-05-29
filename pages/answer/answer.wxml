@@ -14,4 +14,16 @@
       </view>
     </view>
   </view>
+  <button bindtap='test'>qwe</button>
 </view>
+<component-mask-view show-mask='{{sendRedStatu}}' show-title='{{title}}' bind:myevent='showMaskToggle'>
+  <view class='audio'>
+    <text class='iconfont {{!isPlay?"icon-bofang":"icon-zanting"}}' style='color: #fff;'></text>
+  </view>
+  <view class='choose-handle'>
+    <view bindtap='sendAsw' data-key='a'>A</view>
+    <view bindtap='sendAsw' data-key='b'>B</view>
+    <view bindtap='sendAsw' data-key='c'>C</view>
+    <view bindtap='sendAsw' data-key='d'>D</view>
+  </view>
+</component-mask-view>

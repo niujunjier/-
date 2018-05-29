@@ -34,3 +34,28 @@ view{
 .tab-pane-content text{
   line-height: 95rpx;
 }
+.audio{
+  width: 200rpx;
+  height: 70rpx;
+  background-color: #ed6d00;
+  margin: 50rpx 0 0 50rpx;
+  border-radius: 10rpx;
+  padding: 5rpx 0 0 20rpx;
+}
+.choose-handle{
+  width: 80%;
+  height: 70rpx;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 50rpx auto;
+}
+.choose-handle view{
+  width: 70rpx;
+  height: 70rpx;
+  background-color: #ed6d00;
+  border-radius: 50% 50%;
+  color: #fff;
+  text-align: center;
+  line-height: 70rpx;
+}

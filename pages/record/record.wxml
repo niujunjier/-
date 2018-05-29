@@ -6,10 +6,10 @@
     <view class='asw-count-item'>B</view>
     <view class='asw-count-item'>C</view>
     <view class='asw-count-item'>D</view>
-    <view class='asw-count-item'>4</view>
-    <view class='asw-count-item'>3</view>
-    <view class='asw-count-item'>2</view>
-    <view class='asw-count-item'>1</view>
+    <view class='asw-count-item'>{{count.a}}</view>
+    <view class='asw-count-item'>{{count.b}}</view>
+    <view class='asw-count-item'>{{count.c}}</view>
+    <view class='asw-count-item'>{{count.d}}</view>
   </view>
   <view class='record-btn-group'>
     <view class='record-btn font28' bindtap='sendQuestion'>发送</view>
