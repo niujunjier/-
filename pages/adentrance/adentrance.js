@@ -12,7 +12,7 @@ Page({
       name: '查看数据',
       describe: ''
     },
-    classValue: '15',
+    classValue: '12级3班',
     focus: false
   },
   hideMode() {
@@ -37,27 +37,26 @@ Page({
         });
         return;
       }
-      if (!/^[0-9]*$/.test(self.data.classValue)) {
-        wx.showToast({
-          title: '输入正确的班级号'
-        });
-        return;
-      }
+      // if (!/^[0-9]*$/.test(self.data.classValue)) {
+      //   wx.showToast({
+      //     title: '输入正确的班级号'
+      //   });
+      //   return;
+      // }
       if (self.data.maskTitle.name == '查看留言') {
-        url = '/pages/leaveMsg/leaveMsg?classId=' + self.data.classValue
+        url = '/pages/leaveMsg/leaveMsg?classId='
       } else if (self.data.maskTitle.name == '进入教室') {
-        url = '/pages/classForSt/classForSt?classId=' + self.data.classValue
+        url = '/pages/classForSt/classForSt?classId='
       } else {
-        url = '/pages/viewData/viewData?classId=' + self.data.classValue
+        url = '/pages/viewData/viewData?classId='
       }
-      app.api.useCookie('/index/user/getClassAll', { UserId: app.globalData.code }).then(res => {
+      app.api.useCookie('/index/user/getClass', { 'class_name': self.data.classValue }).then(res => {
         let li = res.data.Result;
         let hasId = false;
-        li.forEach(function (ele) {
-          if (ele.Class == self.data.classValue) {
-            hasId = true;
-          }
-        })
+        if(li){
+          hasId = true;
+          url+=li.id;
+        }
         if (hasId) {
           wx.navigateTo({
             url: url

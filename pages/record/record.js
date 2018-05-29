@@ -10,7 +10,8 @@ Page({
       b: 0,
       c: 0,
       d: 0
-    }
+    },
+    tempFilePath: ''
   },
   onLoad: function (options) {
     this.setData({ classId: options.classId })
@@ -23,10 +24,41 @@ Page({
     }
   },
   recording() {
+    let self = this;
     this.setData({ isRecording: true })
+    wx.startRecord({
+      success: function (res) {
+        let tempFilePath = res.tempFilePath
+        self.setData({ tempFilePath: tempFilePath })
+      },
+      fail: function (res) {
+        wx.showToast({
+          title: '录音失败',
+        })
+      }
+    })
   },
   pause() {
+    let self = this;
     this.setData({ isRecording: false })
+    wx.stopRecord();
+    setTimeout(() => {
+      console.log(this.data.tempFilePath)
+      wx.uploadFile({
+        url: 'https://www.juplus.cn/live/index/common/upload',
+        filePath: self.data.tempFilePath,
+        name: 'file',
+        header: {
+          'content-type': 'multipart/form-data'
+        },
+        success: function (res) {
+          let str = res.data;
+        },
+        fail: function (res) {
+          console.log(res);
+        }
+      });
+    },200)
   },
   sendQuestion() {
     let self = this;
@@ -53,7 +85,7 @@ Page({
         })
         self.setData({ isFirst: false })
       } else {
-        let count = {a: 0,b: 0,c: 0,d: 0};
+        let count = { a: 0, b: 0, c: 0, d: 0 };
         let list = JSON.parse(res.data);
         // list.forEach(function (ele) {
         //   let item = JSON.parse(ele)
@@ -61,7 +93,7 @@ Page({
         //     count[item.User.asw] ++;
         //   }
         // })
-        if (list.Action == 'question' && list.User.asw){
+        if (list.Action == 'question' && list.User.asw) {
           count[list.User.asw]++;
         }
         self.setData({ count: count });
@@ -73,7 +105,7 @@ Page({
     this.setData({ count: { a: 0, b: 0, c: 0, d: 0 } });
     wx.closeSocket();
   },
-  onUnload(){
+  onUnload() {
     wx.closeSocket();
   }
 })
