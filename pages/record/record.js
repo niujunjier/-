@@ -11,10 +11,52 @@ Page({
       c: 0,
       d: 0
     },
-    tempFilePath: ''
+    tempFilePath: '',
+    recorderManager: ''
   },
   onLoad: function (options) {
     this.setData({ classId: options.classId })
+    this.setData({ recorderManager: wx.getRecorderManager() })
+    this.data.recorderManager.onStart(() => {
+      console.log('recorder start')
+    })
+    this.data.recorderManager.onPause(() => {
+      console.log('recorder pause')
+    })
+    this.data.recorderManager.onStop((files) => {
+      console.log('recorder stop', files)
+      const { tempFilePath } = files;
+      console.log(tempFilePath)
+      setTimeout(() => {
+        console.log(this.data.tempFilePath)
+        wx.uploadFile({
+          url: 'https://www.juplus.cn/live/index/common/upload',
+          // url: 'http://www.website.com/home/api/uploadimg',
+          filePath: tempFilePath,
+          name: 'file',
+          header: {
+            'content-type': 'multipart/form-data'
+          },
+          success: function (res) {
+            let str = res.data;
+            console.log(res)
+            wx.showModal({
+              title: '成功',
+              content: JSON.stringify(res),
+            })
+          },
+          fail: function (res) {
+            console.log(res); wx.showToast({
+              title: 'fail',
+            })
+          }
+        });
+      }, 200)
+    })
+    this.data.recorderManager.onFrameRecorded((res) => {
+      const { frameBuffer } = res
+      console.log('frameBuffer.byteLength', frameBuffer)
+    })
   },
   recordToggle() {
     if (this.data.isRecording) {
@@ -26,39 +68,32 @@ Page({
   recording() {
     let self = this;
     this.setData({ isRecording: true })
-    wx.startRecord({
-      success: function (res) {
-        let tempFilePath = res.tempFilePath
-        self.setData({ tempFilePath: tempFilePath })
-      },
-      fail: function (res) {
-        wx.showToast({
-          title: '录音失败',
-        })
-      }
-    })
+    const options = {
+      duration: 10000,
+      sampleRate: 44100,
+      numberOfChannels: 1,
+      encodeBitRate: 192000,
+      format: 'aac',
+      frameSize: 50
+    }
+    self.data.recorderManager.start(options)
+    // wx.startRecord({
+    //   success: function (res) {
+    //     let tempFilePath = res.tempFilePath
+    //     self.setData({ tempFilePath: tempFilePath })
+    //   },
+    //   fail: function (res) {
+    //     wx.showToast({
+    //       title: '录音失败',
+    //     })
+    //   }
+    // })
   },
   pause() {
     let self = this;
     this.setData({ isRecording: false })
-    wx.stopRecord();
-    setTimeout(() => {
-      console.log(this.data.tempFilePath)
-      wx.uploadFile({
-        url: 'https://www.juplus.cn/live/index/common/upload',
-        filePath: self.data.tempFilePath,
-        name: 'file',
-        header: {
-          'content-type': 'multipart/form-data'
-        },
-        success: function (res) {
-          let str = res.data;
-        },
-        fail: function (res) {
-          console.log(res);
-        }
-      });
-    },200)
+    self.data.recorderManager.stop()
+    // wx.stopRecord();
   },
   sendQuestion() {
     let self = this;

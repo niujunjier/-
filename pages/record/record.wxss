@@ -7,8 +7,21 @@
   padding-top: 200rpx;
 }
 .record-ctrl{
-  font-size: 200rpx;
-  color: rgb(64, 199, 158);
+  width: 200rpx;
+  height: 200rpx;
+  margin: 0 auto;
+  background-color: rgb(64, 199, 158);
+  border-radius: 50% 50%;
+}
+.record-ctrl image{
+  width: 100%;
+  height: 100%;
+}
+.recording{
+  display: none;
+}
+.recorded{
+  display: block;
 }
 .asw-count{
   width: 50%;

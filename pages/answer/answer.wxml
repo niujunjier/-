@@ -6,7 +6,7 @@
       <view class='tab-pane-content'>
         <view style='height:95rpx;display:flex;justify-content: space-between;'>
           <view style='display: inline-block;width:110rpx;height:95rpx;margin:0 20rpx'>
-            <image style='height:100%;width:100%;' src="../../assets/image/Entertheclassroom.png"></image>
+            <image style='height:100%;width:100%;' src="../../assets/image/bofang.jpg"></image>
           </view>
           <text class='font14 blue' style='display: inline-block;line-height:95rpx;'>观看直播</text>
         </view>

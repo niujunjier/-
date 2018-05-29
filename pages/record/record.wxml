@@ -1,6 +1,9 @@
 <!--pages/record/record.wxml-->
 <view class='record-view'>
-  <text class='record-ctrl iconfont {{!isRecording?"icon-bofang":"icon-zanting"}}' bindtap='recordToggle'></text>
+  <!-- <text class='record-ctrl iconfont {{"icon-bofang":"icon-zanting"}}' ></text> -->
+  <view class='record-ctrl' bindtap='recordToggle'>
+    <image src='../../assets/image/luyin.jpg' class='{{isRecording?"recording":"recorded"}}'></image>
+  </view>
   <view class='asw-count'>
     <view class='asw-count-item'>A</view>
     <view class='asw-count-item'>B</view>

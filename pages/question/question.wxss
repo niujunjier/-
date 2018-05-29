@@ -21,7 +21,7 @@ view{
   box-shadow: 4rpx 8rpx 30rpx rgba(86,212,246,0.2);
 }
 .ViewMessage .tab-pane-content{
-  box-shadow: 4rpx 8rpx 30rpx rgba(242,193,130,0.2);
+  box-shadow: 4rpx 8rpx 30rpx rgba(64,199,158,0.2);
 }
 .tab-pane-content{
   width: 100%;
@@ -33,4 +33,7 @@ view{
 }
 .tab-pane-content text{
   line-height: 95rpx;
+}
+.green{
+  color: rgb(64,199,158);
 }

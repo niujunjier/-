@@ -5,7 +5,7 @@
       <view class='tab-pane-content'>
         <view style='height:95rpx;display:flex;justify-content: space-between;'>
           <view style='display: inline-block;width:110rpx;height:95rpx;margin:0 20rpx'>
-            <image style='height:100%;width:100%;' src="../../assets/image/Entertheclassroom.png"></image>
+            <image style='height:100%;width:100%;' src="../../assets/image/bofang.jpg"></image>
           </view>
           <text class='font14 blue' style='display: inline-block;line-height:95rpx;'>开始直播</text>
         </view>
@@ -13,13 +13,13 @@
       </view>
     </view>
     <view class='tab-pane ViewMessage' bindtap='goRecord'>
-      <view class='tab-pane-title font14 yellow'>Classroom questioning</view>
+      <view class='tab-pane-title font14 green'>Classroom questioning</view>
       <view class='tab-pane-content'>
         <view style='height:95rpx;display:flex;justify-content: space-between;'>
           <view style='display: inline-block;width:110rpx;height:95rpx;margin:0 20rpx'>
-            <image style='height:100%;width:100%;' src="../../assets/image/ViewMessage.png"></image>
+            <image style='height:100%;width:100%;' src="../../assets/image/tiwen.jpg"></image>
           </view>
-          <text class='font14 yellow' style='display: inline-block;line-height:95rpx;'>课堂提问</text>
+          <text class='font14 green' style='display: inline-block;line-height:95rpx;'>课堂提问</text>
         </view>
         <view class='font12 gray'>课堂问题</view>
       </view>
