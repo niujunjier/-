@@ -8,7 +8,7 @@ Page({
       { name: 'teacher', value: '老师' },
       { name: 'manger', value: '管理员' }
     ],
-    bt: 1526313600000,
+    bt: 15263136000000000,
     idMap: {
       'student': "/pages/stentrance/stentrance",
       'teacher': "/pages/teentrance/teentrance",
