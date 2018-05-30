@@ -28,7 +28,19 @@ Page({
       const { tempFilePath } = files;
       console.log(tempFilePath)
       setTimeout(() => {
-        console.log(this.data.tempFilePath)
+        // let innerAudioContext = wx.createInnerAudioContext()
+        // innerAudioContext.src = tempFilePath;
+        // innerAudioContext.onPlay(() => {
+        //   console.log('开始播放')
+        // })
+        // innerAudioContext.onError((res) => {
+        //   console.log(res.errMsg)
+        //   console.log(res.errCode)
+        // })
+        // innerAudioContext.onEnded((res) => {
+        //   console.log(res)
+        // })
+        // innerAudioContext.play();
         wx.uploadFile({
           url: 'https://www.juplus.cn/live/index/common/upload',
           // url: 'http://www.website.com/home/api/uploadimg',
@@ -49,7 +61,7 @@ Page({
             })
           },
           fail: function (res) {
-            console.log(res); 
+            console.log(res);
             wx.showToast({
               title: 'fail',
             })
