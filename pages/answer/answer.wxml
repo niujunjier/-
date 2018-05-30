@@ -17,7 +17,7 @@
   <button bindtap='test'>qwe</button>
 </view>
 <component-mask-view show-mask='{{sendRedStatu}}' show-title='{{title}}' bind:myevent='showMaskToggle'>
-  <view class='audio'>
+  <view class='audio' bindtap='playToggle'>
     <text class='iconfont {{!isPlay?"icon-bofang":"icon-zanting"}}' style='color: #fff;'></text>
   </view>
   <view class='choose-handle'>

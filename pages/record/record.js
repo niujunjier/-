@@ -34,6 +34,9 @@ Page({
           // url: 'http://www.website.com/home/api/uploadimg',
           filePath: tempFilePath,
           name: 'file',
+          formData: {
+            "ClassId": 234
+          },
           header: {
             'content-type': 'multipart/form-data'
           },
@@ -46,7 +49,8 @@ Page({
             })
           },
           fail: function (res) {
-            console.log(res); wx.showToast({
+            console.log(res); 
+            wx.showToast({
               title: 'fail',
             })
           }
