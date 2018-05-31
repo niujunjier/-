@@ -12,9 +12,11 @@ Page({
       d: 0
     },
     tempFilePath: '',
-    recorderManager: ''
+    recorderManager: '',
+    url: ''
   },
   onLoad: function (options) {
+    let self = this;
     this.setData({ classId: options.classId })
     this.setData({ recorderManager: wx.getRecorderManager() })
     this.data.recorderManager.onStart(() => {
@@ -43,22 +45,24 @@ Page({
         // innerAudioContext.play();
         wx.uploadFile({
           url: 'https://www.juplus.cn/live/index/common/upload',
-          // url: 'http://www.website.com/home/api/uploadimg',
           filePath: tempFilePath,
           name: 'file',
           formData: {
-            "ClassId": 234
+            "ClassId": options.classId,
+            "UserId": app.globalData.code
           },
           header: {
-            'content-type': 'multipart/form-data'
+            'content-type': 'multipart/form-data',
+            'cookie': wx.getStorageSync("userId")
           },
           success: function (res) {
             let str = res.data;
             console.log(res)
             wx.showModal({
               title: '成功',
-              content: JSON.stringify(res),
+              content: "录制成功",
             })
+            self.setData({ url: 'https://www.juplus.cn/' + JSON.parse(res.data).url })
           },
           fail: function (res) {
             console.log(res);
@@ -93,27 +97,24 @@ Page({
       frameSize: 50
     }
     self.data.recorderManager.start(options)
-    // wx.startRecord({
-    //   success: function (res) {
-    //     let tempFilePath = res.tempFilePath
-    //     self.setData({ tempFilePath: tempFilePath })
-    //   },
-    //   fail: function (res) {
-    //     wx.showToast({
-    //       title: '录音失败',
-    //     })
-    //   }
-    // })
   },
   pause() {
     let self = this;
     this.setData({ isRecording: false })
     self.data.recorderManager.stop()
-    // wx.stopRecord();
   },
   sendQuestion() {
     let self = this;
+    if (!self.data.url) {
+      wx.showToast({
+        title: '没有录音',
+      })
+      return;
+    }
     if (!self.data.isFirst) {
+      wx.showToast({
+        title: '不要多次发送',
+      })
       return;
     }
     wx.connectSocket({
@@ -132,7 +133,10 @@ Page({
       console.log(res)
       if (self.data.isFirst) {
         wx.sendSocketMessage({
-          data: '{ "Action": "question", "RoomId": "' + self.data.classId + '", "User": { "url": "https://pan.baidu.com/s/1eRJ9Gps" } }'
+          data: '{ "Action": "question", "RoomId": "' + self.data.classId + '", "User": { "url": "' + self.data.url + '" } }'
+        })
+        wx.showToast({
+          title: '发送成功',
         })
         self.setData({ isFirst: false })
       } else {
@@ -152,9 +156,18 @@ Page({
     })
   },
   clearQuestion() {
-    this.setData({ isFirst: true })
+    if (!this.data.url) {
+      wx.showToast({
+        title: '没有录音',
+      })
+      return;
+    }
+    this.setData({ isFirst: true, url: '' })
     this.setData({ count: { a: 0, b: 0, c: 0, d: 0 } });
     wx.closeSocket();
+    wx.showToast({
+      title: '已清空',
+    })
   },
   onUnload() {
     wx.closeSocket();

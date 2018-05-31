@@ -14,9 +14,9 @@ Page({
     innerAudioContext: ''
   },
   onLoad: function (options) {
-    this.setData({ classId: options.classId || 234 })
+    this.setData({ classId: options.classId })
     this.setData({ innerAudioContext: wx.createInnerAudioContext() })
-    // this.data.innerAudioContext.src = "https://pan.baidu.com/s/1eRJ9Gps";
+    // this.data.innerAudioContext.src = "https://www.juplus.cn/live/public/uploads/20180531/f40f14f1757d3d08785d2fa9f8dcc5b7.m4a";
     this.data.innerAudioContext.onPlay(() => {
       console.log('开始播放')
     })
@@ -83,7 +83,7 @@ Page({
   test() {
     wx.sendSocketMessage({
       // data: '{ "Action": "question", "RoomId": "' + this.data.classId + '", "User": { "asw": "a" } }'
-      data: '{ "Action": "question", "RoomId": "' + this.data.classId + '", "User": { "url": "http://ws.stream.qqmusic.qq.com/M500001VfvsJ21xFqb.mp3?guid=ffffffff82def4af4b12b3cd9337d5e7&uin=346897220&vkey=6292F51E1E384E061FF02C31F716658E5C81F5594D561F2E88B854E81CAAB7806D5E4F103E55D33C16F3FAC506D1AB172DE8600B37E43FAD&fromtag=46" } }'
+      data: '{ "Action": "question", "RoomId": "' + this.data.classId + '", "User": { "url": "https://www.juplus.cn/live/public/uploads/20180531/f40f14f1757d3d08785d2fa9f8dcc5b7.m4a" } }'
     })
   },
   showMaskToggle() {
