@@ -42,5 +42,5 @@
   <view class="primary-input border-bottom">
     <input type='text' placeholder='输入班级名称' bindinput='setClassValue' bindblur='setClassValue' focus='{{focus}}' />
   </view>
-  <view class='btn btn-md btn-success' bindtap='toClassCenter'>确定</view>
+  <view class='btn btn-md btn-success' bindtap='setClassName'>确定</view>
 </component-mask-view>

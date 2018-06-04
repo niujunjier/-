@@ -16,7 +16,6 @@ Page({
   },
   onLoad(op) {
     app.api.useCookie('/index/user/searchLastClass/Id/' + app.globalData.code, { UserId: app.globalData.code }).then(data => {
-      console.log(data)
       if (data.data.Status == 'success') {
         this.setData({ lastClassValue: data.data.Result.classNo })
       }
@@ -42,8 +41,17 @@ Page({
     let self = this;
     setTimeout(function () {
       if (self.data.classValue){
-        wx.navigateTo({
-          url: '/pages/classForTe/classForTe?classId=' + self.data.lastClassValue
+        app.api.useCookie('/index/Course/createCourse', { CourseName: self.data.classValue }).then(function (res) {
+          if (res.data.Status == 'error'){
+            wx.showLoading({
+              title: '已存在',
+              duration: 1000
+            })
+          }else{
+            wx.navigateTo({
+              url: '/pages/classForTe/classForTe?classId=' + self.data.lastClassValue
+            })
+          }
         })
       }else{
         wx.showLoading({
