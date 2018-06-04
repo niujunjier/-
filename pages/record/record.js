@@ -17,7 +17,7 @@ Page({
   },
   onLoad: function (options) {
     let self = this;
-    this.setData({ classId: options.classId })
+    this.setData({ classId: options.classId || 234 })
     this.setData({ recorderManager: wx.getRecorderManager() })
     this.data.recorderManager.onStart(() => {
       console.log('recorder start')
@@ -118,7 +118,7 @@ Page({
       return;
     }
     wx.connectSocket({
-      url: 'wss://juplus.cn:9502'
+      url: app.globalData.wssUrl
     })
     wx.onSocketOpen(function (res) {
       console.log('WebSocket连接已打开！')
@@ -140,7 +140,7 @@ Page({
         })
         self.setData({ isFirst: false })
       } else {
-        let count = { a: 0, b: 0, c: 0, d: 0 };
+        let count = JSON.parse(JSON.stringify(self.data.count));
         let list = JSON.parse(res.data);
         // list.forEach(function (ele) {
         //   let item = JSON.parse(ele)

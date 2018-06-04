@@ -14,7 +14,7 @@ Page({
     console.log(op.classId)
     let self = this;
     wx.connectSocket({
-      url: 'wss://juplus.cn:9502'
+      url: app.globalData.wssUrl
     })
     wx.onSocketOpen(function (res) {
       console.log('WebSocket连接已打开！')

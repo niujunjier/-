@@ -32,7 +32,7 @@ Page({
     let self = this;
     var id = op.classId;
     wx.connectSocket({
-      url: 'wss://juplus.cn:9502'
+      url: app.globalData.wssUrl
     })
     wx.onSocketOpen(function (res) {
       console.log('WebSocket连接已打开！')

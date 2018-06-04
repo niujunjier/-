@@ -1,4 +1,5 @@
 const ipConfig = 'https://www.juplus.cn/live';
+// const ipConfig = 'https://living.zhanluo.top:9502';
 
 const request=(url,postData)=>{return new Promise((resolve, reject) => {wx.request({url:ipConfig + url,data: postData,header: {"Content-Type": "application/x-www-form-urlencoded"},method:'POST',
 success: function (res) {

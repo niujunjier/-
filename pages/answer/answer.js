@@ -14,7 +14,7 @@ Page({
     innerAudioContext: ''
   },
   onLoad: function (options) {
-    this.setData({ classId: options.classId })
+    this.setData({ classId: options.classId || 234 })
     this.setData({ innerAudioContext: wx.createInnerAudioContext() })
     // this.data.innerAudioContext.src = "https://www.juplus.cn/live/public/uploads/20180531/f40f14f1757d3d08785d2fa9f8dcc5b7.m4a";
     this.data.innerAudioContext.onPlay(() => {
@@ -30,7 +30,7 @@ Page({
     // this.data.innerAudioContext.play();
     let self = this;
     wx.connectSocket({
-      url: 'wss://juplus.cn:9502'
+      url: app.globalData.wssUrl
     })
     wx.onSocketOpen(function (res) {
       console.log('WebSocket连接已打开！')

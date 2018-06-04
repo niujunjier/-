@@ -37,7 +37,7 @@ Page({
     let self = this;
     wx.connectSocket({
       // url: 'ws://121.40.92.185:9502'
-      url: 'wss://juplus.cn:9502'
+      url: app.globalData.wssUrl
     })
     wx.onSocketOpen(function (res) {
       console.log('WebSocket连接已打开！')

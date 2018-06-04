@@ -19,7 +19,8 @@ App({
   globalData: {
     userInfo: null,
     code: '',
-    name: ''
+    name: '',
+    wssUrl: 'wss://living.zhanluo.top:9502'
   },
   api: api
 })
