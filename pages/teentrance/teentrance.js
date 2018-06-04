@@ -30,15 +30,28 @@ Page({
   toClassCenter() {
     let self = this;
     if (self.data.lastClassValue) {
-      wx.navigateTo({
-        url: '/pages/classForTe/classForTe?classId=' + self.data.lastClassValue
-      })
+      self.setData({ showMode: true })
     } else {
       wx.showLoading({
         title: '您还没有班级',
         duration: 1000
       })
     }
+  },
+  setClassName() {
+    let self = this;
+    setTimeout(function () {
+      if (self.data.classValue){
+        wx.navigateTo({
+          url: '/pages/classForTe/classForTe?classId=' + self.data.lastClassValue
+        })
+      }else{
+        wx.showLoading({
+          title: '不能为空',
+          duration: 1000
+        })
+      }
+    }, 500)
   },
   setClassValue(e) {
     this.setData({ classValue: e.detail.value });
