@@ -10,18 +10,12 @@ Page({
       name: '进入教室',
       describe: '上次创建班级为701'
     },
-    classValue: '',
+    classValue: 'test1',
     lastClassValue: '',
     focus: false
   },
   onLoad(op) {
-    app.api.useCookie('/index/user/searchLastClass/Id/' + app.globalData.code, { UserId: app.globalData.code }).then(data => {
-      if (data.data.Status == 'success') {
-        this.setData({ lastClassValue: data.data.Result.classNo })
-      }
-    }).catch(err => {
-      console.log(err)
-    })
+    this.setData({ lastClassValue: app.globalData.classId })
   },
   toUserCenter() {
     wx.navigateTo({ url: "/pages/user/user" })
@@ -48,6 +42,8 @@ Page({
               duration: 1000
             })
           }else{
+            app.globalData.courseId = res.data.result.CourseId;
+            app.globalData.courseName = self.data.classValue;
             wx.navigateTo({
               url: '/pages/classForTe/classForTe?classId=' + self.data.lastClassValue
             })

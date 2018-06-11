@@ -20,7 +20,10 @@ App({
     userInfo: null,
     code: '',
     name: '',
-    wssUrl: 'wss://living.zhanluo.top:9502'
+    wssUrl: 'wss://living.zhanluo.top:9502',
+    classId: null,
+    courseId: null,
+    courseName: ''
   },
   api: api
 })

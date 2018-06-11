@@ -13,14 +13,7 @@ Page({
     showMode: false
   },
   onLoad(op) {
-    app.api.useCookie('/index/user/searchLastClass/Id/' + app.globalData.code, { UserId: app.globalData.code }).then(data => {
-      console.log(data)
-      if (data.data.Status == 'success') {
-        this.setData({ classValue: data.data.Result.classNo || "234" })
-      }
-    }).catch(err => {
-      console.log(err)
-    })
+    this.setData({ classValue: app.globalData.classId })
   },
   toUserCenter() {
     wx.navigateTo({ url: "/pages/user/user" })

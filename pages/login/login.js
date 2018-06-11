@@ -41,6 +41,7 @@ Page({
       console.log(res)
       if (res.data.Status == 'success') {
         app.globalData.code = res.data.Result.Id;
+        app.globalData.classId = res.data.Result.classId;
         console.log(app.globalData.code)
         self.data.items.forEach(function(ele,i){
           if(i == 0){

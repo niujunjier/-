@@ -39,9 +39,9 @@ Page({
       }
     })
 
-    app.api.request('/index/live/cancelLive?ClassId='+ this.data.classId +'&Identity=teacher', {}).then(res => {
+    app.api.request('/index/live/cancelLive?ClassId=' + this.data.classId + '&Identity=teacher&CourseName=' + app.globalData.courseName, {}).then(res => {
       console.log(res)
-      app.api.useCookie('/index/live/getLive?ClassId=' + this.data.classId +'&Identity=teacher', {}).then(data => {
+      app.api.useCookie('/index/live/getLive?ClassId=' + this.data.classId + '&Identity=teacher&CourseName=' + app.globalData.courseName, {}).then(data => {
         console.log(data.data.Result.pushUrl)
         console.log(data.data.Result.pushUrl)
         this.setData({ pushUrl: data.data.Result.pushUrl, working: true })
@@ -51,7 +51,7 @@ Page({
   },
   onUnload(op) {
     console.log(123)
-    app.api.request('/index/live/finishLive?ClassId=' + this.data.classId +'&Identity=teacher', {}).then(res => {
+    app.api.request('/index/live/finishLive?ClassId=' + this.data.classId + '&Identity=teacher&CourseName=' + app.globalData.courseName, {}).then(res => {
       console.log(res)
     })
   },

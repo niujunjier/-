@@ -17,7 +17,7 @@ Page({
   },
   onLoad: function (options) {
     let self = this;
-    this.setData({ classId: options.classId || 234 })
+    this.setData({ classId: options.classId })
     this.setData({ recorderManager: wx.getRecorderManager() })
     this.data.recorderManager.onStart(() => {
       console.log('recorder start')
@@ -49,7 +49,8 @@ Page({
           name: 'file',
           formData: {
             "ClassId": options.classId,
-            "UserId": app.globalData.code
+            "UserId": app.globalData.code,
+            "CourseId": app.globalData.courseId
           },
           header: {
             'content-type': 'multipart/form-data',
