@@ -96,7 +96,11 @@ view{
 .font28{
   font-size: 28rpx;
 }
-
+.class-tip{
+  font-size: 30rpx;
+  color: #ccc;
+  text-align: center;
+}
 
 /*图标字体  */
 .iconfont {

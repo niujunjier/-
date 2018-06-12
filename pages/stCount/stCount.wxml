@@ -1,5 +1,6 @@
 <!--pages/stCount/stCount.wxml-->
 <view class='sc-view'>
+  <view class='class-tip' wx:if="{{stuList.length==0}}">当前教室暂无学生</view>
   <view class='stu-container'>
     <component-colorful-ball color='{{coMap[item.signed]}}' wx:for="{{stuList}}" wx:for-index="index" wx:for-item="item" detail='{{item}}' bind:myevent='getStuData'></component-colorful-ball>
   </view>

@@ -23,17 +23,27 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (op) {
-    let id = op.classId;
+    let latitude ,longitude;
+    wx.getLocation({
+      type: 'wgs84',
+      success: function (res) {
+        console.log(res);
+        latitude = res.latitude
+        longitude = res.longitude
+        wx.connectSocket({
+          url: app.globalData.wssUrl
+          // url: 'wss://juplus.cn:9502'
+        })
+      }
+    })
+    let id = op.classId || 4;
     let stulist = [];
     let self = this;
-    wx.connectSocket({
-      url: app.globalData.wssUrl
-      // url: 'wss://juplus.cn:9502'
-    })
+    
     wx.onSocketOpen(function (res) {
       console.log('WebSocket连接已打开！')
       wx.sendSocketMessage({
-        data: '{ "Action": "login", "RoomId": "' + id + '", "User": { "id": "' + app.globalData.code + '","name": "' + app.globalData.name + '","signed": "teacher"} }'
+        data: '{ "Action": "login", "RoomId": "' + id + '", "User": { "id": "' + app.globalData.code + '","name": "' + app.globalData.name + '","lat":"' + latitude + '","lng": "' + longitude +'","signed": "teacher"} }'
       })
     })
     wx.onSocketError(function (res) {
@@ -45,25 +55,19 @@ Page({
       let stData = [];
       let list = self.deduplication(res.data);
       var y=0,u=0,n=0;
-      for (let i = 0; i < 37; i++) {
-        if (list[i]) {
-          if (list[i].User.signed != 'teacher'){
-            if (list[i].User.signed == 'no'){
-              n++;
-            } else if (list[i].User.signed == 'yes'){
-              y++;
-            }
-            stData.push(list[i].User)
-          }else{
+      console.log(list)
+      list.forEach(function(ele){
+        if (ele.User.signed != 'teacher') {
+          if (ele.User.signed == 'no') {
+            n++;
+          } else if (ele.User.signed == 'yes') {
+            y++;
+          } else if (ele.User.signed == 'unde') {
             u++;
           }
-        } else {
-          u++;
-          stData.push({
-            "signed": "unde"
-          })
-        }
-      }
+          stData.push(ele.User)
+        } 
+      })
       self.setData({ stuList: stData });
       self.setData({no: n,yes: y,unde: u})
     })
