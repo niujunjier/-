@@ -16,8 +16,10 @@
     "pages/liveHome/liveHome",
     "pages/classForSt/classForSt",
     "pages/question/question",
+    "pages/record/record",
     "pages/answer/answer",
-    "pages/record/record"
+    "pages/stCmu/stCmu",
+    "pages/comunication/comunication"
   ],
   "window": {
     "backgroundTextStyle": "light",

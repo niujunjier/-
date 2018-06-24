@@ -40,7 +40,7 @@
 </view>
 <component-mask-view show-mask='{{showMode}}' show-title='{{maskTitle}}' bind:myevent='hideMode'>
   <view class="primary-input border-bottom">
-    <input type='text' placeholder='输入班级名称' bindinput='setClassValue' bindblur='setClassValue' focus='{{focus}}' />
+    <input type='text' placeholder='输入教室名称' bindinput='setClassValue' bindblur='setClassValue' focus='{{focus}}' />
   </view>
   <view class='btn btn-md btn-success' bindtap='setClassName'>确定</view>
 </component-mask-view>

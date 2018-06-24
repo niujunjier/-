@@ -1,0 +1,5 @@
+<!--pages/stCmu/stCmu.wxml-->
+<view class='stcmu-box'>
+  <image src='{{isAc?acpic.f:dapic.f}}' bindtap='sendFlower'></image>
+  <image src='{{isAc?acpic.b:dapic.b}}' bindtap='sendBoom'></image>
+</view>

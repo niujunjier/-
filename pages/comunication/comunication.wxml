@@ -1,0 +1,15 @@
+<!--pages/stCount/stCount.wxml-->
+<view class='sc-view'>
+  <view class='class-tip' wx:if="{{stuList.length==0}}">当前教室暂无学生</view>
+  <view class='stu-container'>
+    <component-colorful-ball color='{{coMap[item.asw]}}' wx:for="{{stuList}}" wx:for-index="index" wx:for-item="item" detail='{{item}}' bind:myevent='getStuData'></component-colorful-ball>
+  </view>
+  <view class='count-view'>
+    <view class='count-item font-orange'>
+      <text class='iconfont icon-wodedamaijihuo font-orange'></text>{{flower}}
+    </view>
+    <view class='count-item font-blue'>
+      <text class='iconfont icon-wodedamaijihuo font-blue'></text>{{boom}}
+    </view>
+  </view>
+</view>

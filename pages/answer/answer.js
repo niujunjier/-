@@ -73,6 +73,11 @@ Page({
       url: '/pages/classForSt/classForSt?classId=' + this.data.classId,
     })
   },
+  goCmu() {
+    wx.navigateTo({
+      url: '/pages/stCmu/stCmu?classId=' + this.data.classId,
+    })
+  },
   sendAsw(e) {
     console.log(e.target.dataset.key)
     wx.sendSocketMessage({

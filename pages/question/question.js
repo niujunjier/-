@@ -16,4 +16,9 @@ Page({
       url: '/pages/record/record?classId=' + this.data.classId,
     })
   },
+  goCmu() {
+    wx.navigateTo({
+      url: '/pages/comunication/comunication?classId=' + this.data.classId,
+    })
+  }
 })

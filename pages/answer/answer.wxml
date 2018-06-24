@@ -13,6 +13,18 @@
         <view class='font12 gray'>进入直播间</view>
       </view>
     </view>
+    <view class='tab-pane ViewMessage' bindtap='goCmu'>
+      <view class='tab-pane-title font14 orange'>Watch the live broadcast</view>
+      <view class='tab-pane-content'>
+        <view style='height:95rpx;display:flex;justify-content: space-between;'>
+          <view style='display: inline-block;width:110rpx;height:95rpx;margin:0 20rpx'>
+            <image style='height:100%;width:100%;' src="../../assets/image/personalCenter.png"></image>
+          </view>
+          <text class='font14 orange' style='display: inline-block;line-height:95rpx;'>课堂互动</text>
+        </view>
+        <view class='font12 gray'>课堂互动</view>
+      </view>
+    </view>
   </view>
   <button bindtap='test'>qwe</button>
 </view>
