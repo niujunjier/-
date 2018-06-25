@@ -30,19 +30,6 @@ Page({
       const { tempFilePath } = files;
       console.log(tempFilePath)
       setTimeout(() => {
-        // let innerAudioContext = wx.createInnerAudioContext()
-        // innerAudioContext.src = tempFilePath;
-        // innerAudioContext.onPlay(() => {
-        //   console.log('开始播放')
-        // })
-        // innerAudioContext.onError((res) => {
-        //   console.log(res.errMsg)
-        //   console.log(res.errCode)
-        // })
-        // innerAudioContext.onEnded((res) => {
-        //   console.log(res)
-        // })
-        // innerAudioContext.play();
         wx.uploadFile({
           url: 'https://www.juplus.cn/live/index/common/upload',
           filePath: tempFilePath,
@@ -143,14 +130,10 @@ Page({
       } else {
         let count = JSON.parse(JSON.stringify(self.data.count));
         let list = JSON.parse(res.data);
-        // list.forEach(function (ele) {
-        //   let item = JSON.parse(ele)
-        //   if (item.Action == 'question') {
-        //     count[item.User.asw] ++;
-        //   }
-        // })
+
         if (list.Action == 'question' && list.User.asw) {
           count[list.User.asw]++;
+          app.api.useCookie('/index/Course/incAnswer', { answer: list.User.asw, CourseId: app.globalData.courseId }).then(data => { })
         }
         self.setData({ count: count });
       }

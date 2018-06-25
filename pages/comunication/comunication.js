@@ -1,5 +1,6 @@
 // pages/stCount/stCount.js
-const app = getApp()
+const app = getApp();
+var timer = null;
 Page({
 
   /**
@@ -55,8 +56,18 @@ Page({
         self.setData({ flower: f, boom: b })
       }
     })
+    timer = setInterval(()=>{
+      app.api.useCookie('/index/course/courseMapAB', { a: self.data.flower, b: self.data.boom, CourseId: app.globalData.courseId}).then(data => {
+        console.log(data.data.Result)
+      })
+    },180000)
+    
   },
-  onUnload(){
+  onUnload() {
+    clearInterval(timer)
+    // wx.sendSocketMessage({
+    //   data: '{ "Action": "cmu", "RoomId": "' + id + '", "User": { "id": "' + app.globalData.code + '","name": "' + app.globalData.name + '","status": "end"} }'
+    // })
     wx.closeSocket()
   }
 })

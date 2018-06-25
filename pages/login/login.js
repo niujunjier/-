@@ -1,7 +1,7 @@
 const app = getApp()
 Page({
   data: {
-    userName: 'student002',
+    userName: 'teacher002',
     passWord: '123456',
     items: [
       { name: 'student', value: '学生', checked: 'true' },
