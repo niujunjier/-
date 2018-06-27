@@ -1,6 +1,5 @@
 // pages/stCount/stCount.js
-const app = getApp();
-var timer = null;
+const app = getApp()
 Page({
 
   /**
@@ -24,7 +23,6 @@ Page({
    */
   onLoad: function (op) {
     let id = op.classId || 4;
-    let stulist = [];
     let self = this;
     wx.connectSocket({
       url: app.globalData.wssUrl
@@ -43,31 +41,34 @@ Page({
       console.log('收到服务器内容：')
       let data = JSON.parse(res.data);
       if (data.Action == 'cmu'){
-        let stData = [];
-        var f = 0, b = 0;
+        let stData = [].concat(self.data.stuList);;
+        var f = self.data.flower, b = self.data.boom;
         if (data.User.asw == 'f'){
           f++;
         }
-        if (data.User.asw == 'b') {
+        if (data.User.asw == 'b'){
           b++;
         }
-        stData.push(data.User);
+        var isalr = false;
+        stData.forEach(function(ele){
+          if (ele.id == data.User.id){
+            ele.asw = data.User.asw;
+            isalr = true;
+          }
+        })
+        if (!isalr) {
+          stData.push(data.User);
+        }
         self.setData({ stuList: stData });
         self.setData({ flower: f, boom: b })
+        console.log(stData)
       }
     })
-    timer = setInterval(()=>{
-      app.api.useCookie('/index/course/courseMapAB', { a: self.data.flower, b: self.data.boom, CourseId: app.globalData.courseId}).then(data => {
-        console.log(data.data.Result)
-      })
-    },180000)
-    
   },
   onUnload() {
-    clearInterval(timer)
-    // wx.sendSocketMessage({
-    //   data: '{ "Action": "cmu", "RoomId": "' + id + '", "User": { "id": "' + app.globalData.code + '","name": "' + app.globalData.name + '","status": "end"} }'
-    // })
-    wx.closeSocket()
+    wx.sendSocketMessage({
+      data: '{ "Action": "cmu", "RoomId": "' + this.data.id + '", "User": { "id": "' + app.globalData.code + '","name": "' + app.globalData.name + '","asw": "end"} }'
+    })
+    wx.closeSocket();
   }
 })

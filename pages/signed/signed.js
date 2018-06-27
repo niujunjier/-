@@ -40,6 +40,7 @@ Page({
     wx.sendSocketMessage({
       data: '{ "Action": "login", "RoomId": "' + self.data.classId + '", "User": { "id": "' + app.globalData.code + '","name": "' + app.globalData.name + '","signed": "yes"} }'
     })
+    wx.closeSocket()
     wx.navigateTo({
       url: '/pages/answer/answer?classId=' + this.data.classId
     })

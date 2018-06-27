@@ -4,7 +4,6 @@ var timer = null;
 var timer1 = null;
 
 Page({
-
   data: {
     acpic: {
       f: '../../assets/image/fac.jpg',
@@ -41,12 +40,20 @@ Page({
       console.log('WebSocket连接打开失败，请检查！')
     })
     wx.onSocketMessage(function (res) {
-      console.log('收到服务器内容：')
       let data = JSON.parse(res.data);
+      console.log('收到服务器内容：')
       if (self.data.first){
-        self.setData({ first: false });
         wx.sendSocketMessage({
           data: '{ "Action": "cmu", "RoomId": "' + id + '", "User": { "id": "' + app.globalData.code + '","name": "' + app.globalData.name + '","asw": "no"} }'
+        })
+        self.setData({ first: false });
+      }
+      wx.showToast({
+        title: data.Action,
+      })
+      if (data.Action == "cmu" && data.User.asw=='end'){
+        wx.showToast({
+          title: '弹出留言',
         })
       }
     })
