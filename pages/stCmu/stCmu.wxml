@@ -3,3 +3,9 @@
   <image src='{{isAc?acpic.f:dapic.f}}' bindtap='sendFlower'></image>
   <image src='{{isAc?acpic.b:dapic.b}}' bindtap='sendBoom'></image>
 </view>
+<component-mask-view show-mask='{{showMode}}' show-title='{{maskTitle}}' bind:myevent='hideMode'>
+  <view class="primary-input border-bottom">
+    <input type='text' placeholder='您的留言' bindinput='setClassValue' bindblur='setClassValue'/>
+  </view>
+  <view class='btn btn-md btn-success' >确定</view>
+</component-mask-view>

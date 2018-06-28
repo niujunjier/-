@@ -1,1 +1,6 @@
-{}
+{
+  "navigationBarTitleText": "互动",
+  "usingComponents": {
+    "component-mask-view": "../../components/maskView/maskView"
+  }
+}

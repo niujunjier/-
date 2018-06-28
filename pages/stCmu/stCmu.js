@@ -6,6 +6,11 @@ var timer1 = null;
 Page({
 
   data: {
+    maskTitle: {
+      name: '留言',
+      describe: ''
+    },
+    showMode:  false,
     acpic: {
       f: '../../assets/image/fac.jpg',
       b: '../../assets/image/bac.jpg'
