@@ -13,7 +13,8 @@ Page({
       "no": "#cccccc"
     },
     flower: 0,
-    boom: 0
+    boom: 0,
+    id: ''
   },
   getStuData: function(e){
     console.log(e.detail.detail)
@@ -23,6 +24,7 @@ Page({
    */
   onLoad: function (op) {
     let id = op.classId || 4;
+    this.setData({id:id})
     let self = this;
     wx.connectSocket({
       url: app.globalData.wssUrl
@@ -65,10 +67,16 @@ Page({
       }
     })
   },
-  onUnload() {
+  endClass(){
+    var self = this;
     wx.sendSocketMessage({
-      data: '{ "Action": "cmu", "RoomId": "' + this.data.id + '", "User": { "id": "' + app.globalData.code + '","name": "' + app.globalData.name + '","asw": "end"} }'
+      data: '{ "Action": "cmu", "RoomId": "' + self.data.id + '", "User": { "id": "' + app.globalData.code + '","name": "' + app.globalData.name + '","asw": "end"} }'
     })
+    wx.showToast({
+      title: '已结束',
+    })
+  },
+  onUnload() {
     wx.closeSocket();
   }
 })

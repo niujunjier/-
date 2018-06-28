@@ -20,7 +20,8 @@ Page({
     },
     isAc: true,
     first: true,
-    id: ''
+    id: '',
+    value: ''
   },
 
   onLoad: function (op) {
@@ -53,13 +54,8 @@ Page({
         })
         self.setData({ first: false });
       }
-      wx.showToast({
-        title: data.Action,
-      })
       if (data.Action == "cmu" && data.User.asw=='end'){
-        wx.showToast({
-          title: '弹出留言',
-        })
+        self.setData({ showMode: true });
       }
     })
     timer1 = setInterval(() => {
@@ -85,6 +81,29 @@ Page({
         data: '{ "Action": "cmu", "RoomId": "' + self.data.id + '", "User": { "id": "' + app.globalData.code + '","name": "' + app.globalData.name + '","asw": "b"} }'
       })
     }
+  },
+  setClassValue(e){
+    this.setData({ value: e.detail.value })
+  },
+  sendMsg(){
+    let self = this;
+    setTimeout(function () {
+      if (!self.data.value) {
+        wx.showToast({
+          title: '不能为空',
+          icon: 'loading',
+          duration: 1000
+        })
+        return;
+      }
+      let data = {
+        ClassId: app.globalData.classId,
+        Comment: self.data.value
+      }
+      app.api.useCookie('/index/Comments/setComments', data).then(function (res) {
+        self.setData({ value: '', showMode: false })
+      })
+    }, 500)
   },
   onUnload: function () {
     clearInterval(timer)

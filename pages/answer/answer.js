@@ -69,11 +69,13 @@ Page({
     }
   },
   goLive() {
+    wx.closeSocket();
     wx.navigateTo({
       url: '/pages/classForSt/classForSt?classId=' + this.data.classId,
     })
   },
   goCmu() {
+    wx.closeSocket();
     wx.navigateTo({
       url: '/pages/stCmu/stCmu?classId=' + this.data.classId,
     })

@@ -12,4 +12,5 @@
       <text class='iconfont icon-wodedamaijihuo font-blue'></text>{{boom}}
     </view>
   </view>
+   <view class='btn btn-md btn-success' bindtap='endClass' style='margin-top:100rpx;'>确定</view> 
 </view>
