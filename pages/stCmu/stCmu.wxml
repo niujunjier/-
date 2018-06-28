@@ -1,7 +1,7 @@
 <!--pages/stCmu/stCmu.wxml-->
 <view class='stcmu-box'>
-  <image src='{{isAc?acpic.f:dapic.f}}' bindtap='sendFlower'></image>
-  <image src='{{isAc?acpic.b:dapic.b}}' bindtap='sendBoom'></image>
+  <image src='{{cuChoose=="f"?dapic.f:acpic.f}}' bindtap='sendFlower'></image>
+  <image src='{{cuChoose=="b"?dapic.b:acpic.b}}' bindtap='sendBoom'></image>
 </view>
 <component-mask-view show-mask='{{showMode}}' show-title='{{maskTitle}}' bind:myevent='hideMode'>
   <view class="primary-input border-bottom">

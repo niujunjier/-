@@ -21,7 +21,8 @@ Page({
     isAc: true,
     first: true,
     id: '',
-    value: ''
+    value: '',
+    cuChoose: ''
   },
 
   onLoad: function (op) {
@@ -30,7 +31,10 @@ Page({
     let stulist = [];
     let self = this;
     timer = setInterval(()=>{
-      self.setData({ isAc: true });
+      self.setData({ isAc: true, cuChoose: '' });
+      wx.sendSocketMessage({
+        data: '{ "Action": "cmu", "RoomId": "' + id + '", "User": { "id": "' + app.globalData.code + '","name": "' + app.globalData.name + '","asw": "no"} }'
+      })
     },60000)
     wx.connectSocket({
       url: app.globalData.wssUrl
@@ -67,7 +71,7 @@ Page({
   sendFlower: function () {
     let self = this;
     if (this.data.isAc) {
-      this.setData({ isAc: false })
+      this.setData({ isAc: false, cuChoose: 'f'})
       wx.sendSocketMessage({
         data: '{ "Action": "cmu", "RoomId": "' + self.data.id + '", "User": { "id": "' + app.globalData.code + '","name": "' + app.globalData.name + '","asw": "f"} }'
       })
@@ -76,7 +80,7 @@ Page({
   sendBoom: function () {
     let self = this;
     if (this.data.isAc) {
-      this.setData({ isAc: false })
+      this.setData({ isAc: false, cuChoose: 'b'})
       wx.sendSocketMessage({
         data: '{ "Action": "cmu", "RoomId": "' + self.data.id + '", "User": { "id": "' + app.globalData.code + '","name": "' + app.globalData.name + '","asw": "b"} }'
       })

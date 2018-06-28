@@ -44,13 +44,7 @@ Page({
       let data = JSON.parse(res.data);
       if (data.Action == 'cmu'){
         let stData = [].concat(self.data.stuList);;
-        var f = self.data.flower, b = self.data.boom;
-        if (data.User.asw == 'f'){
-          f++;
-        }
-        if (data.User.asw == 'b'){
-          b++;
-        }
+        var f = 0, b = 0;
         var isalr = false;
         stData.forEach(function(ele){
           if (ele.id == data.User.id){
@@ -61,9 +55,17 @@ Page({
         if (!isalr) {
           stData.push(data.User);
         }
+        stData.forEach(function(ele){
+          if (ele.asw == 'f') {
+            f++;
+          }
+          if (ele.asw == 'b') {
+            b++;
+          }
+        })
         self.setData({ stuList: stData });
         self.setData({ flower: f, boom: b })
-        console.log(stData)
+        // console.log(stData)
       }
     })
   },
