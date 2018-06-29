@@ -72,7 +72,7 @@ Page({
   endClass(){
     var self = this;
     wx.sendSocketMessage({
-      data: '{ "Action": "cmu", "RoomId": "' + self.data.id + '", "User": { "id": "' + app.globalData.code + '","name": "' + app.globalData.name + '","asw": "end"} }'
+      data: '{ "Action": "cmu", "RoomId": "' + self.data.id + '", "User": { "id": "' + app.globalData.code + '","name": "' + app.globalData.name + '","asw": "end","CourseId":"' + app.globalData.courseId +'"} }'
     })
     wx.showToast({
       title: '已结束',

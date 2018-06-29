@@ -22,7 +22,8 @@ Page({
     first: true,
     id: '',
     value: '',
-    cuChoose: ''
+    cuChoose: '',
+    CourseId: ''
   },
 
   onLoad: function (op) {
@@ -59,7 +60,8 @@ Page({
         self.setData({ first: false });
       }
       if (data.Action == "cmu" && data.User.asw=='end'){
-        self.setData({ showMode: true });
+
+        self.setData({ showMode: true, CourseId: data.User.CourseId });
       }
     })
     timer1 = setInterval(() => {
@@ -101,7 +103,7 @@ Page({
         return;
       }
       let data = {
-        ClassId: app.globalData.classId,
+        CourseId: self.data.CourseId,
         Comment: self.data.value
       }
       app.api.useCookie('/index/Comments/setComments', data).then(function (res) {
