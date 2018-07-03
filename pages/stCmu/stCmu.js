@@ -1,7 +1,6 @@
 // pages/stCmu/stCmu.js
 const app = getApp();
 var timer = null;
-var timer1 = null;
 
 Page({
   data: {
@@ -64,11 +63,6 @@ Page({
         self.setData({ showMode: true, CourseId: data.User.CourseId });
       }
     })
-    timer1 = setInterval(() => {
-      wx.sendSocketMessage({
-        data: '{ "Action": "cmu", "RoomId": "' + id + '", "User": { "id": "' + app.globalData.code + '","name": "' + app.globalData.name + '","asw": "no"} }'
-      })
-    }, 180000)
   },
   sendFlower: function () {
     let self = this;
@@ -113,7 +107,6 @@ Page({
   },
   onUnload: function () {
     clearInterval(timer)
-    clearInterval(timer1)
     wx.closeSocket();
   }
 })

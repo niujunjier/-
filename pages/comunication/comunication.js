@@ -1,5 +1,6 @@
 // pages/stCount/stCount.js
 const app = getApp()
+var timer1 = null;
 Page({
 
   /**
@@ -68,6 +69,14 @@ Page({
         // console.log(stData)
       }
     })
+    timer1 = setInterval(() => {
+      let data = {
+        CourseId: app.globalData.courseId,
+        a: self.data.flower,
+        b: self.data.boom
+      }
+      app.api.useCookie('/index/course/courseMapAB', data).then(function (res) {})
+    }, 18000)
   },
   endClass(){
     var self = this;
@@ -79,6 +88,7 @@ Page({
     })
   },
   onUnload() {
+    clearInterval(timer1)
     wx.closeSocket();
   }
 })
